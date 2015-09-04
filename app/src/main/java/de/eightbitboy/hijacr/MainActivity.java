@@ -22,7 +22,9 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView comicView;
+    private ImageView comicView;
+    private int comicCounter = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +62,27 @@ public class MainActivity extends AppCompatActivity {
         Button olderButton = (Button) findViewById(R.id.older_button);
         Button newerButton = (Button) findViewById(R.id.newer_button);
 
+        olderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new ComicFetcher(comicCounter).execute();
+                        comicCounter--;
+                    }
+                });
+            }
+        });
+
         newerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new ComicFetcher().execute();
+                        new ComicFetcher(comicCounter).execute();
+                        comicCounter++;
                     }
                 });
             }
@@ -74,14 +90,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class ComicFetcher extends AsyncTask<Void, Void, Void> {
+        private int comicNumber;
+
+        ComicFetcher(int comicNumber) {
+            this.comicNumber = comicNumber;
+        }
+
         @Override
         protected Void doInBackground(Void... params) {
-            final String URL = "http://xkcd.com/1/";
-            Bitmap bitmap = null;
+            final String URL = "http://xkcd.com/";
+            Bitmap bitmap;
 
             try {
-                Document page = Jsoup.connect(URL).get();
-                //a[class=brand brand-image] img[src]
+                Document page = Jsoup.connect(URL + comicNumber).get();
                 Elements img = page.select("div[id=comic] img[src]");
                 String imgSrc = img.attr("src");
                 imgSrc = "http:" + imgSrc;
