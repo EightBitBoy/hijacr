@@ -8,10 +8,11 @@ android:
     # - tools
 
     # The BuildTools version used by your project
-    - build-tools-21.1.1
+    #- build-tools-21.1.1
+    - build-tools-19.0.0
 
     # The SDK version used to compile your project
-    - android-21
+    #- android-21
 
     # Additional components
     #- extra-google-google_play_services
