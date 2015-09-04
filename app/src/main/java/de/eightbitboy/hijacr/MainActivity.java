@@ -3,6 +3,7 @@ package de.eightbitboy.hijacr;
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,6 +21,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
+
+    ImageView comicView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,56 +56,63 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO clean up all this logic
     private void setUpButtonActions() {
-        final String URL = "http://xkcd.com/1/";
-
-
-        final ImageView comicView = (ImageView) findViewById(R.id.comic_view);
+        comicView = (ImageView) findViewById(R.id.comic_view);
         Button olderButton = (Button) findViewById(R.id.older_button);
         Button newerButton = (Button) findViewById(R.id.newer_button);
 
         newerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread thread = new Thread(new Runnable() {
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            Bitmap bitmap = null;
-
-                            try {
-                                Document page = Jsoup.connect(URL).get();
-                                //a[class=brand brand-image] img[src]
-                                Elements img = page.select("div[id=comic] img[src]");
-                                String imgSrc = img.attr("src");
-                                imgSrc = "http:" + imgSrc;
-                                InputStream input = new java.net.URL(imgSrc).openStream();
-                                bitmap = BitmapFactory.decodeStream(input);
-
-                                Log.wtf("foo", page.toString());
-                                Log.wtf("foo", img.toString());
-                                Log.wtf("foo", imgSrc);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-
-                            if (bitmap != null) {
-                                comicView.setImageBitmap(bitmap);
-                            }
-                        } catch (Exception e) {
-                            new AlertDialog.Builder(MainActivity.this)
-                                    .setTitle("Oooops!")
-                                    .setMessage(e.toString())
-                                    .create()
-                                    .show();
-
-                            e.printStackTrace();
-                        }
+                        new ComicFetcher().execute();
                     }
                 });
-
-                thread.start();
             }
         });
+    }
+
+    private class ComicFetcher extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            final String URL = "http://xkcd.com/1/";
+            Bitmap bitmap = null;
+
+            try {
+                Document page = Jsoup.connect(URL).get();
+                //a[class=brand brand-image] img[src]
+                Elements img = page.select("div[id=comic] img[src]");
+                String imgSrc = img.attr("src");
+                imgSrc = "http:" + imgSrc;
+                InputStream input = new java.net.URL(imgSrc).openStream();
+                bitmap = BitmapFactory.decodeStream(input);
+
+                Log.wtf("foo", page.toString());
+                Log.wtf("foo", img.toString());
+                Log.wtf("foo", imgSrc);
+
+                final Bitmap finalBitmap = bitmap;
+
+                if (bitmap != null) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            comicView.setImageBitmap(finalBitmap);
+                        }
+                    });
+                }
+            } catch (IOException e) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Oooops!")
+                        .setMessage(e.toString())
+                        .create()
+                        .show();
+
+                e.printStackTrace();
+            }
+
+            return null;
+        }
     }
 }
