@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android{
-    compileSdkVersion 19
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
 
     defaultConfig{
         applicationId "de.eightbitboy.hijacr"
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
