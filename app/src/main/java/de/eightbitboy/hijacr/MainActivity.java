@@ -1,5 +1,6 @@
 package de.eightbitboy.hijacr;
 
+import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                 //a[class=brand brand-image] img[src]
                                 Elements img = page.select("div[id=comic] img[src]");
                                 String imgSrc = img.attr("src");
+                                imgSrc = "http:" + imgSrc;
                                 InputStream input = new java.net.URL(imgSrc).openStream();
                                 bitmap = BitmapFactory.decodeStream(input);
 
@@ -88,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
                                 comicView.setImageBitmap(bitmap);
                             }
                         } catch (Exception e) {
+                            new AlertDialog.Builder(MainActivity.this)
+                                    .setTitle("Oooops!")
+                                    .setMessage(e.toString())
+                                    .create()
+                                    .show();
+
                             e.printStackTrace();
                         }
                     }
