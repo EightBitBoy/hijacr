@@ -1,24 +1,14 @@
 package de.eightbitboy.hijacr;
 
-import android.app.AlertDialog;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
-import java.io.InputStream;
+import de.eightbitboy.hijacr.data.ComicFetcher;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new ComicFetcher(comicCounter).execute();
+                        new ComicFetcher(MainActivity.this, comicView, comicCounter).execute();
                         comicCounter--;
                     }
                 });
@@ -81,59 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new ComicFetcher(comicCounter).execute();
+                        new ComicFetcher(MainActivity.this, comicView, comicCounter).execute();
                         comicCounter++;
                     }
                 });
             }
         });
-    }
-
-    private class ComicFetcher extends AsyncTask<Void, Void, Void> {
-        private int comicNumber;
-
-        ComicFetcher(int comicNumber) {
-            this.comicNumber = comicNumber;
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            final String URL = "http://xkcd.com/";
-            Bitmap bitmap;
-
-            try {
-                Document page = Jsoup.connect(URL + comicNumber).get();
-                Elements img = page.select("div[id=comic] img[src]");
-                String imgSrc = img.attr("src");
-                imgSrc = "http:" + imgSrc;
-                InputStream input = new java.net.URL(imgSrc).openStream();
-                bitmap = BitmapFactory.decodeStream(input);
-
-                Log.wtf("foo", page.toString());
-                Log.wtf("foo", img.toString());
-                Log.wtf("foo", imgSrc);
-
-                final Bitmap finalBitmap = bitmap;
-
-                if (bitmap != null) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            comicView.setImageBitmap(finalBitmap);
-                        }
-                    });
-                }
-            } catch (IOException e) {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Oooops!")
-                        .setMessage(e.toString())
-                        .create()
-                        .show();
-
-                e.printStackTrace();
-            }
-
-            return null;
-        }
     }
 }
