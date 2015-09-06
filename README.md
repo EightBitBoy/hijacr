@@ -11,7 +11,9 @@ People like reading webcomics during breakfast or while sitting on a train to wo
 The project is still very young and a release date cannot be specified.
 
 
-
+## Libraries used
 
 Butterknife
 EventBus
+Jsoup
+Logger
