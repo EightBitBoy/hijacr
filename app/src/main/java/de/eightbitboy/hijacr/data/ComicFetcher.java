@@ -4,8 +4,9 @@ import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.ImageView;
+
+import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -42,9 +43,7 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
             InputStream input = new java.net.URL(imgSrc).openStream();
             bitmap = BitmapFactory.decodeStream(input);
 
-            Log.wtf("foo", page.toString());
-            Log.wtf("foo", img.toString());
-            Log.wtf("foo", imgSrc);
+            Logger.wtf(imgSrc.toString());
 
             final Bitmap finalBitmap = bitmap;
 

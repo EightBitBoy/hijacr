@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.orhanobut.logger.Logger;
+
 import de.eightbitboy.hijacr.data.ComicFetcher;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,8 +21,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //TODO move this to application class
+        Logger.init("foo");
+
         setContentView(R.layout.activity_main);
         setUpButtonActions();
+        Logger.d("foobar");
     }
 
     @Override
