@@ -10,11 +10,15 @@ import android.widget.ImageView;
 
 import com.orhanobut.logger.Logger;
 
+import butterknife.Bind;
 import de.eightbitboy.hijacr.data.ComicFetcher;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView comicView;
+    @Bind(R.id.comic_view) ImageView comicView;
+    @Bind(R.id.older_button) Button olderButton;
+    @Bind(R.id.newer_button) Button newerButton;
+
     private int comicCounter = 1;
 
 
@@ -55,10 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO clean up all this logic
     private void setUpButtonActions() {
-        comicView = (ImageView) findViewById(R.id.comic_view);
-        Button olderButton = (Button) findViewById(R.id.older_button);
-        Button newerButton = (Button) findViewById(R.id.newer_button);
-
         olderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
