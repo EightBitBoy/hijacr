@@ -2,6 +2,7 @@ package de.eightbitboy.hijacr;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import com.orhanobut.logger.Logger;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.data.ComicFetcher;
+import de.eightbitboy.hijacr.fragments.PagerFragmentAdpater;
 
 public class MainActivity extends FragmentActivity {
 
@@ -32,6 +34,10 @@ public class MainActivity extends FragmentActivity {
         Logger.init("foo");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+
+        ViewPager pager = (ViewPager) findViewById(R.id.vpPager);
+        pager.setAdapter(new PagerFragmentAdpater(getSupportFragmentManager()));
 
         setUpButtonActions();
     }
