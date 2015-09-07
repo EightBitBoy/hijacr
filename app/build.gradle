@@ -32,4 +32,5 @@ dependencies{
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.orhanobut:logger:1.11'
+    compile 'com.jakewharton:butterknife:7.0.1'
 }
