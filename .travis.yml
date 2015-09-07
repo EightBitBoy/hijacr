@@ -17,6 +17,8 @@ before_script:
 - emulator -avd test -no-skin -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
+script:
+  ./gradlew build connectedAndroidTest
 notifications:
   slack:
     secure: gzogyRh0myGSQjLahC5LL5CR5RoHGOiDf/qUckajBTyw7L+X9jsjAZpNXBlaAckEeB1kBQlYFvp3rvLkJ+limRyWLZDcm6+ZZFMqYAMnmYQtkRC3maQDtt0ySkCn5XHJ8pWBWr57V++Q9fhYbosvbBUlq2GuAwQNDBKepFdUhbLVSmWBLqcLiCAK+/ZNgck4V5kPoETsKvp6XrW94vDX2VKGcNVPZLg/L/uqV5+z+02BpDflQzIey9lzivAjv0N8L+3ZAKdkU36B3tZ60JmuL/iWZSfDA0O2yAM79bmcQUJBUXKatqwKgWstlvMR1vBtIlXN7dAuyBe77TslIkQXd+lTNT3gbBGI0aDBheTXat+XZLlpYhE0F3B/UXo8MBJWz/KQA8uIpW38xuChpSnFDHix2LzNAU1feBZhS9sB93pBCU6Yc44yzGDiCs0L5T9W+lptEROmzP/70Ecjpb8B/qKaZ3aQ9wA//LSFFoMrbVGhd8fAZGnAssg0+q46LPpD+arbZN+QMlmuWV2lRSYF4pOi781Y4IERl94dv7wcWBao7YrhAqPR33zgqvwbcgiRu1KtpuZ/09WZqrpbyDa/EXzSgLPAm5+JEJgPVMSMKFqSL+9RPZsTYfQDm6Ui9MBgQAR4Q4pDNIT/fLWC6rFWwB5HN9kbODF0DDt0oluwJ+I=
