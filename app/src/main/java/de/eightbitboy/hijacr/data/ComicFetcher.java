@@ -22,12 +22,14 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
     private FragmentActivity activity;
     private ImageView imageView;
     private int comicNumber;
+    private ComicData comicData;
 
     //TODO remove the view from this class
-    public ComicFetcher(FragmentActivity activity, ImageView imageView, int comicNumber) {
+    public ComicFetcher(FragmentActivity activity, ImageView imageView, int comicNumber, ComicData comicData) {
         this.activity = activity;
         this.imageView = imageView;
         this.comicNumber = comicNumber;
+        this.comicData = comicData;
     }
 
     @Override
@@ -38,7 +40,7 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 
         try {
             Document page = Jsoup.connect(URL + comicNumber).get();
-            Elements img = page.select("div[id=comic] img[src]");
+            Elements img = page.select(comicData.getImageQuery());
             String imgSrc = img.attr("src");
             imgSrc = "http:" + imgSrc;
             InputStream input = new java.net.URL(imgSrc).openStream();

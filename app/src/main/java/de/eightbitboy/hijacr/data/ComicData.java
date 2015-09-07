@@ -30,4 +30,20 @@ public class ComicData {
         this.nextQuery = nextQuery;
         this.previousQuery = previousQuery;
     }
+
+    public String getTitle(){
+        return this.title;
+    }
+
+    public String getImageQuery(){
+        return this.imageQuery;
+    }
+
+    public String getNextQuery(){
+        return this.nextQuery;
+    }
+
+    public String getPreviousQuery(){
+        return this.previousQuery;
+    }
 }

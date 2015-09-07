@@ -46,7 +46,7 @@ public class ComicViewerFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new ComicFetcher(getActivity(), comicView, comicCounter).execute();
+                        new ComicFetcher(getActivity(), comicView, comicCounter, repo.getComicData("ExtraLife")).execute();
                         comicCounter--;
                     }
                 });
@@ -59,7 +59,7 @@ public class ComicViewerFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new ComicFetcher(getActivity(), comicView, comicCounter).execute();
+                        new ComicFetcher(getActivity(), comicView, comicCounter, repo.getComicData("ExtraLife")).execute();
                         comicCounter++;
                     }
                 });
