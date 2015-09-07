@@ -1,4 +1,7 @@
 language: android
+env:
+  global:
+    - ADB_INSTALL_TIMEOUT=8
 android:
   components:
   - build-tools-21.1.1
