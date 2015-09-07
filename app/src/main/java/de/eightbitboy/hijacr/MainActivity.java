@@ -19,13 +19,6 @@ import de.eightbitboy.hijacr.fragments.PagerFragmentAdpater;
 
 public class MainActivity extends FragmentActivity {
 
-    @Bind(R.id.comic_view) ImageView comicView;
-    @Bind(R.id.older_button) Button olderButton;
-    @Bind(R.id.newer_button) Button newerButton;
-
-    private int comicCounter = 1;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +31,6 @@ public class MainActivity extends FragmentActivity {
 
         ViewPager pager = (ViewPager) findViewById(R.id.vpPager);
         pager.setAdapter(new PagerFragmentAdpater(getSupportFragmentManager()));
-
-        setUpButtonActions();
     }
 
     @Override
@@ -61,36 +52,5 @@ public class MainActivity extends FragmentActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    //TODO async tasks?
-
-    //TODO clean up all this logic
-    private void setUpButtonActions() {
-        olderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        new ComicFetcher(MainActivity.this, comicView, comicCounter).execute();
-                        comicCounter--;
-                    }
-                });
-            }
-        });
-
-        newerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        new ComicFetcher(MainActivity.this, comicView, comicCounter).execute();
-                        comicCounter++;
-                    }
-                });
-            }
-        });
     }
 }

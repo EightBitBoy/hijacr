@@ -10,4 +10,24 @@
         android:text="ComicViewer"
         android:id="@+id/textView2"
         android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:background="@android:color/holo_red_dark"
+        android:id="@+id/comic_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/older_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Older"/>
+
+    <Button
+        android:id="@+id/newer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Newer"/>
 </LinearLayout>

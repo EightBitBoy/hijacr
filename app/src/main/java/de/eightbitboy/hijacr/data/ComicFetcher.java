@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
 
 import com.orhanobut.logger.Logger;
@@ -18,12 +19,12 @@ import java.io.InputStream;
 import de.eightbitboy.hijacr.MainActivity;
 
 public class ComicFetcher extends AsyncTask<Void, Void, Void> {
-    private MainActivity activity;
+    private FragmentActivity activity;
     private ImageView imageView;
     private int comicNumber;
 
     //TODO remove the view from this class
-    public ComicFetcher(MainActivity activity, ImageView imageView, int comicNumber) {
+    public ComicFetcher(FragmentActivity activity, ImageView imageView, int comicNumber) {
         this.activity = activity;
         this.imageView = imageView;
         this.comicNumber = comicNumber;
