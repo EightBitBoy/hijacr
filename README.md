@@ -11,9 +11,9 @@ People like reading webcomics during breakfast or while sitting on a train to wo
 The project is still very young and a release date cannot be specified.
 
 
-## Libraries used
+## Libraries used for implementing Hijacr
 
-Butterknife
-EventBus
-Jsoup
-Logger
+- [Butter Knife](https://github.com/JakeWharton/butterknife)
+- [EventBus](https://github.com/greenrobot/EventBus)
+- [jsoup](https://github.com/jhy/jsoup/)
+- [Logger](https://github.com/orhanobut/logger)
