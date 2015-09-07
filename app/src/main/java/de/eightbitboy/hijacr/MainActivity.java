@@ -1,6 +1,7 @@
 package de.eightbitboy.hijacr;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.data.ComicFetcher;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     @Bind(R.id.comic_view) ImageView comicView;
     @Bind(R.id.older_button) Button olderButton;
