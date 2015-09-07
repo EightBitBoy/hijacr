@@ -10,8 +10,10 @@ People like reading webcomics during breakfast or while sitting on a train to wo
 ## When?
 The project is still very young and a release date cannot be specified.
 
+## Does Hijacr need contributors?
+Sure! Every line of code is welcome!
 
-## Libraries used for implementing Hijacr
+## What libraries are used for Hijacr?
 
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [EventBus](https://github.com/greenrobot/EventBus)
