@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.MainActivity;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicFetcher;
+import de.eightbitboy.hijacr.data.ComicRepository;
 
 public class ComicViewerFragment extends Fragment {
 
@@ -21,7 +22,9 @@ public class ComicViewerFragment extends Fragment {
     @Bind(R.id.older_button) Button olderButton;
     @Bind(R.id.newer_button) Button newerButton;
 
+    private ComicRepository repo = new ComicRepository();
     private int comicCounter = 1;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
