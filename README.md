@@ -14,3 +14,4 @@ The project is still very young and a release date cannot be specified.
 
 
 Butterknife
+EventBus
