@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.data.ComicFetcher;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO move this to application class
         Logger.init("foo");
-
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         setUpButtonActions();
-        Logger.d("foobar");
     }
 
     @Override
