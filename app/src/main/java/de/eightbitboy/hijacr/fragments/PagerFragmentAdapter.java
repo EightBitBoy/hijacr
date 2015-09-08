@@ -32,4 +32,9 @@ public class PagerFragmentAdapter extends FragmentPagerAdapter {
 	public int getCount() {
 		return Pages.NUMBER_ITEMS;
 	}
+
+	@Override
+	public CharSequence getPageTitle(int position) {
+		return "Page " + position;
+	}
 }
