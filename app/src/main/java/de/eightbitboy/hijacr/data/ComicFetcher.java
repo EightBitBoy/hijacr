@@ -1,14 +1,13 @@
 package de.eightbitboy.hijacr.data;
 
-import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.orhanobut.logger.Logger;
-import com.squareup.picasso.Picasso;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,8 +15,6 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-import de.eightbitboy.hijacr.MainActivity;
 
 public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 	private FragmentActivity activity;
@@ -42,10 +39,18 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 			Elements img = page.select(comicData.getImageQuery());
 			String imgSrc = img.attr("src");
 			imgSrc = "http:" + imgSrc;
-			InputStream input = new java.net.URL(imgSrc).openStream();
-			bitmap = BitmapFactory.decodeStream(input);
 
 			Logger.d("Image url: " + imgSrc.toString());
+
+			final String source = imgSrc;
+			activity.runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					fetchImage(source, imageView);
+				}
+			});
+
+			/*
 
 			final Bitmap finalBitmap = bitmap;
 
@@ -57,11 +62,25 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 					}
 				});
 			}
+			*/
 		} catch (IOException e) {
 			Logger.e("Fetching the image failed!");
 			e.printStackTrace();
 		}
 
 		return null;
+	}
+
+	private void fetchImage(String imageUrl, ImageView imageView) {
+		ImageLoader.getInstance().displayImage(imageUrl, imageView);
+
+		/*
+		ImageLoader.getInstance().loadImage(imageUrl, new SimpleImageLoadingListener() {
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				// Do whatever you want with Bitmap
+			}
+		});
+		*/
 	}
 }

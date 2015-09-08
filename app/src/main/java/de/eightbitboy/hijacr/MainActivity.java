@@ -2,13 +2,13 @@ package de.eightbitboy.hijacr;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.squareup.picasso.Picasso;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+
+		//TODO move this
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+		ImageLoader.getInstance().init(config);
+		
 		EventBus.getDefault().register(this);
 	}
 
