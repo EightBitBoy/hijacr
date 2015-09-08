@@ -30,6 +30,18 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 
 	@Override
 	protected Void doInBackground(Void... params) {
+		final String imageUrl = getImageUrl();
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				fetchImage(imageUrl, imageView);
+			}
+		});
+
+		return null;
+	}
+
+	private String getImageUrl() {
 		try {
 			Document page = Jsoup.connect(comicData.getBaseUrl() + comicNumber).get();
 			Elements img = page.select(comicData.getImageQuery());
@@ -38,13 +50,7 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 
 			Logger.d("Image url: " + imgSrc.toString());
 
-			final String source = imgSrc;
-			activity.runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					fetchImage(source, imageView);
-				}
-			});
+			return imgSrc;
 		} catch (IOException e) {
 			Logger.e("Fetching the image failed!");
 			e.printStackTrace();
