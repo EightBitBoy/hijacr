@@ -4,14 +4,22 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
 /**
  * Handles the comic viewing state and updates the comic view.
  */
 public class ComicUpdater {
 	private ImageView comicView;
-	private ComicData comicData;
-	private String currentComicPage;
 	private ComicPathResolver pathResolver;
+
+	private ComicData comicData;
+
+	private Document comicPage;
+	private String comicPageUrl;
 
 	/**
 	 * Creates a new ComicUpdater intended for starting a new comic.
@@ -22,8 +30,9 @@ public class ComicUpdater {
 	public ComicUpdater(ImageView comicView, ComicData comicData) {
 		this.comicView = comicView;
 		this.comicData = comicData;
-		this.currentComicPage = comicData.getFirstPageUrl();
+		this.comicPageUrl = comicData.getFirstPageUrl();
 		this.pathResolver = new ComicPathResolver();
+		loadPage();
 	}
 
 	/**
@@ -36,19 +45,23 @@ public class ComicUpdater {
 	public ComicUpdater(ImageView comicView, ComicData comicData, String comicPage) {
 		this.comicView = comicView;
 		this.comicData = comicData;
-		this.currentComicPage = comicPage;
+		this.comicPageUrl = comicPage;
 		this.pathResolver = new ComicPathResolver();
+		loadPage();
 	}
 
-	public void loadComic() {
+	public void loadPage() {
+		//TODO do this asynchronous!
+		try {
+			comicPage = Jsoup.connect(comicPageUrl).get();
+		} catch (IOException e) {
 
+		}
+
+		String comicSource = pathResolver.getComicSource(comicPage, comicData.getImageQuery());
 	}
 
-	public void loadNextComic() {
-		ImageLoader.getInstance().displayImage(pathResolver.getComicSource(), comicView);
-	}
-
-	public void loadPreviousComic() {
-
+	public void loadComic(String url) {
+		ImageLoader.getInstance().displayImage(url, comicView);
 	}
 }
