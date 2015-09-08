@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicFetcher;
 import de.eightbitboy.hijacr.data.ComicRepository;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ComicViewerFragment extends Fragment {
 
@@ -37,6 +38,7 @@ public class ComicViewerFragment extends Fragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		PhotoViewAttacher attacher = new PhotoViewAttacher(comicView);
 		setUpButtonActions();
 	}
 
