@@ -11,59 +11,62 @@ import android.widget.ImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import de.eightbitboy.hijacr.MainActivity;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicFetcher;
 import de.eightbitboy.hijacr.data.ComicRepository;
 
 public class ComicViewerFragment extends Fragment {
 
-    @Bind(R.id.comic_view) ImageView comicView;
-    @Bind(R.id.older_button) Button olderButton;
-    @Bind(R.id.newer_button) Button newerButton;
+	@Bind(R.id.comic_view)
+	ImageView comicView;
+	@Bind(R.id.older_button)
+	Button olderButton;
+	@Bind(R.id.newer_button)
+	Button newerButton;
 
-    private ComicRepository repo = new ComicRepository();
-    private int comicCounter = 1;
+	private int comicCounter = 1;
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.comic_viewer, container, false);
-        ButterKnife.bind(this, view);
-        return view;
-    }
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.comic_viewer, container, false);
+		ButterKnife.bind(this, view);
+		return view;
+	}
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setUpButtonActions();
-    }
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		setUpButtonActions();
+	}
 
-    private void setUpButtonActions() {
-        olderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        new ComicFetcher(getActivity(), comicView, comicCounter, repo.getComicData("ExtraLife")).execute();
-                        comicCounter--;
-                    }
-                });
-            }
-        });
+	private void setUpButtonActions() {
+		olderButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getActivity().runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						new ComicFetcher(getActivity(), comicView, comicCounter,
+								ComicRepository.getComicData("extralife")).execute();
+						comicCounter--;
+					}
+				});
+			}
+		});
 
-        newerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        new ComicFetcher(getActivity(), comicView, comicCounter, repo.getComicData("ExtraLife")).execute();
-                        comicCounter++;
-                    }
-                });
-            }
-        });
-    }
+		newerButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getActivity().runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						new ComicFetcher(getActivity(), comicView, comicCounter,
+								ComicRepository.getComicData("extralife")).execute();
+						comicCounter++;
+					}
+				});
+			}
+		});
+	}
 }
