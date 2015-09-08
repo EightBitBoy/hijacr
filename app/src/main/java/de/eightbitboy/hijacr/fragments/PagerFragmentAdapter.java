@@ -33,8 +33,15 @@ public class PagerFragmentAdapter extends FragmentPagerAdapter {
 		return Pages.NUMBER_ITEMS;
 	}
 
+	//TODO improve this
 	@Override
 	public CharSequence getPageTitle(int position) {
+		if (position == 0) {
+			return "List";
+		}
+		if (position == 1) {
+			return "Viewer";
+		}
 		return "Page " + position;
 	}
 }
