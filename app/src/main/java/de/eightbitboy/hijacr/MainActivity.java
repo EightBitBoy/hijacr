@@ -59,6 +59,6 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void onEvent(ComicSelectedEvent event) {
-		pager.setCurrentItem(1);
+		pager.setCurrentItem(PagerFragmentAdapter.Pages.COMIC_VIEWER);
 	}
 }
