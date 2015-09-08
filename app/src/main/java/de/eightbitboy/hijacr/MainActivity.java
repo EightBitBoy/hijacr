@@ -1,6 +1,7 @@
 package de.eightbitboy.hijacr;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -33,8 +34,11 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.hijacr_main);
 		ButterKnife.bind(this);
 
-		pager = (ViewPager) findViewById(R.id.vpPager);
+		pager = (ViewPager) findViewById(R.id.comic_pager);
 		pager.setAdapter(new PagerFragmentAdapter(getSupportFragmentManager()));
+
+		TabLayout tabLayout = (TabLayout) findViewById(R.id.comic_pager_tabs);
+		tabLayout.setupWithViewPager(pager);
 	}
 
 	@Override

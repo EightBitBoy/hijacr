@@ -44,7 +44,7 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 			InputStream input = new java.net.URL(imgSrc).openStream();
 			bitmap = BitmapFactory.decodeStream(input);
 
-			Logger.wtf(imgSrc.toString());
+			Logger.d("Image url: " + imgSrc.toString());
 
 			final Bitmap finalBitmap = bitmap;
 
