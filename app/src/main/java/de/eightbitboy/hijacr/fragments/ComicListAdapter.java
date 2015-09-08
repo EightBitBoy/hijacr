@@ -27,7 +27,7 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context
 				.LAYOUT_INFLATER_SERVICE);
-		View view = inflater.inflate(R.layout.comic_list_layout, parent, false);
+		View view = inflater.inflate(R.layout.comic_list_item, parent, false);
 
 		TextView title = (TextView) view.findViewById(R.id.comic_title);
 		title.setText(comics.get(position).getTitle());
