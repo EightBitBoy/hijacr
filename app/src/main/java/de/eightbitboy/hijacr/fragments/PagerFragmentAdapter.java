@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class PagerFragmentAdpater extends FragmentPagerAdapter {
+public class PagerFragmentAdapter extends FragmentPagerAdapter {
 	public class Pages {
 		public static final int COMIC_LIST = 0;
 		public static final int COMIC_VIEWER = 1;
@@ -12,7 +12,7 @@ public class PagerFragmentAdpater extends FragmentPagerAdapter {
 		private static final int NUMBER_ITEMS = 2;
 	}
 
-	public PagerFragmentAdpater(FragmentManager fragmentManager) {
+	public PagerFragmentAdapter(FragmentManager fragmentManager) {
 		super(fragmentManager);
 	}
 
