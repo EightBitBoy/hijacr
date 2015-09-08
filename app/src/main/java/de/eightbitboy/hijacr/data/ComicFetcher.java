@@ -48,7 +48,7 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 			String imgSrc = img.attr("src");
 			imgSrc = "http:" + imgSrc;
 
-			Logger.d("Image url: " + imgSrc.toString());
+			Logger.d("Image url: " + imgSrc);
 
 			return imgSrc;
 		} catch (IOException e) {
