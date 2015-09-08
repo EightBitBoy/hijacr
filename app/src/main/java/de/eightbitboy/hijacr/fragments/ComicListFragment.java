@@ -1,19 +1,42 @@
 package de.eightbitboy.hijacr.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.orhanobut.logger.Logger;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
+import de.eightbitboy.hijacr.data.ComicRepository;
 
 public class ComicListFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.comic_list, container, false);
-        return view;
-    }
+	@Bind(R.id.comic_list_view)
+	ListView comicList;
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.comic_list, container, false);
+		ButterKnife.bind(this, view);
+		return view;
+	}
+
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		setUpComicList();
+	}
+
+	private void setUpComicList() {
+		Logger.wtf(getActivity().toString());
+		Logger.wtf(getActivity().getApplicationContext().toString());
+		comicList.setAdapter(
+				new ComicListAdapter(getActivity().getApplicationContext(), 0,
+						ComicRepository.getComicList()));
+	}
 }

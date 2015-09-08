@@ -57,7 +57,7 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 				});
 			}
 		} catch (IOException e) {
-			Logger.wtf("Fetching the image failed!");
+			Logger.e("Fetching the image failed!");
 			e.printStackTrace();
 		}
 

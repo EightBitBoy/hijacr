@@ -16,9 +16,11 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 	private Context context;
 	private List<ComicData> comics;
 
-	public ComicListAdapter(Context context, int resource, List<ComicData> objects) {
+	public ComicListAdapter(Context context, int resource, List<ComicData> comics) {
 		//TODO find out what resource does, fix -1 below
-		super(context, -1, objects);
+		super(context, -1, comics);
+		this.context = context;
+		this.comics = comics;
 	}
 
 	@Override
@@ -26,8 +28,10 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context
 				.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.comic_list_layout, parent, false);
+
 		TextView title = (TextView) view.findViewById(R.id.comic_title);
 		title.setText(comics.get(position).getTitle());
+
 		return view;
 	}
 }
