@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.squareup.picasso.Picasso;
+
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;

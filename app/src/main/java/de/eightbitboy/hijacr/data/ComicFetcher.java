@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
 
 import com.orhanobut.logger.Logger;
+import com.squareup.picasso.Picasso;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
