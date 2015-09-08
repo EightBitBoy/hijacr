@@ -19,3 +19,4 @@ Sure! Every line of code is welcome!
 - [EventBus](https://github.com/greenrobot/EventBus)
 - [jsoup](https://github.com/jhy/jsoup/)
 - [Logger](https://github.com/orhanobut/logger)
+- [Picasso](https://github.com/square/picasso)
