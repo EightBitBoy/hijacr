@@ -9,6 +9,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
+    //noinspection GradleDependency
     buildToolsVersion "21.1.1"
 
     defaultConfig {
@@ -29,16 +30,19 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleDependency
     compile 'com.android.support:appcompat-v7:22.1.1'
+    //noinspection GradleDependency
     compile 'com.android.support:design:22.2.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.orhanobut:logger:1.11'
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
-	
-	//TODO
-	//https://github.com/chrisbanes/PhotoView
-	//https://github.com/MikeOrtiz/TouchImageView
-	//https://github.com/sephiroth74/ImageViewZoom
+
+    //TODO
+    //https://github.com/chrisbanes/PhotoView
+    //https://github.com/MikeOrtiz/TouchImageView
+    //https://github.com/sephiroth74/ImageViewZoom
 }
