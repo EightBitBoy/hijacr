@@ -8,12 +8,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.orhanobut.logger.Logger;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
+import de.eightbitboy.hijacr.data.ComicData;
 import de.eightbitboy.hijacr.data.ComicRepository;
+import de.eightbitboy.hijacr.events.ComicSelectedEvent;
+import de.greenrobot.event.EventBus;
 
 public class ComicListFragment extends Fragment {
 
@@ -44,7 +45,8 @@ public class ComicListFragment extends Fragment {
 		comicList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-				Logger.d(comicList.getItemAtPosition(i).toString());
+				EventBus.getDefault().post(new ComicSelectedEvent((ComicData) comicList
+						.getItemAtPosition(i)));
 			}
 		});
 	}

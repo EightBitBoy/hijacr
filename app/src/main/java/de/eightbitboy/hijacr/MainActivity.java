@@ -7,9 +7,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
-import de.eightbitboy.hijacr.fragments.PagerFragmentAdpater;
+import de.eightbitboy.hijacr.events.ComicSelectedEvent;
+import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;
+import de.greenrobot.event.EventBus;
 
 public class MainActivity extends FragmentActivity {
+	private ViewPager pager;
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
+	}
+
+	@Override
+	protected void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +33,8 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.hijacr_main);
 		ButterKnife.bind(this);
 
-		ViewPager pager = (ViewPager) findViewById(R.id.vpPager);
-		pager.setAdapter(new PagerFragmentAdpater(getSupportFragmentManager()));
+		pager = (ViewPager) findViewById(R.id.vpPager);
+		pager.setAdapter(new PagerFragmentAdapter(getSupportFragmentManager()));
 	}
 
 	@Override
@@ -41,5 +56,9 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void onEvent(ComicSelectedEvent event) {
+		pager.setCurrentItem(1);
 	}
 }
