@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,7 +13,7 @@ import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 	private ViewPager pager;
 
 	@Override
