@@ -6,9 +6,11 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.orhanobut.logger.Logger;
+
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
-import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;
+import de.eightbitboy.hijacr.fragments.PagerFragmentAdpater;
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends FragmentActivity {
@@ -34,7 +36,7 @@ public class MainActivity extends FragmentActivity {
 		ButterKnife.bind(this);
 
 		pager = (ViewPager) findViewById(R.id.vpPager);
-		pager.setAdapter(new PagerFragmentAdapter(getSupportFragmentManager()));
+		pager.setAdapter(new PagerFragmentAdpater(getSupportFragmentManager()));
 	}
 
 	@Override
