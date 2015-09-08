@@ -7,25 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends AppCompatActivity {
+public class HijacrMainActivity extends AppCompatActivity {
 	private ViewPager pager;
 
 	@Override
 	protected void onStart() {
 		super.onStart();
 
-		//TODO move this
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
-		ImageLoader.getInstance().init(config);
-		
 		EventBus.getDefault().register(this);
 	}
 
