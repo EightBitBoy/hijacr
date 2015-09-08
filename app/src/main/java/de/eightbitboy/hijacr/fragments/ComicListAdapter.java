@@ -23,6 +23,7 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 		this.comics = comics;
 	}
 
+	//TODO implement view holder pattern
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context

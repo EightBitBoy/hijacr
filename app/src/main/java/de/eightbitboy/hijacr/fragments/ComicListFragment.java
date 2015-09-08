@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.orhanobut.logger.Logger;
@@ -30,13 +31,21 @@ public class ComicListFragment extends Fragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		setUpComicList();
+		setUpComicListClickAction();
 	}
 
 	private void setUpComicList() {
-		Logger.wtf(getActivity().toString());
-		Logger.wtf(getActivity().getApplicationContext().toString());
 		comicList.setAdapter(
 				new ComicListAdapter(getActivity().getApplicationContext(), 0,
 						ComicRepository.getComicList()));
+	}
+
+	private void setUpComicListClickAction() {
+		comicList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+				Logger.d(comicList.getItemAtPosition(i).toString());
+			}
+		});
 	}
 }
