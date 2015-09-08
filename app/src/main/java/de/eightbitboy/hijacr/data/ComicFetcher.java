@@ -19,55 +19,48 @@ import java.io.InputStream;
 import de.eightbitboy.hijacr.MainActivity;
 
 public class ComicFetcher extends AsyncTask<Void, Void, Void> {
-    private FragmentActivity activity;
-    private ImageView imageView;
-    private int comicNumber;
-    private ComicData comicData;
+	private FragmentActivity activity;
+	private ImageView imageView;
+	private int comicNumber;
+	private ComicData comicData;
 
-    //TODO remove the view from this class
-    public ComicFetcher(FragmentActivity activity, ImageView imageView, int comicNumber, ComicData comicData) {
-        this.activity = activity;
-        this.imageView = imageView;
-        this.comicNumber = comicNumber;
-        this.comicData = comicData;
-    }
+	//TODO remove the view from this class
+	public ComicFetcher(FragmentActivity activity, ImageView imageView, int comicNumber, ComicData comicData) {
+		this.activity = activity;
+		this.imageView = imageView;
+		this.comicNumber = comicNumber;
+		this.comicData = comicData;
+	}
 
-    @Override
-    protected Void doInBackground(Void... params) {
-        final String URL = "http://xkcd.com/";
-        Bitmap bitmap;
+	@Override
+	protected Void doInBackground(Void... params) {
+		Bitmap bitmap;
 
+		try {
+			Document page = Jsoup.connect(comicData.getBaseUrl() + comicNumber).get();
+			Elements img = page.select(comicData.getImageQuery());
+			String imgSrc = img.attr("src");
+			imgSrc = "http:" + imgSrc;
+			InputStream input = new java.net.URL(imgSrc).openStream();
+			bitmap = BitmapFactory.decodeStream(input);
 
-        try {
-            Document page = Jsoup.connect(URL + comicNumber).get();
-            Elements img = page.select(comicData.getImageQuery());
-            String imgSrc = img.attr("src");
-            imgSrc = "http:" + imgSrc;
-            InputStream input = new java.net.URL(imgSrc).openStream();
-            bitmap = BitmapFactory.decodeStream(input);
+			Logger.wtf(imgSrc.toString());
 
-            Logger.wtf(imgSrc.toString());
+			final Bitmap finalBitmap = bitmap;
 
-            final Bitmap finalBitmap = bitmap;
+			if (bitmap != null) {
+				activity.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						imageView.setImageBitmap(finalBitmap);
+					}
+				});
+			}
+		} catch (IOException e) {
+			Logger.wtf("Fetching the image failed!");
+			e.printStackTrace();
+		}
 
-            if (bitmap != null) {
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        imageView.setImageBitmap(finalBitmap);
-                    }
-                });
-            }
-        } catch (IOException e) {
-            new AlertDialog.Builder(activity)
-                    .setTitle("Oooops!")
-                    .setMessage(e.toString())
-                    .create()
-                    .show();
-
-            e.printStackTrace();
-        }
-
-        return null;
-    }
+		return null;
+	}
 }
