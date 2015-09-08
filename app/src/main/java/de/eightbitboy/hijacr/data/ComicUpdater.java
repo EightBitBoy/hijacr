@@ -20,6 +20,7 @@ public class ComicUpdater {
 
 	private Document comicPage;
 	private String comicPageUrl;
+	private String comicSource;
 
 	/**
 	 * Creates a new ComicUpdater intended for starting a new comic.
@@ -33,6 +34,7 @@ public class ComicUpdater {
 		this.comicPageUrl = comicData.getFirstPageUrl();
 		this.pathResolver = new ComicPathResolver();
 		loadPage();
+		loadComic(comicSource);
 	}
 
 	/**
@@ -48,6 +50,7 @@ public class ComicUpdater {
 		this.comicPageUrl = comicPage;
 		this.pathResolver = new ComicPathResolver();
 		loadPage();
+		loadComic(comicSource);
 	}
 
 	public void loadPage() {
@@ -58,7 +61,7 @@ public class ComicUpdater {
 
 		}
 
-		String comicSource = pathResolver.getComicSource(comicPage, comicData.getImageQuery());
+		comicSource = pathResolver.getComicSource(comicPage, comicData.getImageQuery());
 	}
 
 	public void loadComic(String url) {
