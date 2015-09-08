@@ -10,6 +10,16 @@ public class ComicData {
     private String title;
 
     /**
+     * The comic's base URL.
+     */
+    private String baseUrl;
+
+    /**
+     * The comic's first page URL.
+     */
+    private String firstPageUrl;
+
+    /**
      * The Jsoup query for the image URL.
      */
     private String imageQuery;
@@ -24,8 +34,10 @@ public class ComicData {
      */
     private String previousQuery;
 
-    public ComicData(String title, String imageQuery, String nextQuery, String previousQuery){
+    public ComicData(String title, String baseUrl, String firstPageUrl, String imageQuery, String nextQuery, String previousQuery){
         this.title = title;
+        this.baseUrl = baseUrl;
+        this.firstPageUrl = firstPageUrl;
         this.imageQuery = imageQuery;
         this.nextQuery = nextQuery;
         this.previousQuery = previousQuery;
@@ -33,6 +45,14 @@ public class ComicData {
 
     public String getTitle(){
         return this.title;
+    }
+
+    public String getBaseUrl(){
+        return this.baseUrl;
+    }
+
+    public String getFirstPageUrl(){
+        return this.firstPageUrl;
     }
 
     public String getImageQuery(){
