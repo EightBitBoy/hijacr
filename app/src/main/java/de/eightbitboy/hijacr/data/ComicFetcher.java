@@ -1,7 +1,6 @@
 package de.eightbitboy.hijacr.data;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
@@ -14,7 +13,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 	private FragmentActivity activity;
@@ -32,8 +30,6 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 
 	@Override
 	protected Void doInBackground(Void... params) {
-		Bitmap bitmap;
-
 		try {
 			Document page = Jsoup.connect(comicData.getBaseUrl() + comicNumber).get();
 			Elements img = page.select(comicData.getImageQuery());
@@ -49,20 +45,6 @@ public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 					fetchImage(source, imageView);
 				}
 			});
-
-			/*
-
-			final Bitmap finalBitmap = bitmap;
-
-			if (bitmap != null) {
-				activity.runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						imageView.setImageBitmap(finalBitmap);
-					}
-				});
-			}
-			*/
 		} catch (IOException e) {
 			Logger.e("Fetching the image failed!");
 			e.printStackTrace();
