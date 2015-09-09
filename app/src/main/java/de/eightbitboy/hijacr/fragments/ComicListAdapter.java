@@ -11,12 +11,13 @@ import java.util.List;
 
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.comic.SimpleComicData;
 
-public class ComicListAdapter extends ArrayAdapter<ComicData> {
+public class ComicListAdapter extends ArrayAdapter<SimpleComicData> {
 	private Context context;
-	private List<ComicData> comics;
+	private List<SimpleComicData> comics;
 
-	public ComicListAdapter(Context context, int resource, List<ComicData> comics) {
+	public ComicListAdapter(Context context, int resource, List<SimpleComicData> comics) {
 		//TODO find out what resource does, fix -1 below
 		super(context, -1, comics);
 		this.context = context;
@@ -31,7 +32,7 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 		View view = inflater.inflate(R.layout.comic_list_item, parent, false);
 
 		TextView title = (TextView) view.findViewById(R.id.comic_title);
-		title.setText(comics.get(position).getTitle());
+		title.setText(comics.get(position).title);
 
 		return view;
 	}

@@ -43,6 +43,7 @@ public class ComicViewerFragment extends Fragment {
 	}
 
 	private void setUpButtonActions() {
+		/*
 		olderButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -70,5 +71,6 @@ public class ComicViewerFragment extends Fragment {
 				});
 			}
 		});
+		*/
 	}
 }

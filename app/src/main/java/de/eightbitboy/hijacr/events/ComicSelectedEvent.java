@@ -1,11 +1,11 @@
 package de.eightbitboy.hijacr.events;
 
-import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.comic.SimpleComicData;
 
 public class ComicSelectedEvent {
-	public final ComicData comicData;
+	public final SimpleComicData comicData;
 
-	public ComicSelectedEvent(ComicData comicData) {
+	public ComicSelectedEvent(SimpleComicData comicData) {
 		this.comicData = comicData;
 	}
 }
