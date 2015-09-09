@@ -1,5 +1,7 @@
 package de.eightbitboy.hijacr;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -40,6 +42,14 @@ public class HijacrMainActivity extends AppCompatActivity {
 
 		TabLayout tabLayout = (TabLayout) findViewById(R.id.comic_pager_tabs);
 		tabLayout.setupWithViewPager(pager);
+
+		//TODO do this in xml
+		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(33,90,109)));
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
 	}
 
 	@Override

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--general-->
-    <item name="application_background" type="color">#FF222222</item>
-    <!--comic list-->
+	<!--general-->
+	<item name="background" type="color">#FF2D2D29</item>
 
-    <!--comic viewer-->
+	<!--comic tabs-->
+	<item name="tabs_background" type="color">#FF2D2D29</item>
+	<item name="tabs_text" type="color">#FF999999</item>
+	<item name="tabs_text_selected" type="color">#ff6fc7a4</item>
+	<item name="tabs_indicator" type="color">#FF3CA2A2</item>
+
+	<!--comic list-->
+
+	<!--comic viewer-->
 </resources>
