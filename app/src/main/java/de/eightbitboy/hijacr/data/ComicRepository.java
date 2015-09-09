@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.comic.SimpleComicData;
 
 public class ComicRepository {
 	private static ComicRepository instance;
 
-	private Map<String, ComicData> comics = new HashMap<String, ComicData>();
+	private Map<String, SimpleComicData> comics = new HashMap<String, SimpleComicData>();
 
 	private ComicRepository() {
 		initializeComics();
@@ -25,23 +26,19 @@ public class ComicRepository {
 	}
 
 	private void initializeComics() {
-		comics.put("xkcd", new ComicData("XKCD", "http://xkcd.com/", "http://xkcd.com/1/",
-				"div[id=comic] img[src]", "ul[class=comicNav] a[rel=next]",
-				"ul[class=comicNav] a[rel=prev]"));
-		comics.put("extralife", new ComicData("ExtraLife", "http://www.myextralife.com/",
-				"http://www.myextralife.com/comic/06172001/", "div[class=comic_container] img[src]",
-				"a[class=next_comic_link]", "a[class=prev_comic_link]"));
+		comics.put("xkcd", new SimpleComicData("XKCD", "http://xkcd.com/", "http://xkcd.com/",
+				"div[id=comic] img[src]"));
 	}
 
-	public static ComicData getComicData(String key) {
+	public static SimpleComicData getComicData(String key) {
 		return getInstance().comics.get(key);
 	}
 
-	public static Map<String, ComicData> getAllComicData() {
+	public static Map<String, SimpleComicData> getAllComicData() {
 		return getInstance().comics;
 	}
 
-	public static List<ComicData> getComicList() {
-		return new ArrayList<ComicData>(getInstance().comics.values());
+	public static List<SimpleComicData> getComicList() {
+		return new ArrayList<SimpleComicData>(getInstance().comics.values());
 	}
 }

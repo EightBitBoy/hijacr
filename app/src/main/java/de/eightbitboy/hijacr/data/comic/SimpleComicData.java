@@ -17,7 +17,8 @@ public class SimpleComicData {
 
 	public String imageQuery;
 
-	public SimpleComicData(String url, String baseUrl, String imageQuery) {
+	public SimpleComicData(String title, String url, String baseUrl, String imageQuery) {
+		this.title = title;
 		this.url = url;
 		this.baseUrl = baseUrl;
 		this.imageQuery = imageQuery;
