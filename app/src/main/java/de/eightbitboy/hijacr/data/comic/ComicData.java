@@ -10,7 +10,7 @@ public class ComicData {
     private String title;
 
     /**
-     * The comic's base URL.
+     * The comic's website URL.
      */
     private String baseUrl;
 
@@ -34,7 +34,19 @@ public class ComicData {
      */
     private String previousQuery;
 
-    public ComicData(String title, String baseUrl, String firstPageUrl, String imageQuery, String nextQuery, String previousQuery){
+    /**
+     * Should be true if the comic page URL ends with a countable integer.
+     * Example: "http://xkcd.com/1", "http://xkcd.com/2", "http://xkcd.com/3" ...
+     */
+    private boolean countable = false;
+
+    /**
+     * The comic page base URL if the comic is countable. It does not contain the counter integer.
+     * Example: for "http://xkcd.com/1" the countableUrl should be "http://xkcd.com/"
+     */
+    private String countableUrl = null;
+
+    public ComicData(String title, String baseUrl, String firstPageUrl, String imageQuery, String nextQuery, String previousQuery) {
         this.title = title;
         this.baseUrl = baseUrl;
         this.firstPageUrl = firstPageUrl;
@@ -43,27 +55,33 @@ public class ComicData {
         this.previousQuery = previousQuery;
     }
 
-    public String getTitle(){
+    public ComicData(String title, String baseUrl, String firstPageUrl, String imageQuery, String nextQuery, String previousQuery, boolean countable, String countableUrl) {
+        this(title, baseUrl, firstPageUrl, imageQuery, nextQuery, previousQuery);
+        this.countable = countable;
+        this.countableUrl = countableUrl;
+    }
+
+    public String getTitle() {
         return this.title;
     }
 
-    public String getBaseUrl(){
+    public String getBaseUrl() {
         return this.baseUrl;
     }
 
-    public String getFirstPageUrl(){
+    public String getFirstPageUrl() {
         return this.firstPageUrl;
     }
 
-    public String getImageQuery(){
+    public String getImageQuery() {
         return this.imageQuery;
     }
 
-    public String getNextQuery(){
+    public String getNextQuery() {
         return this.nextQuery;
     }
 
-    public String getPreviousQuery(){
+    public String getPreviousQuery() {
         return this.previousQuery;
     }
 }
