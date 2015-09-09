@@ -35,12 +35,15 @@ public class ComicManager {
 
 	private void loadPage() {
 		//TODO do this asynchronous!
+
+		/*
 		try {
 			comicPage = Jsoup.connect(comicData.baseUrl + comicCount).get();
 			Logger.d(comicPage.toString());
 		} catch (IOException e) {
 
 		}
+		*/
 	}
 
 	public void loadNextComic() {

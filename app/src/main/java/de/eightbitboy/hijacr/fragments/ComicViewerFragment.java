@@ -9,11 +9,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.orhanobut.logger.Logger;
+
+import org.apache.http.impl.conn.LoggingSessionOutputBuffer;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicManager;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
+import de.greenrobot.event.EventBus;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ComicViewerFragment extends Fragment {
@@ -28,6 +33,18 @@ public class ComicViewerFragment extends Fragment {
 	private ComicManager comicManager;
 
 	@Override
+	public void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
+	}
+
+	@Override
+	public void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.comic_viewer, container, false);
 		ButterKnife.bind(this, view);
@@ -38,11 +55,14 @@ public class ComicViewerFragment extends Fragment {
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		PhotoViewAttacher attacher = new PhotoViewAttacher(comicView);
+		//TODO update when image changed
+		//attacher.update();
 		setUpButtonActions();
 	}
 
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
+		Logger.wtf("event");
 		comicManager = new ComicManager(comicView, event.comicData);
 	}
 

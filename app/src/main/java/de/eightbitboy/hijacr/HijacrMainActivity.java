@@ -20,7 +20,6 @@ public class HijacrMainActivity extends AppCompatActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-
 		EventBus.getDefault().register(this);
 	}
 
