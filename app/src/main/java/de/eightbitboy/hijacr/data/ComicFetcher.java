@@ -1,6 +1,5 @@
 package de.eightbitboy.hijacr.data;
 
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
@@ -13,6 +12,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+
+import de.eightbitboy.hijacr.data.comic.ComicData;
 
 public class ComicFetcher extends AsyncTask<Void, Void, Void> {
 	private FragmentActivity activity;

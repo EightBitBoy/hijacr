@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.eightbitboy.hijacr.R;
-import de.eightbitboy.hijacr.data.ComicData;
+import de.eightbitboy.hijacr.data.comic.ComicData;
 
 public class ComicListAdapter extends ArrayAdapter<ComicData> {
 	private Context context;

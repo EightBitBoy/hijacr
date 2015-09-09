@@ -11,7 +11,7 @@ import android.widget.ListView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
-import de.eightbitboy.hijacr.data.ComicData;
+import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.ComicRepository;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.greenrobot.event.EventBus;

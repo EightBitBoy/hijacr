@@ -9,6 +9,8 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
+import de.eightbitboy.hijacr.data.comic.ComicData;
+
 /**
  * Handles the comic viewing state and updates the comic view.
  */
