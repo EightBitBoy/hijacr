@@ -44,7 +44,8 @@ public class HijacrMainActivity extends AppCompatActivity {
 		tabLayout.setupWithViewPager(pager);
 
 		//TODO do this in xml
-		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(33,90,109)));
+		//noinspection ConstantConditions
+		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(33, 90, 109)));
 	}
 
 	@Override
@@ -73,6 +74,7 @@ public class HijacrMainActivity extends AppCompatActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
 		pager.setCurrentItem(PagerFragmentAdapter.Pages.COMIC_VIEWER);
 	}
