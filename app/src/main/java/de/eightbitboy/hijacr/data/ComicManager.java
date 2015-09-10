@@ -59,4 +59,6 @@ public class ComicManager {
 		ImageLoader.getInstance().displayImage(url, comicView);
 	}
 	*/
+
+
 }
