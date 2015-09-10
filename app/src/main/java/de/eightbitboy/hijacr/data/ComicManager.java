@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.orhanobut.logger.Logger;
 
@@ -49,11 +50,21 @@ public class ComicManager {
 	}
 
 	public void onGetImageSource(String source) {
-		ImageLoader.getInstance().displayImage(source, comicView, new SimpleImageLoadingListener() {
+		SimpleImageLoadingListener loadListener = new SimpleImageLoadingListener() {
 			@Override
 			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 				EventBus.getDefault().post(new ComicViewUpdateEvent());
 			}
-		});
+		};
+
+		ImageLoadingProgressListener progressListener = new ImageLoadingProgressListener() {
+			@Override
+			public void onProgressUpdate(String imageUri, View view, int current, int total) {
+
+			}
+		};
+
+		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
+				progressListener);
 	}
 }
