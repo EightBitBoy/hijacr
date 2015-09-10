@@ -25,6 +25,8 @@ public class ComicManager {
 	private ImageView comicView;
 	private SimpleComicData comicData;
 	private int currentComicCount = 0;
+	private SimpleImageLoadingListener loadListener;
+	private ImageLoadingProgressListener progressListener;
 
 	/**
 	 * Creates a new ComicManager intended for starting a new comic.
@@ -35,6 +37,23 @@ public class ComicManager {
 	public ComicManager(ImageView comicView, SimpleComicData comicData) {
 		this.comicView = comicView;
 		this.comicData = comicData;
+		setUpImageListeners();
+	}
+
+	private void setUpImageListeners() {
+		loadListener = new SimpleImageLoadingListener() {
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				EventBus.getDefault().post(new ComicViewUpdateEvent());
+			}
+		};
+
+		progressListener = new ImageLoadingProgressListener() {
+			@Override
+			public void onProgressUpdate(String imageUri, View view, int current, int total) {
+				//TODO show progress somewhere
+			}
+		};
 	}
 
 	public void loadNextComic() {
@@ -50,20 +69,6 @@ public class ComicManager {
 	}
 
 	public void onGetImageSource(String source) {
-		SimpleImageLoadingListener loadListener = new SimpleImageLoadingListener() {
-			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				EventBus.getDefault().post(new ComicViewUpdateEvent());
-			}
-		};
-
-		ImageLoadingProgressListener progressListener = new ImageLoadingProgressListener() {
-			@Override
-			public void onProgressUpdate(String imageUri, View view, int current, int total) {
-
-			}
-		};
-
 		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
 				progressListener);
 	}
