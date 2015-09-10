@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicManager;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
+import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -31,6 +32,7 @@ public class ComicViewerFragment extends Fragment {
 	Button newerButton;
 
 	private ComicManager comicManager;
+	private PhotoViewAttacher attacher;
 
 	@Override
 	public void onStart() {
@@ -54,15 +56,18 @@ public class ComicViewerFragment extends Fragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		PhotoViewAttacher attacher = new PhotoViewAttacher(comicView);
-		//TODO update when image changed
-		//attacher.update();
+		attacher = new PhotoViewAttacher(comicView);
 		setUpButtonActions();
 	}
 
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
 		comicManager = new ComicManager(comicView, event.comicData);
+	}
+
+	@SuppressWarnings("unused")
+	public void onEvent(ComicViewUpdateEvent event) {
+		attacher.update();
 	}
 
 	private void setUpButtonActions() {

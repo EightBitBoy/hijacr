@@ -10,6 +10,7 @@ public class HijacrApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		//TODO enable disk caching and configure other stuff
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
 		ImageLoader.getInstance().init(config);
 	}

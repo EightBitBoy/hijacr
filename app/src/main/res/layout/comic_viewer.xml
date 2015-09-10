@@ -10,8 +10,7 @@
 		android:layout_height="300dp"
 		android:layout_alignParentTop="true"
 		android:layout_centerHorizontal="true"
-		android:layout_weight="1"
-		android:background="@android:color/holo_red_dark"/>
+		android:layout_weight="1"/>
 
 	<RelativeLayout
 		android:layout_width="match_parent"

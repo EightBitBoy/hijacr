@@ -1,8 +1,11 @@
 package de.eightbitboy.hijacr.data;
 
+import android.graphics.Bitmap;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
@@ -11,6 +14,8 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 import de.eightbitboy.hijacr.data.comic.SimpleComicData;
+import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
+import de.greenrobot.event.EventBus;
 
 /**
  * Handles the comic viewing state and updates the comic view.
@@ -44,7 +49,11 @@ public class ComicManager {
 	}
 
 	public void onGetImageSource(String source) {
-		ImageLoader.getInstance().displayImage(source, comicView);
-		//TODO add some listener for loading complete event, update image view attacher
+		ImageLoader.getInstance().displayImage(source, comicView, new SimpleImageLoadingListener() {
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				EventBus.getDefault().post(new ComicViewUpdateEvent());
+			}
+		});
 	}
 }
