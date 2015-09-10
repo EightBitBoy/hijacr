@@ -11,7 +11,7 @@ People like reading webcomics during breakfast or while sitting on a train to wo
 The project is still very young and a release date cannot be specified.
 
 ## Does Hijacr need contributors?
-Sure! Every line of code is welcome!
+Sure! Every line of code is welcome! There are a lot of things to do: Save user data, make everything configurable, create a new app icon, integrate more comics ... ... ...
 
 ## What libraries are used for Hijacr?
 
