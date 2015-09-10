@@ -18,8 +18,7 @@ import de.eightbitboy.hijacr.data.comic.SimpleComicData;
 public class ComicManager {
 	private ImageView comicView;
 	private SimpleComicData comicData;
-	private Document comicPage;
-	private int comicCount = 1;
+	private int currentComicCount = 0;
 
 	/**
 	 * Creates a new ComicManager intended for starting a new comic.
@@ -33,15 +32,19 @@ public class ComicManager {
 	}
 
 	public void loadNextComic() {
-		new ComicFetchTask(comicData.baseUrl, comicCount, comicData.imageQuery, this).execute();
+		currentComicCount++;
+		new ComicFetchTask(comicData.baseUrl, currentComicCount, comicData.imageQuery,
+				this).execute();
 	}
 
 	public void loadPreviousComic() {
-
+		currentComicCount--;
+		new ComicFetchTask(comicData.baseUrl, currentComicCount, comicData.imageQuery,
+				this).execute();
 	}
 
 	public void onGetImageSource(String source) {
-		comicCount++;
-		Logger.wtf("source: " + source);
+		ImageLoader.getInstance().displayImage(source, comicView);
+		//TODO add some listener for loading complete event, update image view attacher
 	}
 }
