@@ -62,19 +62,18 @@ public class ComicViewerFragment extends Fragment {
 
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
-		Logger.wtf("event");
 		comicManager = new ComicManager(comicView, event.comicData);
 	}
 
 	private void setUpButtonActions() {
-		olderButton.setOnClickListener(new View.OnClickListener() {
+		newerButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				comicManager.loadNextComic();
 			}
 		});
 
-		newerButton.setOnClickListener(new View.OnClickListener() {
+		olderButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				comicManager.loadPreviousComic();

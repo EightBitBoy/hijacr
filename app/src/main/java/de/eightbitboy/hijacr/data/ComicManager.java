@@ -30,35 +30,18 @@ public class ComicManager {
 	public ComicManager(ImageView comicView, SimpleComicData comicData) {
 		this.comicView = comicView;
 		this.comicData = comicData;
-		loadPage();
-	}
-
-	private void loadPage() {
-		//TODO do this asynchronous!
-
-		/*
-		try {
-			comicPage = Jsoup.connect(comicData.baseUrl + comicCount).get();
-			Logger.d(comicPage.toString());
-		} catch (IOException e) {
-
-		}
-		*/
 	}
 
 	public void loadNextComic() {
-
+		new ComicFetchTask(comicData.baseUrl, comicCount, comicData.imageQuery, this).execute();
 	}
 
 	public void loadPreviousComic() {
 
 	}
 
-	/*
-	public void loadComic(String url) {
-		ImageLoader.getInstance().displayImage(url, comicView);
+	public void onGetImageSource(String source) {
+		comicCount++;
+		Logger.wtf("source: " + source);
 	}
-	*/
-
-
 }
