@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.eightbitboy.hijacr.R;
-import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.comic.SimpleComicData;
 
 public class ComicListAdapter extends ArrayAdapter<SimpleComicData> {
@@ -33,6 +32,9 @@ public class ComicListAdapter extends ArrayAdapter<SimpleComicData> {
 
 		TextView title = (TextView) view.findViewById(R.id.comic_title);
 		title.setText(comics.get(position).title);
+
+		TextView url = (TextView) view.findViewById(R.id.comic_url);
+		url.setText(comics.get(position).url);
 
 		return view;
 	}
