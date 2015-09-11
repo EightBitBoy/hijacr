@@ -23,4 +23,14 @@ public class SimpleComicData {
 		this.baseUrl = baseUrl;
 		this.imageQuery = imageQuery;
 	}
+
+	//TODO improve cleanup
+	public String getCleanUrl() {
+		String cleanUrl;
+		cleanUrl = url.replaceAll("/", "");
+		cleanUrl = cleanUrl.replaceAll("http", "");
+		cleanUrl = cleanUrl.replaceAll(":", "");
+		cleanUrl = cleanUrl.replaceAll("www.", "");
+		return cleanUrl;
+	}
 }

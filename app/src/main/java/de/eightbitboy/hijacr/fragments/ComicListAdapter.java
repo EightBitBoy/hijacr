@@ -34,7 +34,7 @@ public class ComicListAdapter extends ArrayAdapter<SimpleComicData> {
 		title.setText(comics.get(position).title);
 
 		TextView url = (TextView) view.findViewById(R.id.comic_url);
-		url.setText(comics.get(position).url);
+		url.setText(comics.get(position).getCleanUrl());
 
 		return view;
 	}
