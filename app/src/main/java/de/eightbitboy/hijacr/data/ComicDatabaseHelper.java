@@ -9,7 +9,7 @@ public class ComicDatabaseHelper {
 	private ComicDatabase database;
 
 	public ComicDatabaseHelper(Context context) {
-		database = new ComicDatabase(context);
+		database = ComicDatabase.getInstance(context);
 	}
 
 	//TODO implement queries

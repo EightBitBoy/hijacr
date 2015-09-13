@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.orhanobut.logger.Logger;
-
-import org.apache.http.impl.conn.LoggingSessionOutputBuffer;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
