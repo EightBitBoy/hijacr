@@ -33,11 +33,14 @@ public class ComicDatabase extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-
+		//TODO create table
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		//TODO delete old db
+		//TODO create table
 
+		//TODO handle upgrade
 	}
 }
