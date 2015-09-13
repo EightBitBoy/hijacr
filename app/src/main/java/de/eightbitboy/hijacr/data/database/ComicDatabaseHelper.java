@@ -1,6 +1,8 @@
-package de.eightbitboy.hijacr.data;
+package de.eightbitboy.hijacr.data.database;
 
 import android.content.Context;
+
+import de.eightbitboy.hijacr.data.database.ComicDatabase;
 
 /**
  * A helper class for working with the ComicDatabse class.
