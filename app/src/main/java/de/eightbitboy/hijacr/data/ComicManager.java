@@ -73,29 +73,36 @@ public class ComicManager {
 	public void loadNextComic() {
 		currentComicCount++;
 		fetchComicUrl(nextComicUrl);
-		currentComicUrl = nextComicUrl;
+
+		if (nextComicUrl != null) {
+			currentComicUrl = nextComicUrl;
+		}
 	}
 
 	public void loadPreviousComic() {
 		currentComicCount--;
 		fetchComicUrl(previousComicUrl);
-		currentComicUrl = previousComicUrl;
+
+		if (previousComicUrl != null) {
+			currentComicUrl = previousComicUrl;
+		}
 	}
 
 	private void fetchComicUrl(String url) {
+
+		Logger.wtf("fetch url: " + url);
+
 		if (comicData.isSimple()) {
 			new SimpleComicFetchTask(comicData.getBaseUrl(), currentComicCount,
 					comicData.getImageQuery(),
 					this).execute();
 		} else {
-			new ComicFetchTask(currentComicUrl, comicData.getImageQuery(), comicData
+			new ComicFetchTask(url, comicData.getImageQuery(), comicData
 					.getPreviousQuery(), comicData.getNextQuery(), this).execute();
 		}
 	}
 
 	public void onGetImageSource(String source, String previousComicUrl, String nextComicUrl) {
-		Logger.d("image source: " + source);
-
 		this.previousComicUrl = previousComicUrl;
 		this.nextComicUrl = nextComicUrl;
 		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
@@ -109,8 +116,6 @@ public class ComicManager {
 	 * @param source The image URL.
 	 */
 	public void onGetSimpleImageSource(String source) {
-		Logger.d("image source: " + source);
-
 		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
 				progressListener);
 	}
