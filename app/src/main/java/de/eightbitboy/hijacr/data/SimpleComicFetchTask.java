@@ -24,8 +24,6 @@ public class SimpleComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	@Override
 	protected String doInBackground(Void... voids) {
-		Logger.d("target url: " + targetUrl);
-
 		try {
 			Document page = Jsoup.connect(targetUrl).get();
 			Elements image = page.select(imageQuery);

@@ -89,9 +89,6 @@ public class ComicManager {
 	}
 
 	private void fetchComicUrl(String url) {
-
-		Logger.wtf("fetch url: " + url);
-
 		if (comicData.isSimple()) {
 			new SimpleComicFetchTask(comicData.getBaseUrl(), currentComicCount,
 					comicData.getImageQuery(),
