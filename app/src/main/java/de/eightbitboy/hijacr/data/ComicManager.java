@@ -82,8 +82,16 @@ public class ComicManager {
 			new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
 					this).execute();
 		} else {
-			
+
 		}
+	}
+
+	public void onGetImageSource(String source, String currentComicUrl) {
+		Logger.d("image source: " + source);
+
+		this.currentComicUrl = currentComicUrl;
+		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
+				progressListener);
 	}
 
 	/**
@@ -92,8 +100,9 @@ public class ComicManager {
 	 *
 	 * @param source The image URL.
 	 */
-	public void onGetImageSource(String source) {
+	public void onGetSimpleImageSource(String source) {
 		Logger.d("image source: " + source);
+
 		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
 				progressListener);
 	}
