@@ -79,7 +79,7 @@ public class ComicManager {
 
 	private void fetchComicUrl() {
 		if (comicData.isSimple()) {
-			new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
+			new SimpleComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
 					this).execute();
 		} else {
 
@@ -95,7 +95,7 @@ public class ComicManager {
 	}
 
 	/**
-	 * This callback is executed when a ComicFetchTask returns successfully.
+	 * This callback is executed when a SimpleComicFetchTask returns successfully.
 	 * It loads the image from the given url into the comic ImageView.
 	 *
 	 * @param source The image URL.

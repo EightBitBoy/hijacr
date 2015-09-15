@@ -10,13 +10,13 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class ComicFetchTask extends AsyncTask<Void, Void, String> {
+public class SimpleComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	private String targetUrl;
 	private String imageQuery;
 	private ComicManager manager;
 
-	public ComicFetchTask(String baseUrl, int number, String imageQuery, ComicManager manager) {
+	public SimpleComicFetchTask(String baseUrl, int number, String imageQuery, ComicManager manager) {
 		this.targetUrl = baseUrl + number;
 		this.imageQuery = imageQuery;
 		this.manager = manager;
