@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.eightbitboy.hijacr.data.comic.SimpleComicData;
+import de.eightbitboy.hijacr.data.comic.ComicData;
 
 public class ComicRepository {
 	private static ComicRepository instance;
 
-	private Map<String, SimpleComicData> comics = new HashMap<String, SimpleComicData>();
+	private Map<String, ComicData> comics = new HashMap<String, ComicData>();
 
 	private ComicRepository() {
 		initializeComics();
@@ -26,25 +26,25 @@ public class ComicRepository {
 
 	//TODO a comic might start at position 0 like vgcats!
 	private void initializeComics() {
-		comics.put("smbc", new SimpleComicData("SMBC", "http://www.smbc-comics.com/",
+		comics.put("smbc", new ComicData("SMBC", "http://www.smbc-comics.com/",
 				"http://www.smbc-comics.com/index.php?id=", 1, "#comic"));
 		comics.put("vgcats",
-				new SimpleComicData("VgCats", "http://www.vgcats.com/",
+				new ComicData("VgCats", "http://www.vgcats.com/",
 						"http://www.vgcats.com/comics/?strip_id=", 0,
 						"tbody div img[width]"));
-		comics.put("xkcd", new SimpleComicData("XKCD", "http://xkcd.com/", "http://xkcd.com/", 1,
+		comics.put("xkcd", new ComicData("XKCD", "http://xkcd.com/", "http://xkcd.com/", 1,
 				"#comic img[src]"));
 	}
 
-	public static SimpleComicData getComicData(String key) {
+	public static ComicData getComicData(String key) {
 		return getInstance().comics.get(key);
 	}
 
-	public static Map<String, SimpleComicData> getAllComicData() {
+	public static Map<String, ComicData> getAllComicData() {
 		return getInstance().comics;
 	}
 
-	public static List<SimpleComicData> getComicList() {
-		return new ArrayList<SimpleComicData>(getInstance().comics.values());
+	public static List<ComicData> getComicList() {
+		return new ArrayList<ComicData>(getInstance().comics.values());
 	}
 }

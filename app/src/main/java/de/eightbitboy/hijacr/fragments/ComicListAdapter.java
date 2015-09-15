@@ -10,13 +10,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.eightbitboy.hijacr.R;
-import de.eightbitboy.hijacr.data.comic.SimpleComicData;
+import de.eightbitboy.hijacr.data.comic.ComicData;
 
-public class ComicListAdapter extends ArrayAdapter<SimpleComicData> {
+public class ComicListAdapter extends ArrayAdapter<ComicData> {
 	private Context context;
-	private List<SimpleComicData> comics;
+	private List<ComicData> comics;
 
-	public ComicListAdapter(Context context, int resource, List<SimpleComicData> comics) {
+	public ComicListAdapter(Context context, int resource, List<ComicData> comics) {
 		//TODO find out what resource does, fix -1 below
 		super(context, -1, comics);
 		this.context = context;

@@ -5,7 +5,7 @@ package de.eightbitboy.hijacr.data.comic;
 /**
  * Contains data for a comic whose page URLs can be counted easily.
  */
-public class SimpleComicData {
+public class ComicData {
 	/**
 	 * The comic's title.
 	 */
@@ -50,7 +50,7 @@ public class SimpleComicData {
 	private boolean simple = false;
 
 	//TODO for simple
-	public SimpleComicData(String title, String url, String baseUrl, int firstNumber, String
+	public ComicData(String title, String url, String baseUrl, int firstNumber, String
 			imageQuery) {
 		this.title = title;
 		this.url = url;
@@ -61,7 +61,7 @@ public class SimpleComicData {
 	}
 
 	//TODO for full
-	public SimpleComicData() {
+	public ComicData() {
 		this.simple = false;
 	}
 

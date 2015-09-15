@@ -9,12 +9,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListe
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.orhanobut.logger.Logger;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
-
-import de.eightbitboy.hijacr.data.comic.SimpleComicData;
+import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
 
@@ -23,7 +18,7 @@ import de.greenrobot.event.EventBus;
  */
 public class ComicManager {
 	private ImageView comicView;
-	private SimpleComicData comicData;
+	private ComicData comicData;
 	private int currentComicCount = 0;
 	private SimpleImageLoadingListener loadListener;
 	private ImageLoadingProgressListener progressListener;
@@ -34,7 +29,7 @@ public class ComicManager {
 	 * @param comicView
 	 * @param comicData
 	 */
-	public ComicManager(ImageView comicView, SimpleComicData comicData) {
+	public ComicManager(ImageView comicView, ComicData comicData) {
 		this.comicView = comicView;
 		this.comicData = comicData;
 		this.currentComicCount = this.comicData.firstNumber;
