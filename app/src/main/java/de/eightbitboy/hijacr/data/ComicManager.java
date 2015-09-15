@@ -68,7 +68,14 @@ public class ComicManager {
 				this).execute();
 	}
 
+	/**
+	 * This callback is executed when a ComicFetchTask returns successfully.
+	 * It loads the image with from the given url.
+	 *
+	 * @param source
+	 */
 	public void onGetImageSource(String source) {
+		Logger.d("image source: " + source);
 		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
 				progressListener);
 	}

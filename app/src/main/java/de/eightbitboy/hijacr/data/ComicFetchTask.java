@@ -2,6 +2,8 @@ package de.eightbitboy.hijacr.data;
 
 import android.os.AsyncTask;
 
+import com.orhanobut.logger.Logger;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -22,12 +24,12 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	@Override
 	protected String doInBackground(Void... voids) {
+		Logger.d("target url: " + targetUrl);
+
 		try {
 			Document page = Jsoup.connect(targetUrl).get();
 			Elements image = page.select(imageQuery);
-			//TODO handle missing "http:"
 			return image.attr("abs:src");
-			//return "http:" + image.attr("src");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

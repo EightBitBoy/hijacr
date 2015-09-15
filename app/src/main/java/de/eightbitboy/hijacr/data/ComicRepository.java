@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.comic.SimpleComicData;
 
 public class ComicRepository {
@@ -27,11 +26,14 @@ public class ComicRepository {
 
 	//TODO a comic might start at position 0 like vgcats!
 	private void initializeComics() {
-		comics.put("smbc", new SimpleComicData("SMBC", "http://www.smbc-comics.com/", "http://www" +
-				".smbc-comics.com/index.php?id=", "#comic"));
-		//TODO vgcats
+		comics.put("smbc", new SimpleComicData("SMBC", "http://www.smbc-comics.com/",
+				"http://www.smbc-comics.com/index.php?id=", "#comic"));
+		comics.put("vgcats",
+				new SimpleComicData("VgCats", "http://www.vgcats.com/",
+						"http://www.vgcats.com/comics/?strip_id=",
+						"tbody div img[width]"));
 		comics.put("xkcd", new SimpleComicData("XKCD", "http://xkcd.com/", "http://xkcd.com/",
-				"div[id=comic] img[src]"));
+				"#comic img[src]"));
 	}
 
 	public static SimpleComicData getComicData(String key) {
