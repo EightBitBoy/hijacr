@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr.data.database;
+package de.eightbitboy.hijacr.data;
 
 import android.os.AsyncTask;
 

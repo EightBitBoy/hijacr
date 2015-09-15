@@ -7,10 +7,8 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.comic.ComicData;
-import de.eightbitboy.hijacr.data.database.ComicFetchTask;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
 
