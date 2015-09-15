@@ -20,6 +20,7 @@ public class ComicManager {
 	private ImageView comicView;
 	private ComicData comicData;
 	private int currentComicCount = 0;
+	private String currentComicUrl;
 	private SimpleImageLoadingListener loadListener;
 	private ImageLoadingProgressListener progressListener;
 
@@ -32,7 +33,13 @@ public class ComicManager {
 	public ComicManager(ImageView comicView, ComicData comicData) {
 		this.comicView = comicView;
 		this.comicData = comicData;
-		this.currentComicCount = this.comicData.getFirstNumber();
+
+		if (this.comicData.isSimple()) {
+			this.currentComicCount = this.comicData.getFirstNumber();
+		} else {
+			this.currentComicUrl = this.comicData.getFirstUrl();
+		}
+
 		setUpImageListeners();
 	}
 
@@ -71,8 +78,12 @@ public class ComicManager {
 	}
 
 	private void fetchComicUrl() {
-		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
-				this).execute();
+		if (comicData.isSimple()) {
+			new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
+					this).execute();
+		} else {
+			
+		}
 	}
 
 	/**
