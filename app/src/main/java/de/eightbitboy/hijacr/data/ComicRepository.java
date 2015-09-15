@@ -28,7 +28,7 @@ public class ComicRepository {
 	//TODO a comic might start at position 0 like vgcats!
 	private void initializeComics() {
 		comics.put("smbc", new SimpleComicData("SMBC", "http://www.smbc-comics.com/", "http://www" +
-				".smbc-comics.com/index.php?id=", "img[id=comic]"));
+				".smbc-comics.com/index.php?id=", "#comic"));
 		//TODO vgcats
 		comics.put("xkcd", new SimpleComicData("XKCD", "http://xkcd.com/", "http://xkcd.com/",
 				"div[id=comic] img[src]"));
