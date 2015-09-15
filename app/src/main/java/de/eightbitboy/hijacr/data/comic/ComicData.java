@@ -49,7 +49,16 @@ public class ComicData {
 
 	private boolean simple = false;
 
-	//TODO for simple
+	/**
+	 * Define "simple" a comic which uses an URL which ends with a
+	 * number that can be counted and incremented for accessing comic pages.
+	 *
+	 * @param title
+	 * @param url
+	 * @param baseUrl
+	 * @param firstNumber
+	 * @param imageQuery
+	 */
 	public ComicData(String title, String url, String baseUrl, int firstNumber, String
 			imageQuery) {
 		this.title = title;
@@ -60,8 +69,24 @@ public class ComicData {
 		this.simple = true;
 	}
 
-	//TODO for full
-	public ComicData() {
+	/**
+	 * Define a comic. The URLs for accessing comic pages must be parsed from a page.
+	 *
+	 * @param title
+	 * @param url
+	 * @param firstUrl
+	 * @param imageQuery
+	 * @param previousQuery
+	 * @param nextQuery
+	 */
+	public ComicData(String title, String url, String firstUrl, String imageQuery, String
+			previousQuery, String nextQuery) {
+		this.title = title;
+		this.url = url;
+		this.firstUrl = firstUrl;
+		this.imageQuery = imageQuery;
+		this.previousQuery = previousQuery;
+		this.nextQuery = nextQuery;
 		this.simple = false;
 	}
 
