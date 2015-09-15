@@ -26,7 +26,8 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 			Document page = Jsoup.connect(targetUrl).get();
 			Elements image = page.select(imageQuery);
 			//TODO handle missing "http:"
-			return "http:" + image.attr("src");
+			return image.attr("abs:src");
+			//return "http:" + image.attr("src");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
