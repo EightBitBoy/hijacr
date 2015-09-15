@@ -59,6 +59,7 @@ public class ComicViewerFragment extends Fragment {
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
 		comicManager = new ComicManager(comicView, event.comicData);
+		comicManager.loadCurrentComic();
 	}
 
 	@SuppressWarnings("unused")

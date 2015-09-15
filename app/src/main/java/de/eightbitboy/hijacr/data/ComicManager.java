@@ -57,6 +57,11 @@ public class ComicManager {
 		};
 	}
 
+	public void loadCurrentComic() {
+		new ComicFetchTask(comicData.baseUrl, currentComicCount, comicData.imageQuery,
+				this).execute();
+	}
+
 	public void loadNextComic() {
 		currentComicCount++;
 		new ComicFetchTask(comicData.baseUrl, currentComicCount, comicData.imageQuery,
