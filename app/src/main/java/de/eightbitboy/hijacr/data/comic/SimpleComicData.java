@@ -6,6 +6,9 @@ package de.eightbitboy.hijacr.data.comic;
  * Contains data for a comic whose page URLs can be counted easily.
  */
 public class SimpleComicData {
+	/**
+	 * The comic's title.
+	 */
 	public String title;
 
 	/**
@@ -13,15 +16,53 @@ public class SimpleComicData {
 	 */
 	public String url;
 
+	/**
+	 * The URL for a simple comic page, without the page number.
+	 * http://www.examplecomic.com/comicId=
+	 */
 	public String baseUrl;
 
+	/**
+	 * The URL to the first page of the comic.
+	 */
+	public String firstUrl;
+
+	/**
+	 * The number of the first comic. It is only used when baseUrl is given.
+	 */
+	public int firstNumber;
+
+	/**
+	 * The jsoup query for getting the comic img element.
+	 */
 	public String imageQuery;
 
-	public SimpleComicData(String title, String url, String baseUrl, String imageQuery) {
+	/**
+	 * The jsoup query for getting the anchor with the href to the previous page.
+	 */
+	public String previousQuery;
+
+	/**
+	 * The jsoup query for getting the anchor with the href to the next page.
+	 */
+	public String nextQuery;
+
+	private boolean simple = false;
+
+	//TODO for simple
+	public SimpleComicData(String title, String url, String baseUrl, int firstNumber, String
+			imageQuery) {
 		this.title = title;
 		this.url = url;
 		this.baseUrl = baseUrl;
+		this.firstNumber = firstNumber;
 		this.imageQuery = imageQuery;
+		this.simple = true;
+	}
+
+	//TODO for full
+	public SimpleComicData() {
+		this.simple = false;
 	}
 
 	//TODO improve cleanup

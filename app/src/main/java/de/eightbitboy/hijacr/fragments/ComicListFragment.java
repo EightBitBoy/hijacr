@@ -1,7 +1,5 @@
 package de.eightbitboy.hijacr.fragments;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.widget.ListView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
-import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.ComicRepository;
 import de.eightbitboy.hijacr.data.comic.SimpleComicData;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;

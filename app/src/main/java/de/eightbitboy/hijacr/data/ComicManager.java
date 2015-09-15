@@ -37,6 +37,7 @@ public class ComicManager {
 	public ComicManager(ImageView comicView, SimpleComicData comicData) {
 		this.comicView = comicView;
 		this.comicData = comicData;
+		this.currentComicCount = this.comicData.firstNumber;
 		setUpImageListeners();
 	}
 
