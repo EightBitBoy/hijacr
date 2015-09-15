@@ -57,18 +57,20 @@ public class ComicManager {
 	}
 
 	public void loadCurrentComic() {
-		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
-				this).execute();
+		fetchComicUrl();
 	}
 
 	public void loadNextComic() {
 		currentComicCount++;
-		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
-				this).execute();
+		fetchComicUrl();
 	}
 
 	public void loadPreviousComic() {
 		currentComicCount--;
+		fetchComicUrl();
+	}
+
+	private void fetchComicUrl() {
 		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
 				this).execute();
 	}
