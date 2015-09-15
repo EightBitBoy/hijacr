@@ -31,7 +31,7 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 		View view = inflater.inflate(R.layout.comic_list_item, parent, false);
 
 		TextView title = (TextView) view.findViewById(R.id.comic_title);
-		title.setText(comics.get(position).title);
+		title.setText(comics.get(position).getTitle());
 
 		TextView url = (TextView) view.findViewById(R.id.comic_url);
 		url.setText(comics.get(position).getCleanUrl());

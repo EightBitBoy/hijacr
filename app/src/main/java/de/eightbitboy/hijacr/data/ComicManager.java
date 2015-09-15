@@ -32,7 +32,7 @@ public class ComicManager {
 	public ComicManager(ImageView comicView, ComicData comicData) {
 		this.comicView = comicView;
 		this.comicData = comicData;
-		this.currentComicCount = this.comicData.firstNumber;
+		this.currentComicCount = this.comicData.getFirstNumber();
 		setUpImageListeners();
 	}
 
@@ -53,27 +53,27 @@ public class ComicManager {
 	}
 
 	public void loadCurrentComic() {
-		new ComicFetchTask(comicData.baseUrl, currentComicCount, comicData.imageQuery,
+		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
 				this).execute();
 	}
 
 	public void loadNextComic() {
 		currentComicCount++;
-		new ComicFetchTask(comicData.baseUrl, currentComicCount, comicData.imageQuery,
+		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
 				this).execute();
 	}
 
 	public void loadPreviousComic() {
 		currentComicCount--;
-		new ComicFetchTask(comicData.baseUrl, currentComicCount, comicData.imageQuery,
+		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
 				this).execute();
 	}
 
 	/**
 	 * This callback is executed when a ComicFetchTask returns successfully.
-	 * It loads the image with from the given url.
+	 * It loads the image from the given url into the comic ImageView.
 	 *
-	 * @param source
+	 * @param source The image URL.
 	 */
 	public void onGetImageSource(String source) {
 		Logger.d("image source: " + source);

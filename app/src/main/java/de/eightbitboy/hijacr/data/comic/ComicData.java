@@ -9,43 +9,43 @@ public class ComicData {
 	/**
 	 * The comic's title.
 	 */
-	public String title;
+	private String title;
 
 	/**
 	 * The comic's website URL.
 	 */
-	public String url;
+	private String url;
+
+	/**
+	 * The URL to the first page of the comic.
+	 */
+	private String firstUrl;
 
 	/**
 	 * The URL for a simple comic page, without the page number.
 	 * http://www.examplecomic.com/comicId=
 	 */
-	public String baseUrl;
-
-	/**
-	 * The URL to the first page of the comic.
-	 */
-	public String firstUrl;
+	private String baseUrl;
 
 	/**
 	 * The number of the first comic. It is only used when baseUrl is given.
 	 */
-	public int firstNumber;
+	private int firstNumber;
 
 	/**
 	 * The jsoup query for getting the comic img element.
 	 */
-	public String imageQuery;
+	private String imageQuery;
 
 	/**
 	 * The jsoup query for getting the anchor with the href to the previous page.
 	 */
-	public String previousQuery;
+	private String previousQuery;
 
 	/**
 	 * The jsoup query for getting the anchor with the href to the next page.
 	 */
-	public String nextQuery;
+	private String nextQuery;
 
 	private boolean simple = false;
 
@@ -63,6 +63,42 @@ public class ComicData {
 	//TODO for full
 	public ComicData() {
 		this.simple = false;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public String getFirstUrl() {
+		return firstUrl;
+	}
+
+	public String getBaseUrl() {
+		return baseUrl;
+	}
+
+	public int getFirstNumber() {
+		return firstNumber;
+	}
+
+	public String getImageQuery() {
+		return imageQuery;
+	}
+
+	public String getPreviousQuery() {
+		return previousQuery;
+	}
+
+	public String getNextQuery() {
+		return nextQuery;
+	}
+
+	public boolean isSimple() {
+		return simple;
 	}
 
 	//TODO improve cleanup
