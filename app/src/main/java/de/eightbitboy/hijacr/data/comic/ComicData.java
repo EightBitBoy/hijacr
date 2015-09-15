@@ -113,10 +113,6 @@ public class ComicData {
 
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof ComicData)) {
-			return false;
-		}
-
-		return title.equals(((ComicData) o).getTitle());
+		return o instanceof ComicData && title.equals(((ComicData) o).getTitle());
 	}
 }
