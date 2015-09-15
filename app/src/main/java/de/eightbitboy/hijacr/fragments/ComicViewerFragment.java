@@ -13,6 +13,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicManager;
+import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
@@ -27,6 +28,7 @@ public class ComicViewerFragment extends Fragment {
 	@Bind(R.id.newer_button)
 	Button newerButton;
 
+	private ComicData comicData;
 	private ComicManager comicManager;
 	private PhotoViewAttacher attacher;
 
@@ -59,6 +61,12 @@ public class ComicViewerFragment extends Fragment {
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
 		comicManager = new ComicManager(comicView, event.comicData);
+
+		if (comicData != null && !comicData.getTitle().equals(event.comicData.getTitle())) {
+			comicManager.clearComic();
+		}
+
+		comicData = event.comicData;
 		comicManager.loadCurrentComic();
 	}
 

@@ -52,6 +52,10 @@ public class ComicManager {
 		};
 	}
 
+	public void clearComic() {
+		comicView.setImageBitmap(null);
+	}
+
 	public void loadCurrentComic() {
 		new ComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
 				this).execute();
