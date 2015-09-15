@@ -16,11 +16,19 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	private String targetUrl;
 	private String imageQuery;
+	private String previousQuery;
+	private String nextQuery;
 	private ComicManager manager;
 
-	public ComicFetchTask(String baseUrl, int number, String imageQuery, ComicManager manager) {
-		this.targetUrl = baseUrl + number;
+	private String previousUrl;
+	private String nextUrl;
+
+	public ComicFetchTask(String targetUrl, String imageQuery, String previousQuery,
+			String nextQuery, ComicManager manager) {
+		this.targetUrl = targetUrl;
 		this.imageQuery = imageQuery;
+		this.previousQuery = previousQuery;
+		this.nextQuery = nextQuery;
 		this.manager = manager;
 	}
 
@@ -30,6 +38,13 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 
 		try {
 			Document page = Jsoup.connect(targetUrl).get();
+
+			Elements previous = page.select(previousQuery);
+			previousUrl = previous.attr("abs:href");
+
+			Elements next = page.select(nextQuery);
+			nextUrl = next.attr("abs:href");
+
 			Elements image = page.select(imageQuery);
 			return image.attr("abs:src");
 		} catch (IOException e) {
@@ -40,6 +55,6 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	@Override
 	protected void onPostExecute(String s) {
-		manager.onGetSimpleImageSource(s);
+		manager.onGetImageSource(s, previousUrl, nextUrl);
 	}
 }

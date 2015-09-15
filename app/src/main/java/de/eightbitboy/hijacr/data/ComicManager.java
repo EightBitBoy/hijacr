@@ -10,6 +10,7 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.database.ComicFetchTask;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
 
@@ -21,6 +22,8 @@ public class ComicManager {
 	private ComicData comicData;
 	private int currentComicCount = 0;
 	private String currentComicUrl;
+	private String previousComicUrl;
+	private String nextComicUrl;
 	private SimpleImageLoadingListener loadListener;
 	private ImageLoadingProgressListener progressListener;
 
@@ -64,32 +67,37 @@ public class ComicManager {
 	}
 
 	public void loadCurrentComic() {
-		fetchComicUrl();
+		fetchComicUrl(currentComicUrl);
 	}
 
 	public void loadNextComic() {
 		currentComicCount++;
-		fetchComicUrl();
+		fetchComicUrl(nextComicUrl);
+		currentComicUrl = nextComicUrl;
 	}
 
 	public void loadPreviousComic() {
 		currentComicCount--;
-		fetchComicUrl();
+		fetchComicUrl(previousComicUrl);
+		currentComicUrl = previousComicUrl;
 	}
 
-	private void fetchComicUrl() {
+	private void fetchComicUrl(String url) {
 		if (comicData.isSimple()) {
-			new SimpleComicFetchTask(comicData.getBaseUrl(), currentComicCount, comicData.getImageQuery(),
+			new SimpleComicFetchTask(comicData.getBaseUrl(), currentComicCount,
+					comicData.getImageQuery(),
 					this).execute();
 		} else {
-
+			new ComicFetchTask(currentComicUrl, comicData.getImageQuery(), comicData
+					.getPreviousQuery(), comicData.getNextQuery(), this).execute();
 		}
 	}
 
-	public void onGetImageSource(String source, String currentComicUrl) {
+	public void onGetImageSource(String source, String previousComicUrl, String nextComicUrl) {
 		Logger.d("image source: " + source);
 
-		this.currentComicUrl = currentComicUrl;
+		this.previousComicUrl = previousComicUrl;
+		this.nextComicUrl = nextComicUrl;
 		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
 				progressListener);
 	}
