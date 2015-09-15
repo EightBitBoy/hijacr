@@ -110,4 +110,13 @@ public class ComicData {
 		cleanUrl = cleanUrl.replaceAll("www.", "");
 		return cleanUrl;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof ComicData)) {
+			return false;
+		}
+
+		return title.equals(((ComicData) o).getTitle());
+	}
 }
