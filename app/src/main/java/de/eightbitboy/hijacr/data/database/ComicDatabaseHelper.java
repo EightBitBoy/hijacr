@@ -23,4 +23,12 @@ public class ComicDatabaseHelper {
 		//TODO
 		return 0;
 	}
+
+	public void setProgressUrl(String key, String progressUrl) {
+		database.insert(key, progressUrl, 0);
+	}
+
+	public void setProgressNumber(String key, int progressNumber) {
+		database.insert(key, "", progressNumber);
+	}
 }

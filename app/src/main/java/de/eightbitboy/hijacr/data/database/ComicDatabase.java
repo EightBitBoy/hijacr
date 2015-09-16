@@ -2,9 +2,12 @@ package de.eightbitboy.hijacr.data.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
 
@@ -53,5 +56,19 @@ public class ComicDatabase extends SQLiteOpenHelper {
 		values.put(ComicDataEntry.COLUMN_PROGRESS_NUMBER, progressNumber);
 
 		long rowId = getWritableDatabase().insert(ComicDataEntry.TABLE_NAME, null, values);
+	}
+
+	public void get(String key) {
+		String[] projection = {
+				ComicDataEntry.COLUMN_KEY,
+				ComicDataEntry.COLUMN_PROGRESS_URL,
+				ComicDataEntry.COLUMN_PROGRESS_NUMBER
+		};
+
+		Cursor cursor = getReadableDatabase().
+				rawQuery("select * from todo where " + ComicDataEntry.COLUMN_KEY + " = ?",
+						new String[]{key});
+
+		Logger.wtf(cursor.getCount() + "");
 	}
 }
