@@ -17,7 +17,7 @@ import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
 public class ComicDatabase extends SQLiteOpenHelper {
 	private static ComicDatabase instance;
 
-	public static final int DATABASE_VERSION = 8;
+	public static final int DATABASE_VERSION = 13;
 	public static final String DATABASE_NAME = "comics.db";
 
 	private ComicDatabase(Context context) {
@@ -49,17 +49,20 @@ public class ComicDatabase extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	public void insert(String key, String progressUrl, int progressNumber) {
+	public void insert(int id, String progressUrl, int progressNumber) {
 		ContentValues values = new ContentValues();
-		values.put(ComicDataEntry.COLUMN_KEY, key);
+		values.put(ComicDataEntry._ID, id);
 		values.put(ComicDataEntry.COLUMN_PROGRESS_URL, progressUrl);
 		values.put(ComicDataEntry.COLUMN_PROGRESS_NUMBER, progressNumber);
 
 		long rowId = getWritableDatabase().replace(ComicDataEntry.TABLE_NAME, null, values);
-		Logger.d("replace row: " + rowId + " key: " + key);
+		Logger.wtf("replace row: " + rowId);
+		/*
+*/
+		//getWritableDatabase().update(ComicDataEntry.TABLE_NAME, values, "_id=" + id, null);
 	}
 
-	public int getProgressNumber(String key) {
+	public int getProgressNumber(int id) {
 		String[] projection = {
 				ComicDataEntry.COLUMN_KEY,
 				ComicDataEntry.COLUMN_PROGRESS_URL,
@@ -69,7 +72,7 @@ public class ComicDatabase extends SQLiteOpenHelper {
 		Cursor cursor = getReadableDatabase().
 				rawQuery(
 						"select * from " + ComicDataEntry.TABLE_NAME + " where "
-								+ ComicDataEntry.COLUMN_KEY + " = ?", new String[]{key});
+								+ ComicDataEntry._ID + " = ?", new String[]{id + ""});
 
 		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();

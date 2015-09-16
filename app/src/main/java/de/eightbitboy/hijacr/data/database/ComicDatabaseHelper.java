@@ -19,15 +19,15 @@ public class ComicDatabaseHelper {
 		return null;
 	}
 
-	public int getProgressNumber(String key) {
-		return database.getProgressNumber(key);
+	public int getProgressNumber(int id) {
+		return database.getProgressNumber(id);
 	}
 
-	public void setProgressUrl(String key, String progressUrl) {
-		database.insert(key, progressUrl, 0);
+	public void setProgressUrl(int id, String progressUrl) {
+		database.insert(id, progressUrl, 0);
 	}
 
-	public void setProgressNumber(String key, int progressNumber) {
-		database.insert(key, "", progressNumber);
+	public void setProgressNumber(int id, int progressNumber) {
+		database.insert(id, "", progressNumber);
 	}
 }

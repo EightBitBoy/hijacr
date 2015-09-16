@@ -6,6 +6,8 @@ package de.eightbitboy.hijacr.data.comic;
  * Contains data for a comic whose page URLs can be counted easily.
  */
 public class ComicData {
+	private int id;
+
 	/**
 	 * The comic's key.
 	 */
@@ -64,8 +66,10 @@ public class ComicData {
 	 * @param firstNumber
 	 * @param imageQuery
 	 */
-	public ComicData(String key, String title, String url, String baseUrl, int firstNumber, String
-			imageQuery) {
+	public ComicData(int id, String key, String title, String url, String baseUrl, int firstNumber,
+			String
+					imageQuery) {
+		this.id = id;
 		this.key = key;
 		this.title = title;
 		this.url = url;
@@ -85,8 +89,10 @@ public class ComicData {
 	 * @param previousQuery
 	 * @param nextQuery
 	 */
-	public ComicData(String key, String title, String url, String firstUrl, String imageQuery,
+	public ComicData(int id, String key, String title, String url, String firstUrl, String
+			imageQuery,
 			String previousQuery, String nextQuery) {
+		this.id = id;
 		this.key = key;
 		this.title = title;
 		this.url = url;
@@ -95,6 +101,10 @@ public class ComicData {
 		this.previousQuery = previousQuery;
 		this.nextQuery = nextQuery;
 		this.simple = false;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getKey() {

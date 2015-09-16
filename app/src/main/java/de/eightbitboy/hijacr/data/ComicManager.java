@@ -47,7 +47,7 @@ public class ComicManager {
 			this.currentComicUrl = this.comicData.getFirstUrl();
 		}
 
-		int savedComicCount = database.getProgressNumber(this.comicData.getKey());
+		int savedComicCount = database.getProgressNumber(this.comicData.getId());
 		if (savedComicCount > -1) {
 			this.currentComicCount = savedComicCount;
 		}
@@ -80,7 +80,7 @@ public class ComicManager {
 
 	public void loadNextComic() {
 		currentComicCount++;
-		database.setProgressNumber(comicData.getKey(), currentComicCount);
+		database.setProgressNumber(comicData.getId(), currentComicCount);
 		fetchComicUrl(nextComicUrl);
 
 		if (nextComicUrl != null) {
@@ -90,7 +90,7 @@ public class ComicManager {
 
 	public void loadPreviousComic() {
 		currentComicCount--;
-		database.setProgressNumber(comicData.getKey(), currentComicCount);
+		database.setProgressNumber(comicData.getId(), currentComicCount);
 		fetchComicUrl(previousComicUrl);
 
 		if (previousComicUrl != null) {

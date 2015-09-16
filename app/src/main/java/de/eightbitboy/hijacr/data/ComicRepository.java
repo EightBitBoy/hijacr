@@ -26,19 +26,19 @@ public class ComicRepository {
 
 	//TODO a comic might start at position 0 like vgcats!
 	private void initializeComics() {
-		comics.put("explosm", new ComicData("explosm", "Explosm", "http://explosm.net/",
+		comics.put("explosm", new ComicData(5, "explosm", "Explosm", "http://explosm.net/",
 				"http://explosm.net/comics/15", "#main-comic", ".previous-comic",
 				".next-comic"));
-		comics.put("extralife", new ComicData("extralife", "ExtraLife",
+		comics.put("extralife", new ComicData(4, "extralife", "ExtraLife",
 				"http://www.myextralife.com/",
 				"http://www.myextralife.com/comic/06172001/", ".comic", ".prev_comic_link",
 				".next_comic_link"));
-		comics.put("smbc", new ComicData("smbc", "SMBC", "http://www.smbc-comics.com/",
+		comics.put("smbc", new ComicData(2, "smbc", "SMBC", "http://www.smbc-comics.com/",
 				"http://www.smbc-comics.com/index.php?id=", 1, "#comic"));
-		comics.put("vgcats", new ComicData("vgcats", "VgCats", "http://www.vgcats.com/",
+		comics.put("vgcats", new ComicData(3, "vgcats", "VgCats", "http://www.vgcats.com/",
 				"http://www.vgcats.com/comics/?strip_id=", 0, "tbody div img[width]"));
-		comics.put("xkcd", new ComicData("xkcd", "XKCD", "http://xkcd.com/", "http://xkcd.com/", 1,
-				"#comic img[src]"));
+		comics.put("xkcd", new ComicData(1, "xkcd", "XKCD", "http://xkcd.com/",
+				"http://xkcd.com/", 1, "#comic img[src]"));
 	}
 
 	public static ComicData getComicData(String key) {
