@@ -20,7 +20,7 @@ public class ComicDatabaseContract {
 				"CREATE TABLE " + TABLE_NAME + " (" +
 						_ID + " INTEGER PRIMARY KEY," +
 						COLUMN_KEY + TEXT_TYPE + COMMA_SEP +
-						COLUMN_PROGRESS_URL + TEXT_TYPE + COMMA_SEP + " )";
+						COLUMN_PROGRESS_URL + TEXT_TYPE + " )";
 
 		public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	}

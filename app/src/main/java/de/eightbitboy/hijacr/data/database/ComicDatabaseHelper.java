@@ -14,5 +14,13 @@ public class ComicDatabaseHelper {
 		database = ComicDatabase.getInstance(context);
 	}
 
-	//TODO implement queries
+	public String getProgressUrl(String key) {
+		//TODO
+		return null;
+	}
+
+	public int getProgressNumber(String key) {
+		//TODO
+		return 0;
+	}
 }

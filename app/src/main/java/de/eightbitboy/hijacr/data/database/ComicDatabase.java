@@ -1,9 +1,12 @@
 package de.eightbitboy.hijacr.data.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
 
 /**
  * Stores information about comics and reading progress in a SQLite database.
@@ -33,13 +36,22 @@ public class ComicDatabase extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(ComicDatabaseContract.ComicDataEntry.CREATE_TABLE);
+		db.execSQL(ComicDataEntry.CREATE_TABLE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		//TODO handle upgrade, do not just delete table
-		db.execSQL(ComicDatabaseContract.ComicDataEntry.DROP_TABLE);
+		db.execSQL(ComicDataEntry.DROP_TABLE);
 		onCreate(db);
+	}
+
+	public void insert(String key, String progressUrl, int progressNumber) {
+		ContentValues values = new ContentValues();
+		values.put(ComicDataEntry.COLUMN_KEY, key);
+		values.put(ComicDataEntry.COLUMN_PROGRESS_URL, progressUrl);
+		values.put(ComicDataEntry.COLUMN_PROGRESS_NUMBER, progressNumber);
+
+		long rowId = getWritableDatabase().insert(ComicDataEntry.TABLE_NAME, null, values);
 	}
 }
