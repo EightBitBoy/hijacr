@@ -12,7 +12,7 @@ public class ComicDatabaseContract {
 		private static final String COMMA_SEP = ",";
 
 		public static final String TABLE_NAME = "comicdata";
-		public static final String COLUMN_KEY = "title";
+		public static final String COLUMN_KEY = "key";
 		public static final String COLUMN_PROGRESS_URL = "progressurl";
 		public static final String COLUMN_PROGRESS_NUMBER = "progressnumber";
 
