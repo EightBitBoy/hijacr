@@ -7,6 +7,11 @@ package de.eightbitboy.hijacr.data.comic;
  */
 public class ComicData {
 	/**
+	 * The comic's key.
+	 */
+	private String key;
+
+	/**
 	 * The comic's title.
 	 */
 	private String title;
@@ -59,8 +64,9 @@ public class ComicData {
 	 * @param firstNumber
 	 * @param imageQuery
 	 */
-	public ComicData(String title, String url, String baseUrl, int firstNumber, String
+	public ComicData(String key, String title, String url, String baseUrl, int firstNumber, String
 			imageQuery) {
+		this.key = key;
 		this.title = title;
 		this.url = url;
 		this.baseUrl = baseUrl;
@@ -79,8 +85,9 @@ public class ComicData {
 	 * @param previousQuery
 	 * @param nextQuery
 	 */
-	public ComicData(String title, String url, String firstUrl, String imageQuery, String
-			previousQuery, String nextQuery) {
+	public ComicData(String key, String title, String url, String firstUrl, String imageQuery,
+			String previousQuery, String nextQuery) {
+		this.key = key;
 		this.title = title;
 		this.url = url;
 		this.firstUrl = firstUrl;
@@ -88,6 +95,10 @@ public class ComicData {
 		this.previousQuery = previousQuery;
 		this.nextQuery = nextQuery;
 		this.simple = false;
+	}
+
+	public String getKey() {
+		return key;
 	}
 
 	public String getTitle() {
