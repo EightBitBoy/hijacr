@@ -17,6 +17,7 @@ public class ComicDatabaseContract {
 		public static final String COLUMN_PROGRESS_URL = "progressurl";
 		public static final String COLUMN_PROGRESS_NUMBER = "progressnumber";
 
+
 		public static final String CREATE_TABLE =
 				"CREATE TABLE " + TABLE_NAME + " (" +
 						_ID + " INTEGER PRIMARY KEY," +

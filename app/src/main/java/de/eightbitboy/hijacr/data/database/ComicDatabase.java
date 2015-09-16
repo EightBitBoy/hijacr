@@ -17,7 +17,7 @@ import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
 public class ComicDatabase extends SQLiteOpenHelper {
 	private static ComicDatabase instance;
 
-	public static final int DATABASE_VERSION = 6;
+	public static final int DATABASE_VERSION = 8;
 	public static final String DATABASE_NAME = "comics.db";
 
 	private ComicDatabase(Context context) {
@@ -56,6 +56,7 @@ public class ComicDatabase extends SQLiteOpenHelper {
 		values.put(ComicDataEntry.COLUMN_PROGRESS_NUMBER, progressNumber);
 
 		long rowId = getWritableDatabase().replace(ComicDataEntry.TABLE_NAME, null, values);
+		Logger.d("replace row: " + rowId + " key: " + key);
 	}
 
 	public int getProgressNumber(String key) {
