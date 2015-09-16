@@ -47,10 +47,10 @@ public class ComicManager {
 			this.currentComicUrl = this.comicData.getFirstUrl();
 		}
 
-		//TODO testing stuff
-		int fromDb = database.getProgressNumber(this.comicData.getKey());
-		Logger.wtf("fromDb: " + fromDb);
-
+		int savedComicCount = database.getProgressNumber(this.comicData.getKey());
+		if (savedComicCount > -1) {
+			this.currentComicCount = savedComicCount;
+		}
 		setUpImageListeners();
 	}
 

@@ -17,7 +17,7 @@ import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
 public class ComicDatabase extends SQLiteOpenHelper {
 	private static ComicDatabase instance;
 
-	public static final int DATABASE_VERSION = 3;
+	public static final int DATABASE_VERSION = 6;
 	public static final String DATABASE_NAME = "comics.db";
 
 	private ComicDatabase(Context context) {
@@ -55,7 +55,7 @@ public class ComicDatabase extends SQLiteOpenHelper {
 		values.put(ComicDataEntry.COLUMN_PROGRESS_URL, progressUrl);
 		values.put(ComicDataEntry.COLUMN_PROGRESS_NUMBER, progressNumber);
 
-		long rowId = getWritableDatabase().insert(ComicDataEntry.TABLE_NAME, null, values);
+		long rowId = getWritableDatabase().replace(ComicDataEntry.TABLE_NAME, null, values);
 	}
 
 	public int getProgressNumber(String key) {
@@ -70,16 +70,15 @@ public class ComicDatabase extends SQLiteOpenHelper {
 						"select * from " + ComicDataEntry.TABLE_NAME + " where "
 								+ ComicDataEntry.COLUMN_KEY + " = ?", new String[]{key});
 
-		Logger.wtf("count: " + cursor.getCount());
 		if (cursor.getCount() > 0) {
-			Logger.wtf("value: " + cursor.getColumnIndex(ComicDataEntry.COLUMN_PROGRESS_NUMBER));
 			cursor.moveToFirst();
-			Logger.wtf("value: " + cursor.getInt(3));
+			int progress = cursor.getInt(
+					cursor.getColumnIndex(ComicDataEntry.COLUMN_PROGRESS_NUMBER));
+			cursor.close();
+			return progress;
 		}
 
 		cursor.close();
-
-		//TODO
-		return 0;
+		return -1;
 	}
 }
