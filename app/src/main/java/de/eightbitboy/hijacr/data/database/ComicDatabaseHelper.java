@@ -20,8 +20,7 @@ public class ComicDatabaseHelper {
 	}
 
 	public int getProgressNumber(String key) {
-		//TODO
-		return 0;
+		return database.getProgressNumber(key);
 	}
 
 	public void setProgressUrl(String key, String progressUrl) {

@@ -61,11 +61,11 @@ public class ComicViewerFragment extends Fragment {
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
 		if (comicManager == null) {
-			comicManager = new ComicManager(comicView, event.comicData);
+			comicManager = new ComicManager(getActivity(), comicView, event.comicData);
 		} else {
 			if (comicData != null && !comicData.equals(event.comicData)) {
 				comicManager.clearComic();
-				comicManager = new ComicManager(comicView, event.comicData);
+				comicManager = new ComicManager(getActivity(), comicView, event.comicData);
 			}
 		}
 

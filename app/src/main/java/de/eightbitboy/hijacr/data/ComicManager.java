@@ -1,5 +1,6 @@
 package de.eightbitboy.hijacr.data;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,8 +8,10 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.database.ComicDatabaseHelper;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
 
@@ -16,6 +19,7 @@ import de.greenrobot.event.EventBus;
  * Handles the comic viewing state and updates the comic view.
  */
 public class ComicManager {
+	private ComicDatabaseHelper database;
 	private ImageView comicView;
 	private ComicData comicData;
 	private int currentComicCount = 0;
@@ -31,7 +35,9 @@ public class ComicManager {
 	 * @param comicView
 	 * @param comicData
 	 */
-	public ComicManager(ImageView comicView, ComicData comicData) {
+	public ComicManager(Context context, ImageView comicView, ComicData comicData) {
+		database = new ComicDatabaseHelper(context);
+
 		this.comicView = comicView;
 		this.comicData = comicData;
 
@@ -40,6 +46,10 @@ public class ComicManager {
 		} else {
 			this.currentComicUrl = this.comicData.getFirstUrl();
 		}
+
+		//TODO testing stuff
+		int fromDb = database.getProgressNumber(this.comicData.getKey());
+		Logger.wtf("fromDb: " + fromDb);
 
 		setUpImageListeners();
 	}
@@ -70,6 +80,7 @@ public class ComicManager {
 
 	public void loadNextComic() {
 		currentComicCount++;
+		database.setProgressNumber(comicData.getKey(), currentComicCount);
 		fetchComicUrl(nextComicUrl);
 
 		if (nextComicUrl != null) {
@@ -79,6 +90,7 @@ public class ComicManager {
 
 	public void loadPreviousComic() {
 		currentComicCount--;
+		database.setProgressNumber(comicData.getKey(), currentComicCount);
 		fetchComicUrl(previousComicUrl);
 
 		if (previousComicUrl != null) {
