@@ -11,11 +11,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ComicDatabase extends SQLiteOpenHelper {
 	private static ComicDatabase instance;
 
-	public static final int DATABSE_VERSION = 1;
+	public static final int DATABASE_VERSION = 1;
 	public static final String DATABASE_NAME = "comics.db";
 
 	private ComicDatabase(Context context) {
-		super(context, DATABASE_NAME, null, DATABSE_VERSION);
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
 	public static synchronized ComicDatabase getInstance(Context context) {
