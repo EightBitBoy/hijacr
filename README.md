@@ -12,7 +12,8 @@ The project is still very young and a release date cannot be specified.
 
 ## Does Hijacr need contributors?
 Sure! Every line of code is welcome! There are a lot of things to do:
-- Tests
+- Software tests
+- Application tests on other devices
 - Save user data
 - Make everything configurable
 - Create a new app icon
