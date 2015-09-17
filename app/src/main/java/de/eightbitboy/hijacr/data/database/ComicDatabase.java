@@ -7,8 +7,6 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.orhanobut.logger.Logger;
-
 import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
 
 /**
@@ -55,24 +53,27 @@ public class ComicDatabase extends SQLiteOpenHelper {
 		values.put(ComicDataEntry.COLUMN_PROGRESS_URL, progressUrl);
 		values.put(ComicDataEntry.COLUMN_PROGRESS_NUMBER, progressNumber);
 
-		long rowId = getWritableDatabase().replace(ComicDataEntry.TABLE_NAME, null, values);
-		Logger.wtf("replace row: " + rowId);
-		/*
-*/
+		getWritableDatabase().replace(ComicDataEntry.TABLE_NAME, null, values);
 		//getWritableDatabase().update(ComicDataEntry.TABLE_NAME, values, "_id=" + id, null);
 	}
 
-	public int getProgressNumber(int id) {
-		String[] projection = {
-				ComicDataEntry.COLUMN_KEY,
-				ComicDataEntry.COLUMN_PROGRESS_URL,
-				ComicDataEntry.COLUMN_PROGRESS_NUMBER
-		};
+	public String getProgressUrl(int id) {
+		Cursor cursor = getCursor(id);
 
-		Cursor cursor = getReadableDatabase().
-				rawQuery(
-						"select * from " + ComicDataEntry.TABLE_NAME + " where "
-								+ ComicDataEntry._ID + " = ?", new String[]{id + ""});
+		if (cursor.getCount() > 0) {
+			cursor.moveToFirst();
+			String url = cursor.getString(
+					cursor.getColumnIndex(ComicDataEntry.COLUMN_PROGRESS_URL));
+			cursor.close();
+			return url;
+		}
+
+		cursor.close();
+		return null;
+	}
+
+	public int getProgressNumber(int id) {
+		Cursor cursor = getCursor(id);
 
 		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();
@@ -84,5 +85,18 @@ public class ComicDatabase extends SQLiteOpenHelper {
 
 		cursor.close();
 		return -1;
+	}
+
+	private Cursor getCursor(int id) {
+		//TODO use this?
+		String[] projection = {
+				ComicDataEntry.COLUMN_KEY,
+				ComicDataEntry.COLUMN_PROGRESS_URL,
+				ComicDataEntry.COLUMN_PROGRESS_NUMBER
+		};
+
+		return getReadableDatabase().rawQuery(
+				"select * from " + ComicDataEntry.TABLE_NAME + " where "
+						+ ComicDataEntry._ID + " = ?", new String[]{id + ""});
 	}
 }
