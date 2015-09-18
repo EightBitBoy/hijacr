@@ -2,10 +2,8 @@ package de.eightbitboy.hijacr.data.database;
 
 import android.content.Context;
 
-import de.eightbitboy.hijacr.data.database.ComicDatabase;
-
 /**
- * A helper class for working with the ComicDatabse class.
+ * A helper class for working with the ComicDatabase class.
  */
 public class ComicDatabaseHelper {
 	private ComicDatabase database;
@@ -14,9 +12,8 @@ public class ComicDatabaseHelper {
 		database = ComicDatabase.getInstance(context);
 	}
 
-	public String getProgressUrl(String key) {
-		//TODO
-		return null;
+	public String getProgressUrl(int id) {
+		return database.getProgressUrl(id);
 	}
 
 	public int getProgressNumber(int id) {
@@ -28,6 +25,7 @@ public class ComicDatabaseHelper {
 	}
 
 	public void setProgressNumber(int id, int progressNumber) {
+		//TODO use null instead of empty string?
 		database.insert(id, "", progressNumber);
 	}
 }
