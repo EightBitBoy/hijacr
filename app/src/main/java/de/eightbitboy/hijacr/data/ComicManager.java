@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.database.ComicDatabaseHelper;
@@ -51,6 +50,12 @@ public class ComicManager {
 		if (savedComicCount > -1) {
 			this.currentComicCount = savedComicCount;
 		}
+
+		String savedComicUrl = database.getProgressUrl(this.comicData.getId());
+		if (savedComicUrl != null) {
+			this.currentComicUrl = savedComicUrl;
+		}
+
 		setUpImageListeners();
 	}
 
@@ -85,6 +90,7 @@ public class ComicManager {
 
 		if (nextComicUrl != null) {
 			currentComicUrl = nextComicUrl;
+			database.setProgressUrl(comicData.getId(), currentComicUrl);
 		}
 	}
 
@@ -95,6 +101,7 @@ public class ComicManager {
 
 		if (previousComicUrl != null) {
 			currentComicUrl = previousComicUrl;
+			database.setProgressUrl(comicData.getId(), currentComicUrl);
 		}
 	}
 
