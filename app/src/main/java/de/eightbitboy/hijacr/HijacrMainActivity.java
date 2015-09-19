@@ -33,7 +33,7 @@ public class HijacrMainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.hijacr_main);
+		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
 
 		pager = (ViewPager) findViewById(R.id.comic_pager);

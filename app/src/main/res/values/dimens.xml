@@ -3,6 +3,6 @@
 	<dimen name="activity_horizontal_margin">16dp</dimen>
 	<dimen name="activity_vertical_margin">16dp</dimen>
 
-	<!-- hijacr_main -->
+	<!-- activity_main -->
 	<dimen name="hijacr_main_padding">5dp</dimen>
 </resources>
