@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
+//TODO read about Loaders
+//http://developer.android.com/guide/components/loaders.html
 
 /**
  * Stores information about comics and reading progress in a SQLite database.
