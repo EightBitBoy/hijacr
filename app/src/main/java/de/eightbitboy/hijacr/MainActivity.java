@@ -15,7 +15,7 @@ import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;
 import de.greenrobot.event.EventBus;
 
-public class HijacrMainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 	private ViewPager pager;
 
 	@Override
