@@ -2,6 +2,7 @@ package de.eightbitboy.hijacr;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -30,7 +31,7 @@ public class AboutActivity extends AppCompatActivity {
 			inputStream.close();
 
 			TextView textView = (TextView) findViewById(R.id.about_text);
-			textView.setText(builder.toString());
+			textView.setText(Html.fromHtml(builder.toString()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
