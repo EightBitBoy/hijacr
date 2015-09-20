@@ -3,6 +3,19 @@ buildscript {
         jcenter()
         mavenCentral()
     }
+    dependencies {
+        classpath 'org.pegdown:pegdown:1.6.0'
+    }
+}
+
+import org.pegdown.PegDownProcessor
+
+task releaseNotes() {
+    def pdp = new PegDownProcessor()
+
+    new File('foobar.html').withWriter { w ->
+        w.write(pdp.markdownToHtml(new File("foobar.md").text))
+    }
 }
 
 apply plugin: 'com.android.application'
