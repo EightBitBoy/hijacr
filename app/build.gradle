@@ -10,11 +10,16 @@ buildscript {
 
 import org.pegdown.PegDownProcessor
 
+//TODO improve this code?
 task releaseNotes() {
-    def pdp = new PegDownProcessor()
+    def processor = new PegDownProcessor()
 
-    new File('foobar.html').withWriter { w ->
-        w.write(pdp.markdownToHtml(new File("foobar.md").text))
+    new File('app/src/main/assets/about.html').withWriter { w ->
+        w.write(processor.markdownToHtml(new File("ABOUT.md").text))
+    }
+
+    new File('app/src/main/assets/changelog.html').withWriter { w ->
+        w.write(processor.markdownToHtml(new File("CHANGELOG.md").text))
     }
 }
 
