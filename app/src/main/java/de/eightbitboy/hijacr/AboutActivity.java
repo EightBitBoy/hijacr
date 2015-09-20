@@ -11,30 +11,46 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class AboutActivity extends AppCompatActivity {
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_about);
 
+		//TODO use custom tag handler to support lists?
+		//http://stackoverflow.com/questions/3150400/html-list-tag-not-working-in-android-textview-what-can-i-do
+		//https://github.com/NightWhistler/HtmlSpanner
+		TextView textView;
+
+		textView = (TextView) findViewById(R.id.about_text);
+		textView.setText(Html.fromHtml(readFromFile("about.html")));
+
+		textView = (TextView) findViewById(R.id.changelog_text);
+		textView.setText(Html.fromHtml(readFromFile("changelog.html")));
+	}
+
+	private String readFromFile(String fileName) {
+		//TODO use guava for all this stuff?
 		try {
-			InputStream inputStream = getApplicationContext().getAssets().open("about.html");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+			InputStream in = getAssets().open(fileName);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
 			String line;
 			StringBuilder builder = new StringBuilder();
+
 			while ((line = reader.readLine()) != null) {
 				builder.append(line);
 			}
 
 			reader.close();
-			inputStream.close();
+			in.close();
 
-			TextView textView = (TextView) findViewById(R.id.about_text);
-			//TODO use custom tag handler?
-			textView.setText(Html.fromHtml(builder.toString()));
+			return builder.toString();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		return null;
 	}
 }
