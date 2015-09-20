@@ -34,8 +34,8 @@ public class AboutActivity extends AppCompatActivity {
 
 			TextView textView = (TextView) findViewById(R.id.about_text);
 
-			Logger.wtf(s);
-			textView.setText(s);
+			Logger.wtf(builder.toString());
+			textView.setText(builder.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
