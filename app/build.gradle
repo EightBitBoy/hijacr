@@ -59,8 +59,6 @@ dependencies {
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
     //compile 'com.nhaarman:sqlitebuilder-android:0.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
-    //TODO read about this group syntax
-    compile group: 'com.google.guava', name: 'guava', version: '18.0'
     compile 'org.sufficientlysecure:html-textview:1.2'
 
     //TODO
