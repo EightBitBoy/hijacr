@@ -25,6 +25,7 @@ Sure! Every line of code is welcome! There are a lot of things to do:
 
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [EventBus](https://github.com/greenrobot/EventBus)
+- [HTMLTextView](https://github.com/sufficientlysecure/html-textview)
 - [jsoup](https://github.com/jhy/jsoup/)
 - [Logger](https://github.com/orhanobut/logger)
 - [PhotoView](https://github.com/chrisbanes/PhotoView)
