@@ -1,5 +1,6 @@
 package de.eightbitboy.hijacr;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -18,15 +19,28 @@ public class AboutActivity extends AppCompatActivity {
 
 		setContentView(R.layout.activity_about);
 
+
+		String version = "";
+
+		try {
+			version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+		} catch (PackageManager.NameNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		HtmlTextView view;
+		String content;
 
 		view = (HtmlTextView) findViewById(R.id.about_text);
-		view.setHtmlFromString(readFromFile("about.html"),
-				new HtmlTextView.LocalImageGetter());
+		content = readFromFile("about.html");
+		assert content != null;
+		content = content.replace("VERSION_NUMBER", version);
+		view.setHtmlFromString(content, new HtmlTextView.LocalImageGetter());
 
 		view = (HtmlTextView) findViewById(R.id.changelog_text);
-		view.setHtmlFromString(readFromFile("changelog.html"),
-				new HtmlTextView.LocalImageGetter());
+		content = readFromFile("changelog.html");
+		view.setHtmlFromString(content, new HtmlTextView.LocalImageGetter());
+
 	}
 
 	private String readFromFile(String fileName) {

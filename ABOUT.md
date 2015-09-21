@@ -2,6 +2,8 @@
 
 Hijacr Is Just Another Comic Reader, implemented by [EightBitBoy](https://github.com/EightBitBoy/hijacr)
 
+Version VERSION_NUMBER
+
 ## License
 
 ## Libraries

@@ -11,6 +11,7 @@
 
 - use white text on dark background
 - use some CSS for styling
+- make links clickable, should open in browser, but ask first!
 
 ## Comic list
 
