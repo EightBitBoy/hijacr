@@ -2,8 +2,6 @@ package de.eightbitboy.hijacr;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
-import android.widget.TextView;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
@@ -20,19 +18,14 @@ public class AboutActivity extends AppCompatActivity {
 
 		setContentView(R.layout.activity_about);
 
-		//TODO use custom tag handler to support lists?
-		//http://stackoverflow.com/questions/3150400/html-list-tag-not-working-in-android-textview-what-can-i-do
-		//https://github.com/NightWhistler/HtmlSpanner
-		TextView textView;
+		HtmlTextView view;
 
-		textView = (TextView) findViewById(R.id.about_text);
-		textView.setText(Html.fromHtml(readFromFile("about.html")));
+		view = (HtmlTextView) findViewById(R.id.about_text);
+		view.setHtmlFromString(readFromFile("about.html"),
+				new HtmlTextView.LocalImageGetter());
 
-		textView = (TextView) findViewById(R.id.changelog_text);
-		textView.setText(Html.fromHtml(readFromFile("changelog.html")));
-
-		HtmlTextView htmlTextView = (HtmlTextView) findViewById(R.id.html_text);
-		htmlTextView.setHtmlFromString(readFromFile("about.html"),
+		view = (HtmlTextView) findViewById(R.id.changelog_text);
+		view.setHtmlFromString(readFromFile("changelog.html"),
 				new HtmlTextView.LocalImageGetter());
 	}
 

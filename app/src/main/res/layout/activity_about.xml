@@ -2,23 +2,20 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/background"
+              android:background="@android:color/white"
               android:orientation="vertical"
               tools:context="de.eightbitboy.hijacr.AboutActivity">
 
-	<TextView
-		android:id="@+id/about_text"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"/>
-
-	<TextView
-		android:id="@+id/changelog_text"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"/>
-
 	<org.sufficientlysecure.htmltextview.HtmlTextView
-		android:id="@+id/html_text"
+		android:id="@+id/about_text"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:textAppearance="@android:style/TextAppearance.Small"/>
+
+	<org.sufficientlysecure.htmltextview.HtmlTextView
+		android:id="@+id/changelog_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textAppearance="@android:style/TextAppearance.Small"/>
+
 </LinearLayout>
