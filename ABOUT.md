@@ -1,5 +1,7 @@
 # Hijacr
 
+Hijacr Is Just Another Comic Reader
+
 ## License
 
 ## Libraries

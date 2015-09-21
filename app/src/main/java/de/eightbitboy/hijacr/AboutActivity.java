@@ -30,7 +30,6 @@ public class AboutActivity extends AppCompatActivity {
 	}
 
 	private String readFromFile(String fileName) {
-		//TODO use guava for all this stuff?
 		try {
 			InputStream in = getAssets().open(fileName);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
