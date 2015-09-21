@@ -3,7 +3,6 @@
 ## About screen
 
 - use white text on dark background
-- separate about section and changelog section visually
 - use some CSS for styling
 
 ## Comic list
