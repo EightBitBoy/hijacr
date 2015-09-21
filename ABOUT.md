@@ -1,6 +1,6 @@
 # Hijacr
 
-Hijacr Is Just Another Comic Reader
+Hijacr Is Just Another Comic Reader, implemented by [EightBitBoy](https://github.com/EightBitBoy/hijacr)
 
 ## License
 

@@ -18,8 +18,9 @@ Sure! Every line of code is welcome! There are a lot of things to do:
 - Make everything configurable
 - Create a new app icon
 - Integrate more comics
-- Handle crashreports
-- ... ... ...
+- Handle crash reports
+
+Have a look at the [TODO file](https://github.com/EightBitBoy/hijacr/blob/master/TODO.md)!
 
 ## What libraries are used for Hijacr?
 
