@@ -6,6 +6,8 @@
 - consider device orientation
 - save last viewed comic id
 - selecting the viewer tab manually crashes the app
+- export reading progress
+- import reading progress
 
 ## About screen
 
@@ -22,6 +24,8 @@
 - add a loading indicator
 - show error message if image cannot be loaded
 - make buttons more "material"
+- show alternative text if available, like XKCD
+- show alternative image if available, like SMBC
 
 ## Other
 
