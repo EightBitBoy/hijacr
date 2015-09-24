@@ -88,6 +88,7 @@ dependencies {
 
     //for org.sufficientlysecure:html-textview
     //https://github.com/NightWhistler/HtmlSpanner
+
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }
