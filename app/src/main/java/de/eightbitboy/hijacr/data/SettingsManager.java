@@ -1,4 +1,4 @@
 package de.eightbitboy.hijacr.data;
 
-public class PreferenceManager {
+public class SettingsManager {
 }
