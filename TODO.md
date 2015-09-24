@@ -8,6 +8,7 @@
 - selecting the viewer tab manually crashes the app
 - export reading progress
 - import reading progress
+- maybe use SugarORM or ActiveAndroid for better database code
 
 ## About screen
 
