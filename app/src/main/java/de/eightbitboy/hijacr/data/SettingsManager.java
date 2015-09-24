@@ -1,15 +1,21 @@
 package de.eightbitboy.hijacr.data;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.preference.PreferenceManager;
 
 public class SettingsManager {
 
 	private static SettingsManager instance;
 
-	private Context context;
+	private SharedPreferences preferences;
+	private Resources resources;
+
 
 	private SettingsManager(Context context) {
-		this.context = context;
+		preferences = PreferenceManager.getDefaultSharedPreferences(context);
+		resources = context.getResources();
 	}
 
 	public static SettingsManager getInstance(Context context) {
@@ -18,5 +24,9 @@ public class SettingsManager {
 		}
 
 		return instance;
+	}
+
+	public boolean isDebugMode() {
+		return preferences.getBoolean("pref_debug", false);
 	}
 }
