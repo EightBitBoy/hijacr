@@ -9,6 +9,7 @@
 - export reading progress
 - import reading progress
 - maybe use SugarORM or ActiveAndroid for better database code
+- consistent actionbar colors across activities
 
 ## About screen
 
