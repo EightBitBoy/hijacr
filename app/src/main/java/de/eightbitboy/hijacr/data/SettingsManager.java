@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
+import de.eightbitboy.hijacr.R;
+
 public class SettingsManager {
 
 	private static SettingsManager instance;
@@ -27,6 +29,6 @@ public class SettingsManager {
 	}
 
 	public boolean isDebugMode() {
-		return preferences.getBoolean("pref_debug", false);
+		return preferences.getBoolean(resources.getString(R.string.pref_debug), false);
 	}
 }

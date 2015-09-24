@@ -1,4 +1,7 @@
 <resources>
 	<string name="app_name">Hijacr</string>
 	<string name="action_settings">Settings</string>
+
+	<!--preferences-->
+	<string name="pref_debug">pref_debug</string>
 </resources>

@@ -5,7 +5,7 @@
 
 		<CheckBoxPreference
 			android:defaultValue="false"
-			android:key="pref_debug"
+			android:key="@string/pref_debug"
 			android:persistent="true"
 			android:summary="Enables views for debugging"
 			android:title="Debug mode"/>
