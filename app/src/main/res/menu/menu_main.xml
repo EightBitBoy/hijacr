@@ -15,4 +15,11 @@
 		android:title="About"
 		app:showAsAction="never"/>
 
+	<item
+		android:id="@+id/action_debug"
+		android:orderInCategory="3"
+		android:title="Debug"
+		android:visible="false"
+		app:showAsAction="never"/>
+
 </menu>

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
+import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;
 import de.greenrobot.event.EventBus;
@@ -60,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_main, menu);
+
+		if (SettingsManager.getInstance(this).isDebugMode()) {
+			menu.findItem(R.id.action_debug).setVisible(true);
+		}
+
 		return true;
 	}
 
