@@ -12,7 +12,7 @@ Hijacr is released under the Apache License 2.0.
 
 ## Content
 
-The developer of this application is not reliable for the comics' contents. The contents are the
+The developer of this application is not responsible for the comics' contents. The contents are the
 property of the respective owners.
 
 ## Libraries
