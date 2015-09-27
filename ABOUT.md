@@ -19,6 +19,7 @@ property of the respective owners.
 
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [EventBus](https://github.com/greenrobot/EventBus)
+- [HtmlTextView](https://github.com/sufficientlysecure/html-textview)
 - [jsoup](https://github.com/jhy/jsoup/)
 - [Logger](https://github.com/orhanobut/logger)
 - [PhotoView](https://github.com/chrisbanes/PhotoView)
