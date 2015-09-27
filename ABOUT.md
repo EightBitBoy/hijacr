@@ -2,9 +2,10 @@
 
 ## General
 
-Hijacr Is Just Another Comic Reader, implemented by [EightBitBoy](https://github.com/EightBitBoy/hijacr)
+Hijacr Is Just Another Comic Reader, implemented by [EightBitBoy]
+(https://github.com/EightBitBoy/hijacr).
 
-Version VERSION_NUMBER
+Hijacr version VERSION_NUMBER.
 
 ## License
 
