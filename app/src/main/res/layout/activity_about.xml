@@ -15,8 +15,7 @@
 		<org.sufficientlysecure.htmltextview.HtmlTextView
 			android:id="@+id/about_text"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:textAppearance="@android:style/TextAppearance.Small"/>
+			android:layout_height="wrap_content"/>
 
 		<View
 			android:layout_width="match_parent"
@@ -28,8 +27,7 @@
 		<org.sufficientlysecure.htmltextview.HtmlTextView
 			android:id="@+id/changelog_text"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:textAppearance="@android:style/TextAppearance.Small"/>
+			android:layout_height="wrap_content"/>
 
 	</LinearLayout>
 
