@@ -2,7 +2,7 @@
 
 ## General
 
-Hijacr Is Just Another Comic Reader, implemented by [EightBitBoy]
+Hijacr Is Just Another Comic Reader, implemented by [Stefan Härtel (EightBitBoy)]
 (https://github.com/EightBitBoy/hijacr).
 
 Hijacr version VERSION_NUMBER.
@@ -10,12 +10,26 @@ Hijacr version VERSION_NUMBER.
 ## License
 
 Hijacr is released under the [Apache License 2.0]
-(https://github.com/EightBitBoy/hijacr/blob/master/LICENSE.md).
+(https://github.com/EightBitBoy/hijacr/blob/master/LICENSE.md):
+
+>Copyright 2015 Stefan Härtel
+>
+>Licensed under the Apache License, Version 2.0 (the "License");
+>you may not use this file except in compliance with the License.
+>You may obtain a copy of the License at
+>
+>http://www.apache.org/licenses/LICENSE-2.0
+>
+>Unless required by applicable law or agreed to in writing, software
+>distributed under the License is distributed on an "AS IS" BASIS,
+>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+>See the License for the specific language governing permissions and
+>limitations under the License.
 
 ## Content
 
 The developer of this application is not responsible for the comics' contents. The contents are the
-property of the respective owners.
+property of their respective owners.
 
 ## Libraries
 
