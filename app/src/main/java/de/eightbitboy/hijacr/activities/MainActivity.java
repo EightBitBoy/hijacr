@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr;
+package de.eightbitboy.hijacr.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
+import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;

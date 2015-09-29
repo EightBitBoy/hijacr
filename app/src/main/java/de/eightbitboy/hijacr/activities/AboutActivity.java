@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr;
+package de.eightbitboy.hijacr.activities;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import de.eightbitboy.hijacr.R;
 
 public class AboutActivity extends AppCompatActivity {
 

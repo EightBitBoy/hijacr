@@ -1,7 +1,9 @@
-package de.eightbitboy.hijacr;
+package de.eightbitboy.hijacr.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import de.eightbitboy.hijacr.R;
 
 public class DebugActivity extends AppCompatActivity {
 	@Override

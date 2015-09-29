@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr;
+package de.eightbitboy.hijacr.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
