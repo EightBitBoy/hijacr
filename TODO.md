@@ -2,20 +2,20 @@
 
 ## General
 
+- check out object-relational mapping, SugarORM, greenDAO, ActiveAndroid
+- use some library for handling SharedPreferences?
 - implement material design guidelines
 - consider device orientation
 - save last viewed comic id
 - selecting the viewer tab manually crashes the app
 - export reading progress
 - import reading progress
-- maybe use SugarORM or ActiveAndroid for better database code
 - consistent actionbar colors across activities
 
 ## About screen
 
 - use white text on dark background
 - use some CSS for styling
-- make links clickable, should open in browser, but ask first!
 
 ## Comic list
 
@@ -31,5 +31,4 @@
 
 ## Other
 
-- add a license
-- add license information of third-party libraries
+...
