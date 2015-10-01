@@ -3,6 +3,7 @@ package de.eightbitboy.hijacr;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
+import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -15,8 +16,15 @@ public class HijacrApplication extends Application {
 
 		Fabric.with(this, new Crashlytics());
 
-		//TODO enable disk caching and configure other stuff
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
+				.memoryCacheExtraOptions(2048, 2048)
+						//TODO
+						//.diskCache(new UnlimitedDiskCache(dir))
+				.diskCacheFileNameGenerator(new HashCodeFileNameGenerator())
+						//.defaultDisplayImageOptions()
+				.writeDebugLogs()
+				.build();
+
 		ImageLoader.getInstance().init(config);
 	}
 }

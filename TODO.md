@@ -2,7 +2,7 @@
 
 ## General
 
-- check out object-relational mapping, SugarORM, greenDAO, ActiveAndroid
+- check out object-relational mapping, SugarORM, greenDAO, ActiveAndroid, ORMlite...
 - use some library for handling SharedPreferences?
 - implement material design guidelines
 - consider device orientation
