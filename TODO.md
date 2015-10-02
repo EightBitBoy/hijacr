@@ -29,6 +29,10 @@
 - show alternative text if available, like XKCD
 - show alternative image if available, like SMBC
 
+## Debug view
+
+- show information about image disk cache
+
 ## Other
 
 ...
