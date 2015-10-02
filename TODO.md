@@ -28,6 +28,7 @@
 - make buttons more "material"
 - show alternative text if available, like XKCD
 - show alternative image if available, like SMBC
+- handle fast clicks on the previous/next buttons
 
 ## Debug view
 
