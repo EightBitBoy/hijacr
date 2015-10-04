@@ -1,7 +1,5 @@
 package de.eightbitboy.hijacr.data.comic;
 
-//TODO use getters and stuff
-
 /**
  * Contains data for a comic whose page URLs can be counted easily.
  */
