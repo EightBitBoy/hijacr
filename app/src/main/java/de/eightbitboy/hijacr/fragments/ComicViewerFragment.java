@@ -13,6 +13,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicManager;
+import de.eightbitboy.hijacr.data.ComicRepository;
+import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
@@ -54,7 +56,12 @@ public class ComicViewerFragment extends Fragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+
 		attacher = new PhotoViewAttacher(comicView);
+
+		comicManager = new ComicManager(getActivity(), comicView, ComicRepository.getComicData
+				(SettingsManager.getInstance(getActivity()).getLastComicId()));
+
 		setUpButtonActions();
 	}
 

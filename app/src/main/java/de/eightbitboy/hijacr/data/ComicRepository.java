@@ -45,6 +45,16 @@ public class ComicRepository {
 		return getInstance().comics.get(key);
 	}
 
+	public static ComicData getComicData(int id) {
+		for (Map.Entry<String, ComicData> entry : getInstance().comics.entrySet()) {
+			if (entry.getValue().getId() == id) {
+				return entry.getValue();
+			}
+		}
+
+		return null;
+	}
+
 	public static Map<String, ComicData> getAllComicData() {
 		return getInstance().comics;
 	}

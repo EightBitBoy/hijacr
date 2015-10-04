@@ -3,6 +3,7 @@
 ## General
 
 - check out object-relational mapping, SugarORM, greenDAO, ActiveAndroid, ORMlite...
+- the comic database needs some work
 - use some library for handling SharedPreferences?
 - implement material design guidelines
 - consider device orientation
