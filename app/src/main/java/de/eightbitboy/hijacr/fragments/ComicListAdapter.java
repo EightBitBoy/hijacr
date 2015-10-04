@@ -17,7 +17,6 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 	private List<ComicData> comics;
 
 	public ComicListAdapter(Context context, int resource, List<ComicData> comics) {
-		//TODO find out what resource does, fix -1 below
 		super(context, -1, comics);
 		this.context = context;
 		this.comics = comics;
