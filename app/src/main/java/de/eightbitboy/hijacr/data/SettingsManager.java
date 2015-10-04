@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 
 import de.eightbitboy.hijacr.R;
 
+//TODO use https://github.com/orhanobut/hawk for this? or https://github.com/grandcentrix/tray?
 public class SettingsManager {
 
 	private static SettingsManager instance;
@@ -30,5 +31,15 @@ public class SettingsManager {
 
 	public boolean isDebugMode() {
 		return preferences.getBoolean(resources.getString(R.string.pref_debug), false);
+	}
+
+	public int getLastComicId() {
+		return preferences.getInt("pref_last_comic", 1);
+	}
+
+	public void setLastComicId(int value) {
+		SharedPreferences.Editor editor = preferences.edit();
+		editor.putInt("pref_last_comic", value);
+		editor.commit();
 	}
 }
