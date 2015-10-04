@@ -130,7 +130,6 @@ public class ComicManager {
 	 * @param source The image URL.
 	 */
 	public void onGetSimpleImageSource(String source) {
-		//TODO use DisplayImageOptions
 		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
 				progressListener);
 	}
