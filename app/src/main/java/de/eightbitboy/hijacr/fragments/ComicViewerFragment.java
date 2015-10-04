@@ -32,6 +32,7 @@ public class ComicViewerFragment extends Fragment {
 
 	private ComicData comicData;
 	private ComicManager comicManager;
+	private SettingsManager settings;
 	private PhotoViewAttacher attacher;
 
 	@Override
@@ -50,6 +51,7 @@ public class ComicViewerFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.comic_viewer, container, false);
 		ButterKnife.bind(this, view);
+		settings = SettingsManager.getInstance(getActivity());
 		return view;
 	}
 
@@ -60,7 +62,7 @@ public class ComicViewerFragment extends Fragment {
 		attacher = new PhotoViewAttacher(comicView);
 
 		comicManager = new ComicManager(getActivity(), comicView, ComicRepository.getComicData
-				(SettingsManager.getInstance(getActivity()).getLastComicId()));
+				(settings.getLastComicId()));
 
 		setUpButtonActions();
 	}
@@ -77,6 +79,7 @@ public class ComicViewerFragment extends Fragment {
 		}
 
 		comicData = event.comicData;
+		settings.setLastComicId(comicData.getId());
 		comicManager.loadCurrentComic();
 	}
 
