@@ -87,7 +87,7 @@ public class ComicManager {
 	public void loadNextComic() {
 		currentComicCount++;
 		database.setProgressNumber(comicData.getId(), currentComicCount);
-		Crashlytics.log("nextComicUrl: " + nextComicUrl);
+		Crashlytics.setString("nextComicUrl", nextComicUrl);
 		fetchComicUrl(nextComicUrl);
 
 		if (nextComicUrl != null) {

@@ -36,7 +36,7 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 	@Override
 	protected String doInBackground(Void... voids) {
 		try {
-			Crashlytics.log("targetUrl: " + targetUrl);
+			Crashlytics.setString("targetUrl", targetUrl);
 			Document page = Jsoup.connect(targetUrl).get();
 
 			Elements previous = page.select(previousQuery);
