@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.crashlytics.android.Crashlytics;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
@@ -77,6 +79,8 @@ public class ComicViewerFragment extends Fragment {
 				comicManager = new ComicManager(getActivity(), comicView, event.comicData);
 			}
 		}
+
+		Crashlytics.log("current comic: " + event.comicData.getTitle());
 
 		comicData = event.comicData;
 		settings.setLastComicId(comicData.getId());
