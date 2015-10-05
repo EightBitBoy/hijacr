@@ -13,7 +13,6 @@
 
 ## About screen
 
-- fix encoding issue
 - use white text on dark background
 - use some CSS for styling
 

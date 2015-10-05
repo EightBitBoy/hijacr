@@ -16,11 +16,11 @@ import org.pegdown.PegDownProcessor
 task releaseNotes() {
     def processor = new PegDownProcessor()
 
-    new File('app/src/main/assets/about.html').withWriter { w ->
+    new File('app/src/main/assets/about.html').withWriter('UTF-8') { w ->
         w.write(processor.markdownToHtml(new File("ABOUT.md").text))
     }
 
-    new File('app/src/main/assets/changelog.html').withWriter { w ->
+    new File('app/src/main/assets/changelog.html').withWriter('UTF-8') { w ->
         w.write(processor.markdownToHtml(new File("CHANGELOG.md").text))
     }
 }
