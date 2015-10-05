@@ -68,6 +68,7 @@ public class ComicViewerFragment extends Fragment {
 
 		comicManager = new ComicManager(getActivity(), comicView, ComicRepository.getComicData
 				(settings.getLastComicId()));
+		comicManager.loadCurrentComic();
 
 		setUpButtonActions();
 	}
