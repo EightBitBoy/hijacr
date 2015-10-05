@@ -10,6 +10,8 @@ import de.eightbitboy.hijacr.R;
 //TODO use https://github.com/orhanobut/hawk for this? or https://github.com/grandcentrix/tray?
 public class SettingsManager {
 
+	public static final String PREF_LAST_COMIC = "pref_last_comic";
+
 	private static SettingsManager instance;
 
 	private SharedPreferences preferences;
@@ -34,12 +36,14 @@ public class SettingsManager {
 	}
 
 	public int getLastComicId() {
-		return preferences.getInt("pref_last_comic", 1);
+		return preferences.getInt(PREF_LAST_COMIC, 1);
 	}
 
 	public void setLastComicId(int value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putInt("pref_last_comic", value);
-		editor.commit();
+		edit().putInt(PREF_LAST_COMIC, value).commit();
+	}
+
+	private SharedPreferences.Editor edit() {
+		return preferences.edit();
 	}
 }

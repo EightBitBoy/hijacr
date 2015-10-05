@@ -7,8 +7,6 @@
 - use some library for handling SharedPreferences?
 - implement material design guidelines
 - consider device orientation
-- save last viewed comic id
-- selecting the viewer tab manually crashes the app
 - export reading progress
 - import reading progress
 - consistent actionbar colors across activities
