@@ -2,6 +2,7 @@ package de.eightbitboy.hijacr.data;
 
 import android.os.AsyncTask;
 
+import com.crashlytics.android.Crashlytics;
 import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
@@ -35,6 +36,7 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 	@Override
 	protected String doInBackground(Void... voids) {
 		try {
+			Crashlytics.setString("targetUrl", targetUrl);
 			Document page = Jsoup.connect(targetUrl).get();
 
 			Elements previous = page.select(previousQuery);
