@@ -63,6 +63,9 @@ public class ComicViewerFragment extends Fragment {
 
 		attacher = new PhotoViewAttacher(comicView);
 
+		Crashlytics.setString("comic",
+				ComicRepository.getComicData(settings.getLastComicId()).getTitle());
+
 		comicManager = new ComicManager(getActivity(), comicView, ComicRepository.getComicData
 				(settings.getLastComicId()));
 
@@ -79,8 +82,9 @@ public class ComicViewerFragment extends Fragment {
 				comicManager = new ComicManager(getActivity(), comicView, event.comicData);
 			}
 		}
-		
-		Crashlytics.log("current comic: " + event.comicData.getTitle());
+
+
+		Crashlytics.setString("comic", event.comicData.getTitle());
 
 		comicData = event.comicData;
 		settings.setLastComicId(comicData.getId());
