@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
@@ -86,6 +87,7 @@ public class ComicManager {
 	public void loadNextComic() {
 		currentComicCount++;
 		database.setProgressNumber(comicData.getId(), currentComicCount);
+		Crashlytics.log("nextComicUrl: " + nextComicUrl);
 		fetchComicUrl(nextComicUrl);
 
 		if (nextComicUrl != null) {

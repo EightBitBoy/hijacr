@@ -79,7 +79,7 @@ public class ComicViewerFragment extends Fragment {
 				comicManager = new ComicManager(getActivity(), comicView, event.comicData);
 			}
 		}
-
+		
 		Crashlytics.log("current comic: " + event.comicData.getTitle());
 
 		comicData = event.comicData;
