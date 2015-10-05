@@ -19,6 +19,7 @@
 ## Comic list
 
 - long press menu for opening links to comic websites
+- enable adding custom comics and modifying existing ones
 
 ## Comic view
 
