@@ -26,6 +26,30 @@ Hijacr is released under the [Apache License 2.0]
 >See the License for the specific language governing permissions and
 >limitations under the License.
 
+## System permissions
+
+Hijacr tries to use as few permissions as possible.
+Currently the following system permissions are used:
+
+- INTERNET: Internet access is necessary to load comics from the internet. Crash reports are sent to the developer via the internet.
+
+## Privacy
+Hijacr does not collect any personal data.
+
+To ensure software quality Hijacr uses the tool [Crashlytics](https://get.fabric.io/crashlytics). Have a look at their [privacy statement](https://get.fabric.io/crashlytics#Privacy). Crash information is collected and sent only when a crash happens.
+
+A crash report contains the following information:
+
+- a timestamp when the user launched the application
+- a timestamp when the crash occured
+- the device model
+- the operating system version
+- root status
+- the device's used ram
+- the device's free disk space
+- the device orientation at the time of crash
+- the device's battery status
+
 ## Content
 
 The developer of this application is not responsible for the comics' contents. The contents are the
