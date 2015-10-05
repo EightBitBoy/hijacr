@@ -81,13 +81,14 @@ public class ComicManager {
 	}
 
 	public void loadCurrentComic() {
+		Crashlytics.setString("currentComicUrl", currentComicUrl);
 		fetchComicUrl(currentComicUrl);
 	}
 
 	public void loadNextComic() {
+		Crashlytics.setString("nextComicUrl", nextComicUrl);
 		currentComicCount++;
 		database.setProgressNumber(comicData.getId(), currentComicCount);
-		Crashlytics.setString("nextComicUrl", nextComicUrl);
 		fetchComicUrl(nextComicUrl);
 
 		if (nextComicUrl != null) {
@@ -97,6 +98,7 @@ public class ComicManager {
 	}
 
 	public void loadPreviousComic() {
+		Crashlytics.setString("previousComicUrl", previousComicUrl);
 		currentComicCount--;
 		database.setProgressNumber(comicData.getId(), currentComicCount);
 		fetchComicUrl(previousComicUrl);
