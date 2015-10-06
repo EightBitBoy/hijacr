@@ -19,9 +19,12 @@ repositories {
     }
 }
 
+/*
+generate HTML-files from Markdown-files for including them in the app
+ */
+
 import org.pegdown.PegDownProcessor
 
-//TODO improve this code?
 task releaseNotes() {
     def processor = new PegDownProcessor()
 
@@ -36,7 +39,6 @@ task releaseNotes() {
 
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
-
 
 android {
     compileSdkVersion 21
