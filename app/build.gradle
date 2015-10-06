@@ -2,12 +2,20 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url 'https://maven.fabric.io/public' }
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
     }
     dependencies {
         classpath 'org.pegdown:pegdown:1.6.0'
         //noinspection GradleDynamicVersion
         classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+repositories {
+    maven {
+        url 'https://maven.fabric.io/public'
     }
 }
 
@@ -28,10 +36,6 @@ task releaseNotes() {
 
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
 
 
 android {
