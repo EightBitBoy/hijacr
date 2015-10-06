@@ -4,7 +4,6 @@
 
 - check out object-relational mapping, SugarORM, greenDAO, ActiveAndroid, ORMlite...
 - the comic database needs some work
-- use some library for handling SharedPreferences?
 - implement material design guidelines
 - consider device orientation
 - export reading progress
@@ -19,6 +18,7 @@
 ## Comic list
 
 - long press menu for opening links to comic websites
+- enable resetting reading progress or setting the progress manually
 - enable adding custom comics and modifying existing ones
 
 ## Comic view
@@ -29,6 +29,11 @@
 - show alternative text if available, like XKCD
 - show alternative image if available, like SMBC
 - handle fast clicks on the previous/next buttons
+- preload comics
+
+## Settings view
+
+- reset all progress
 
 ## Debug view
 
