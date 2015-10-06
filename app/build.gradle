@@ -56,7 +56,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     packagingOptions {
-        exclude 'META-INF/LICENSE.txt'
+        exclude 'LICENSE.txt'
     }
     buildTypes {
         release {
