@@ -63,44 +63,25 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
     /*
     android libraries
      */
-
-    //noinspection GradleDependency
     compile 'com.android.support:appcompat-v7:22.1.1'
-    //noinspection GradleDependency
     compile 'com.android.support:design:22.2.1'
-    //TODO use this
-    compile 'com.android.support:support-annotations:23.0.1'
+    compile 'com.android.support:support-annotations:23.0.1' //TODO use this
 
     /*
     third-party libraries
      */
-
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'org.sufficientlysecure:html-textview:1.2'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.orhanobut:logger:1.11'
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
-    //compile 'com.nhaarman:sqlitebuilder-android:0.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 
-    /*
-    alternatives
-     */
-
-    //for com.github.chrisbanes.photoview:library
-    //https://github.com/MikeOrtiz/TouchImageView
-    //https://github.com/sephiroth74/ImageViewZoom
-
-    //for org.sufficientlysecure:html-textview
-    //https://github.com/NightWhistler/HtmlSpanner
-
-    /*
-    crashlytics
-     */
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }

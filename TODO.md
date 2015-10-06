@@ -37,3 +37,10 @@
 ## Other
 
 ...
+
+## Library alternatives
+
+- https://github.com/nhaarman/SQLiteBuilder
+- https://github.com/MikeOrtiz/TouchImageView
+- https://github.com/sephiroth74/ImageViewZoom
+- https://github.com/NightWhistler/HtmlSpanner
