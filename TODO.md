@@ -23,6 +23,7 @@
 
 ## Comic view
 
+- use bottom sheet for displaying extra actions
 - add a loading indicator
 - show error message if image cannot be loaded
 - make buttons more "material"
