@@ -1,6 +1,8 @@
 # Hijacr Is Just Another Comic Reader
 [![Build Status](https://travis-ci.org/EightBitBoy/hijacr.svg?branch=master)](https://travis-ci.org/EightBitBoy/hijacr) [![Dependency Status](https://www.versioneye.com/user/projects/56141eeaa193340019000551/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56141eeaa193340019000551)
 
+[You can download Hijacr at Google play!](https://play.google.com/store/apps/details?id=de.eightbitboy.hijacr)
+
 ## What?
 Hijacr is an open-source webcomic reader for Android. It supports some geeky webcomics out-of-the-box.
 
