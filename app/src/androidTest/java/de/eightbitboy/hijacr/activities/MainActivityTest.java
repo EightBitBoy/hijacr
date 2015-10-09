@@ -20,8 +20,11 @@ public class MainActivityTest {
 	@Rule
 	public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
+	/*
 	@Test
-	public void listGoesOverTheFold() {
-		onView(withText("Hello world!")).check(matches(isDisplayed()));
+	public void pagerIsVisible() {
+		onView(withText("LIST")).check(matches(isDisplayed()));
+		onView(withText("VIEWER")).check(matches(isDisplayed()));
 	}
+	*/
 }
