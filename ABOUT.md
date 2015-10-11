@@ -61,6 +61,7 @@ property of their respective owners.
 (https://github.com/JakeWharton/butterknife/blob/master/LICENSE.txt)
 - [EventBus](https://github.com/greenrobot/EventBus), [Apache License 2.0]
 (https://github.com/greenrobot/EventBus/blob/master/LICENSE)
+- [greenDAO](https://github.com/greenrobot/greenDAO), Apache License 2.0
 - [HtmlTextView](https://github.com/sufficientlysecure/html-textview), [Apache License 2.0]
 (https://github.com/SufficientlySecure/html-textview/blob/master/LICENSE)
 - [jsoup](https://github.com/jhy/jsoup/), [MIT License]

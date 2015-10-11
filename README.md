@@ -28,6 +28,7 @@ Have a look at the [TODO file](https://github.com/EightBitBoy/hijacr/blob/master
 
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [EventBus](https://github.com/greenrobot/EventBus)
+- [greenDAO](https://github.com/greenrobot/greenDAO)
 - [HTMLTextView](https://github.com/sufficientlysecure/html-textview)
 - [jsoup](https://github.com/jhy/jsoup/)
 - [Logger](https://github.com/orhanobut/logger)
