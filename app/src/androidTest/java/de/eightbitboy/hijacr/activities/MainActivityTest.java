@@ -24,7 +24,7 @@ public class MainActivityTest {
 
 	@Test
 	public void pagerIsVisible() {
-		onView(withText(equalToIgnoringCase("LISTe"))).check(matches(isDisplayed()));
+		onView(withText(equalToIgnoringCase("LIST"))).check(matches(isDisplayed()));
 		onView(withText(equalToIgnoringCase("VIEWER"))).check(matches(isDisplayed()));
 	}
 }
