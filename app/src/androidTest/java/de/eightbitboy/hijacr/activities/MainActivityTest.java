@@ -27,4 +27,16 @@ public class MainActivityTest {
 		onView(withText(equalToIgnoringCase("LIST"))).check(matches(isDisplayed()));
 		onView(withText(equalToIgnoringCase("VIEWER"))).check(matches(isDisplayed()));
 	}
+
+	public void settingsMenuVisible() {
+
+	}
+
+	public void debugSettingsVisible() {
+
+	}
+
+	public void debugSettingsHidden() {
+
+	}
 }
