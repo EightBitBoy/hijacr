@@ -86,7 +86,6 @@ public class ComicViewerFragment extends Fragment {
 			}
 		}
 
-
 		Crashlytics.setString("comic", event.comicData.getTitle());
 
 		comicData = event.comicData;
