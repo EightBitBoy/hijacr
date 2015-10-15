@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.crashlytics.android.Crashlytics;
+import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -75,6 +76,7 @@ public class ComicViewerFragment extends Fragment {
 
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
+		Logger.wtf("event: " + event.toString());
 		if (comicManager == null) {
 			comicManager = new ComicManager(getActivity(), comicView, event.comicData);
 		} else {

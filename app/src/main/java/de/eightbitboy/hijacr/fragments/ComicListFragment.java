@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.orhanobut.logger.Logger;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
@@ -45,6 +47,7 @@ public class ComicListFragment extends Fragment {
 		comicList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+				Logger.wtf("clicked: " + i);
 				EventBus.getDefault().post(new ComicSelectedEvent((ComicData) comicList
 						.getItemAtPosition(i)));
 			}

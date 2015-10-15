@@ -11,4 +11,9 @@ public class ComicSelectedEvent {
 	public ComicSelectedEvent(ComicData comicData) {
 		this.comicData = comicData;
 	}
+
+	@Override
+	public String toString() {
+		return comicData.toString();
+	}
 }
