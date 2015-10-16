@@ -18,10 +18,11 @@ import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.fragments.PagerFragmentAdapter;
+import de.eightbitboy.hijacr.views.ViewPagerImproved;
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity {
-	private ViewPager pager;
+	private ViewPagerImproved pager;
 
 	@Override
 	protected void onStart() {
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 		ButterKnife.bind(this);
 
-		pager = (ViewPager) findViewById(R.id.comic_pager);
+		pager = (ViewPagerImproved) findViewById(R.id.comic_pager);
 		pager.setAdapter(new PagerFragmentAdapter(getSupportFragmentManager()));
 
 		TabLayout tabLayout = (TabLayout) findViewById(R.id.comic_pager_tabs);
