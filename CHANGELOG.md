@@ -2,6 +2,10 @@
 
 ## 0.1.2, ???
 
+Fix:
+
+- crash when zooming out of a comic
+
 ## 0.1.1, 2015-10-07
 
 Fix:
