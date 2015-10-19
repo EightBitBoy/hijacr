@@ -70,9 +70,9 @@ dependencies {
     /*
     android libraries
      */
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:design:23.0.1'
-    compile 'com.android.support:support-annotations:23.0.1' //TODO use this
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:support-annotations:23.1.0' //TODO use this
 
     /*
     third-party libraries
