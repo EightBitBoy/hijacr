@@ -55,6 +55,7 @@ public class ComicManager {
 		String savedComicUrl = database.getProgressUrl(this.comicData.getId());
 		if (savedComicUrl != null) {
 			this.currentComicUrl = savedComicUrl;
+			updateUrls();
 		}
 
 		setUpImageListeners();
@@ -74,6 +75,16 @@ public class ComicManager {
 				//TODO show progress somewhere
 			}
 		};
+	}
+
+	private void updateUrls() {
+		if (previousComicUrl == null) {
+
+		}
+
+		if (nextComicUrl == null) {
+
+		}
 	}
 
 	public void clearComic() {
