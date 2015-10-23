@@ -18,7 +18,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Handles the comic viewing state and updates the comic view.
  */
-public class ComicManager {
+public class ComicViewerManager {
 	private ComicDatabaseHelper database;
 	private ImageView comicView;
 	private ComicData comicData;
@@ -30,12 +30,12 @@ public class ComicManager {
 	private ImageLoadingProgressListener progressListener;
 
 	/**
-	 * Creates a new ComicManager intended for starting a new comic.
+	 * Creates a new ComicViewerManager intended for starting a new comic.
 	 *
 	 * @param comicView
 	 * @param comicData
 	 */
-	public ComicManager(Context context, ImageView comicView, ComicData comicData) {
+	public ComicViewerManager(Context context, ImageView comicView, ComicData comicData) {
 		database = new ComicDatabaseHelper(context);
 
 		this.comicView = comicView;

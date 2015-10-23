@@ -3,7 +3,6 @@ package de.eightbitboy.hijacr.data;
 import android.os.AsyncTask;
 
 import com.crashlytics.android.Crashlytics;
-import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,21 +10,19 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-import de.eightbitboy.hijacr.data.ComicManager;
-
 public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	private String targetUrl;
 	private String imageQuery;
 	private String previousQuery;
 	private String nextQuery;
-	private ComicManager manager;
+	private ComicViewerManager manager;
 
 	private String previousUrl;
 	private String nextUrl;
 
 	public ComicFetchTask(String targetUrl, String imageQuery, String previousQuery,
-			String nextQuery, ComicManager manager) {
+			String nextQuery, ComicViewerManager manager) {
 		this.targetUrl = targetUrl;
 		this.imageQuery = imageQuery;
 		this.previousQuery = previousQuery;

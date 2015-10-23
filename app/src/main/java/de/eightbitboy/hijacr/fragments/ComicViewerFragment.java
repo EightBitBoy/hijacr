@@ -15,7 +15,7 @@ import com.orhanobut.logger.Logger;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
-import de.eightbitboy.hijacr.data.ComicManager;
+import de.eightbitboy.hijacr.data.ComicViewerManager;
 import de.eightbitboy.hijacr.data.ComicRepository;
 import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.data.comic.ComicData;
@@ -34,7 +34,7 @@ public class ComicViewerFragment extends Fragment {
 	Button newerButton;
 
 	private ComicData comicData;
-	private ComicManager comicManager;
+	private ComicViewerManager comicViewerManager;
 	private SettingsManager settings;
 	private PhotoViewAttacher attacher;
 
@@ -67,9 +67,9 @@ public class ComicViewerFragment extends Fragment {
 		Crashlytics.setString("comic",
 				ComicRepository.getComicData(settings.getLastComicId()).getTitle());
 
-		comicManager = new ComicManager(getActivity(), comicView, ComicRepository.getComicData
+		comicViewerManager = new ComicViewerManager(getActivity(), comicView, ComicRepository.getComicData
 				(settings.getLastComicId()));
-		comicManager.loadCurrentComic();
+		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
 	}
@@ -77,12 +77,12 @@ public class ComicViewerFragment extends Fragment {
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
 		Logger.wtf("event: " + event.toString());
-		if (comicManager == null) {
-			comicManager = new ComicManager(getActivity(), comicView, event.comicData);
+		if (comicViewerManager == null) {
+			comicViewerManager = new ComicViewerManager(getActivity(), comicView, event.comicData);
 		} else {
 			if (comicData != null && !comicData.equals(event.comicData)) {
-				comicManager.clearComic();
-				comicManager = new ComicManager(getActivity(), comicView, event.comicData);
+				comicViewerManager.clearComic();
+				comicViewerManager = new ComicViewerManager(getActivity(), comicView, event.comicData);
 			}
 		}
 
@@ -90,7 +90,7 @@ public class ComicViewerFragment extends Fragment {
 
 		comicData = event.comicData;
 		settings.setLastComicId(comicData.getId());
-		comicManager.loadCurrentComic();
+		comicViewerManager.loadCurrentComic();
 	}
 
 	@SuppressWarnings("unused")
@@ -102,14 +102,14 @@ public class ComicViewerFragment extends Fragment {
 		newerButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				comicManager.loadNextComic();
+				comicViewerManager.loadNextComic();
 			}
 		});
 
 		olderButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				comicManager.loadPreviousComic();
+				comicViewerManager.loadPreviousComic();
 			}
 		});
 	}

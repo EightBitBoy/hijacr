@@ -2,8 +2,6 @@ package de.eightbitboy.hijacr.data;
 
 import android.os.AsyncTask;
 
-import com.orhanobut.logger.Logger;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -14,9 +12,9 @@ public class SimpleComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	private String targetUrl;
 	private String imageQuery;
-	private ComicManager manager;
+	private ComicViewerManager manager;
 
-	public SimpleComicFetchTask(String baseUrl, int number, String imageQuery, ComicManager manager) {
+	public SimpleComicFetchTask(String baseUrl, int number, String imageQuery, ComicViewerManager manager) {
 		this.targetUrl = baseUrl + number;
 		this.imageQuery = imageQuery;
 		this.manager = manager;
