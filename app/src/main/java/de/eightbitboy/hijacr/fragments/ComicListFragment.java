@@ -47,7 +47,6 @@ public class ComicListFragment extends Fragment {
 		comicList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-				Logger.wtf("clicked: " + i);
 				EventBus.getDefault().post(new ComicSelectedEvent((ComicData) comicList
 						.getItemAtPosition(i)));
 			}

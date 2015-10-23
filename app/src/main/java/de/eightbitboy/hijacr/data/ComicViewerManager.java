@@ -9,6 +9,7 @@ import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.database.ComicDatabaseHelper;
@@ -71,7 +72,7 @@ public class ComicViewerManager {
 		progressListener = new ImageLoadingProgressListener() {
 			@Override
 			public void onProgressUpdate(String imageUri, View view, int current, int total) {
-				//TODO show progress somewhere
+				Logger.wtf(current + "/" + total);
 			}
 		};
 	}

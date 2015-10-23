@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.crashlytics.android.Crashlytics;
 import com.orhanobut.logger.Logger;
@@ -28,6 +29,8 @@ public class ComicViewerFragment extends Fragment {
 
 	@Bind(R.id.comic_view)
 	ImageView comicView;
+	@Bind(R.id.progress_bar)
+	ProgressBar progressBar;
 	@Bind(R.id.older_button)
 	Button olderButton;
 	@Bind(R.id.newer_button)
@@ -67,8 +70,9 @@ public class ComicViewerFragment extends Fragment {
 		Crashlytics.setString("comic",
 				ComicRepository.getComicData(settings.getLastComicId()).getTitle());
 
-		comicViewerManager = new ComicViewerManager(getActivity(), comicView, ComicRepository.getComicData
-				(settings.getLastComicId()));
+		comicViewerManager = new ComicViewerManager(getActivity(), comicView,
+				ComicRepository.getComicData
+						(settings.getLastComicId()));
 		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
@@ -82,7 +86,8 @@ public class ComicViewerFragment extends Fragment {
 		} else {
 			if (comicData != null && !comicData.equals(event.comicData)) {
 				comicViewerManager.clearComic();
-				comicViewerManager = new ComicViewerManager(getActivity(), comicView, event.comicData);
+				comicViewerManager = new ComicViewerManager(getActivity(), comicView,
+						event.comicData);
 			}
 		}
 
