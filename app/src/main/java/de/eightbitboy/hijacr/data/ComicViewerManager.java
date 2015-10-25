@@ -80,11 +80,9 @@ public class ComicViewerManager {
 		progressListener = new ImageLoadingProgressListener() {
 			@Override
 			public void onProgressUpdate(String imageUri, View view, int current, int total) {
-				if (current == 0) {
-					progressBar.setProgress(0);
-				} else {
-					progressBar.setProgress(PROGRESS_MAX * total / current);
-					Logger.wtf(progressBar.getProgress() + "");
+				if (current > 0) {
+					Logger.wtf(current + "/" + total + ", " + total / current);
+					progressBar.setProgress(Math.round(PROGRESS_MAX * (total / current)));
 				}
 			}
 		};
