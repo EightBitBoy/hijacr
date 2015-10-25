@@ -70,9 +70,8 @@ public class ComicViewerFragment extends Fragment {
 		Crashlytics.setString("comic",
 				ComicRepository.getComicData(settings.getLastComicId()).getTitle());
 
-		comicViewerManager = new ComicViewerManager(getActivity(), comicView,
-				ComicRepository.getComicData
-						(settings.getLastComicId()));
+		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
+				ComicRepository.getComicData(settings.getLastComicId()));
 		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
@@ -82,11 +81,12 @@ public class ComicViewerFragment extends Fragment {
 	public void onEvent(ComicSelectedEvent event) {
 		Logger.wtf("event: " + event.toString());
 		if (comicViewerManager == null) {
-			comicViewerManager = new ComicViewerManager(getActivity(), comicView, event.comicData);
+			comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
+					event.comicData);
 		} else {
 			if (comicData != null && !comicData.equals(event.comicData)) {
 				comicViewerManager.clearComic();
-				comicViewerManager = new ComicViewerManager(getActivity(), comicView,
+				comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
 						event.comicData);
 			}
 		}

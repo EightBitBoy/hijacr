@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -20,8 +21,11 @@ import de.greenrobot.event.EventBus;
  * Handles the comic viewing state and updates the comic view.
  */
 public class ComicViewerManager {
+	public static final int PROGRESS_MAX = 100;
+
 	private ComicDatabaseHelper database;
 	private ImageView comicView;
+	private ProgressBar progressBar;
 	private ComicData comicData;
 	private int currentComicCount = 0;
 	private String currentComicUrl;
@@ -36,11 +40,15 @@ public class ComicViewerManager {
 	 * @param comicView
 	 * @param comicData
 	 */
-	public ComicViewerManager(Context context, ImageView comicView, ComicData comicData) {
+	public ComicViewerManager(Context context, ImageView comicView, ProgressBar progressBar,
+			ComicData comicData) {
 		database = new ComicDatabaseHelper(context);
 
 		this.comicView = comicView;
+		this.progressBar = progressBar;
 		this.comicData = comicData;
+
+		progressBar.setProgress(PROGRESS_MAX);
 
 		if (this.comicData.isSimple()) {
 			this.currentComicCount = this.comicData.getFirstNumber();
@@ -72,7 +80,12 @@ public class ComicViewerManager {
 		progressListener = new ImageLoadingProgressListener() {
 			@Override
 			public void onProgressUpdate(String imageUri, View view, int current, int total) {
-				Logger.wtf(current + "/" + total);
+				if (current == 0) {
+					progressBar.setProgress(0);
+				} else {
+					progressBar.setProgress(PROGRESS_MAX * total / current);
+					Logger.wtf(progressBar.getProgress() + "");
+				}
 			}
 		};
 	}
