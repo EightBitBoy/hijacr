@@ -81,8 +81,7 @@ public class ComicViewerManager {
 			@Override
 			public void onProgressUpdate(String imageUri, View view, int current, int total) {
 				if (current > 0) {
-					Logger.wtf(current + "/" + total + ", " + total / current);
-					progressBar.setProgress(Math.round(PROGRESS_MAX * (total / current)));
+					progressBar.setProgress(Math.round(PROGRESS_MAX * ((float) current / total)));
 				}
 			}
 		};
