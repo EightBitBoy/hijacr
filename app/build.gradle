@@ -10,6 +10,7 @@ buildscript {
         classpath 'org.pegdown:pegdown:1.6.0'
         //noinspection GradleDynamicVersion
         classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'de.greenrobot:greendao-generator:2.0.0'
     }
 }
 
@@ -19,12 +20,15 @@ repositories {
     }
 }
 
+
+import de.greenrobot.daogenerator.DaoGenerator
+import de.greenrobot.daogenerator.Entity
+import de.greenrobot.daogenerator.Schema
+import org.pegdown.PegDownProcessor
+
 /*
 generate HTML-files from Markdown-files for including them in the app
  */
-
-import org.pegdown.PegDownProcessor
-
 task releaseNotes() {
     def processor = new PegDownProcessor()
 
@@ -35,6 +39,16 @@ task releaseNotes() {
     new File('app/src/main/assets/changelog.html').withWriter('UTF-8') { w ->
         w.write(processor.markdownToHtml(new File("CHANGELOG.md").text))
     }
+}
+
+task generateDao() {
+    Schema schema = new Schema(1, "de.eightbitboy.hijacr.data.dao")
+
+    Entity comic = schema.addEntity("Comic")
+    comic.addIdProperty()
+    comic.addStringProperty("title")
+
+    new DaoGenerator().generateAll(schema, "app/src/main/java")
 }
 
 apply plugin: 'com.android.application'
@@ -80,6 +94,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'de.greenrobot:greendao:2.0.0'
+    compile 'de.greenrobot:greendao-generator:2.0.0'
     compile 'org.sufficientlysecure:html-textview:1.2'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.orhanobut:logger:1.11'
