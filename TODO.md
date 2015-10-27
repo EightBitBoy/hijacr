@@ -50,3 +50,13 @@
 - https://github.com/MikeOrtiz/TouchImageView
 - https://github.com/sephiroth74/ImageViewZoom
 - https://github.com/NightWhistler/HtmlSpanner
+
+## Interesting libraries
+
+- https://github.com/koush/ion
+- https://github.com/ReactiveX/RxJava
+- https://github.com/square/otto
+- https://github.com/roboguice/roboguice
+- https://github.com/mcxiaoke/android-volley
+- https://github.com/orhanobut/wasp
+- https://github.com/orhanobut/hawk
