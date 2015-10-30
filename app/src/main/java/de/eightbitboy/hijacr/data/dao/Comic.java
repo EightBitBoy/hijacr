@@ -8,6 +8,13 @@ public class Comic {
 
     private Long id;
     private String title;
+    private String key;
+    private String url;
+    private String firstUrl;
+    private String lastViewedUrl;
+    private String imageQuery;
+    private String previousQuery;
+    private String nextQuery;
 
     public Comic() {
     }
@@ -16,9 +23,16 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String title) {
+    public Comic(Long id, String title, String key, String url, String firstUrl, String lastViewedUrl, String imageQuery, String previousQuery, String nextQuery) {
         this.id = id;
         this.title = title;
+        this.key = key;
+        this.url = url;
+        this.firstUrl = firstUrl;
+        this.lastViewedUrl = lastViewedUrl;
+        this.imageQuery = imageQuery;
+        this.previousQuery = previousQuery;
+        this.nextQuery = nextQuery;
     }
 
     public Long getId() {
@@ -35,6 +49,62 @@ public class Comic {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getFirstUrl() {
+        return firstUrl;
+    }
+
+    public void setFirstUrl(String firstUrl) {
+        this.firstUrl = firstUrl;
+    }
+
+    public String getLastViewedUrl() {
+        return lastViewedUrl;
+    }
+
+    public void setLastViewedUrl(String lastViewedUrl) {
+        this.lastViewedUrl = lastViewedUrl;
+    }
+
+    public String getImageQuery() {
+        return imageQuery;
+    }
+
+    public void setImageQuery(String imageQuery) {
+        this.imageQuery = imageQuery;
+    }
+
+    public String getPreviousQuery() {
+        return previousQuery;
+    }
+
+    public void setPreviousQuery(String previousQuery) {
+        this.previousQuery = previousQuery;
+    }
+
+    public String getNextQuery() {
+        return nextQuery;
+    }
+
+    public void setNextQuery(String nextQuery) {
+        this.nextQuery = nextQuery;
     }
 
 }

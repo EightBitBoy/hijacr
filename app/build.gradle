@@ -47,6 +47,13 @@ task generateDao() {
     Entity comic = schema.addEntity("Comic")
     comic.addIdProperty()
     comic.addStringProperty("title")
+    comic.addStringProperty("key")
+    comic.addStringProperty("url")
+    comic.addStringProperty("firstUrl")
+    comic.addStringProperty("lastViewedUrl")
+    comic.addStringProperty("imageQuery")
+    comic.addStringProperty("previousQuery")
+    comic.addStringProperty("nextQuery")
 
     new DaoGenerator().generateAll(schema, "app/src/main/java")
 }
