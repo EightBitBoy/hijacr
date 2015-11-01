@@ -5,6 +5,7 @@ import android.content.Context;
 /**
  * A helper class for working with the ComicDatabase class.
  */
+@Deprecated
 public class ComicDatabaseHelper {
 	private ComicDatabase database;
 

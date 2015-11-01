@@ -14,6 +14,7 @@ import de.eightbitboy.hijacr.data.database.ComicDatabaseContract.ComicDataEntry;
 /**
  * Stores information about comics and reading progress in a SQLite database.
  */
+@Deprecated
 public class ComicDatabase extends SQLiteOpenHelper {
 	private static ComicDatabase instance;
 

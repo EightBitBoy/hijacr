@@ -2,6 +2,7 @@ package de.eightbitboy.hijacr.data.database;
 
 import android.provider.BaseColumns;
 
+@Deprecated
 public class ComicDatabaseContract {
 
 	public ComicDatabaseContract() {
