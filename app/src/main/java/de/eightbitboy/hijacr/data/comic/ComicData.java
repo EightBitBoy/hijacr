@@ -64,9 +64,9 @@ public class ComicData {
 	 * @param firstNumber
 	 * @param imageQuery
 	 */
+	/*
 	public ComicData(int id, String key, String title, String url, String baseUrl, int firstNumber,
-			String
-					imageQuery) {
+			String imageQuery) {
 		this.id = id;
 		this.key = key;
 		this.title = title;
@@ -76,6 +76,7 @@ public class ComicData {
 		this.imageQuery = imageQuery;
 		this.simple = true;
 	}
+	*/
 
 	/**
 	 * Define a comic. The URLs for accessing comic pages must be parsed from a page.
@@ -88,8 +89,7 @@ public class ComicData {
 	 * @param nextQuery
 	 */
 	public ComicData(int id, String key, String title, String url, String firstUrl, String
-			imageQuery,
-			String previousQuery, String nextQuery) {
+			imageQuery, String previousQuery, String nextQuery) {
 		this.id = id;
 		this.key = key;
 		this.title = title;
