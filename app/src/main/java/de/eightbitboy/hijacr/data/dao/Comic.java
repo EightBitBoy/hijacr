@@ -15,6 +15,7 @@ public class Comic {
     private String imageQuery;
     private String previousQuery;
     private String nextQuery;
+    private Boolean hidden;
 
     public Comic() {
     }
@@ -23,7 +24,7 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String title, String key, String url, String firstUrl, String lastViewedUrl, String imageQuery, String previousQuery, String nextQuery) {
+    public Comic(Long id, String title, String key, String url, String firstUrl, String lastViewedUrl, String imageQuery, String previousQuery, String nextQuery, Boolean hidden) {
         this.id = id;
         this.title = title;
         this.key = key;
@@ -33,6 +34,7 @@ public class Comic {
         this.imageQuery = imageQuery;
         this.previousQuery = previousQuery;
         this.nextQuery = nextQuery;
+        this.hidden = hidden;
     }
 
     public Long getId() {
@@ -105,6 +107,14 @@ public class Comic {
 
     public void setNextQuery(String nextQuery) {
         this.nextQuery = nextQuery;
+    }
+
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
     }
 
 }

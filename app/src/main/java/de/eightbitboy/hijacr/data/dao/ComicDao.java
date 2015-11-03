@@ -32,6 +32,7 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         public final static Property ImageQuery = new Property(6, String.class, "imageQuery", false, "IMAGE_QUERY");
         public final static Property PreviousQuery = new Property(7, String.class, "previousQuery", false, "PREVIOUS_QUERY");
         public final static Property NextQuery = new Property(8, String.class, "nextQuery", false, "NEXT_QUERY");
+        public final static Property Hidden = new Property(9, Boolean.class, "hidden", false, "HIDDEN");
     };
 
 
@@ -55,7 +56,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
                 "\"LAST_VIEWED_URL\" TEXT," + // 5: lastViewedUrl
                 "\"IMAGE_QUERY\" TEXT," + // 6: imageQuery
                 "\"PREVIOUS_QUERY\" TEXT," + // 7: previousQuery
-                "\"NEXT_QUERY\" TEXT);"); // 8: nextQuery
+                "\"NEXT_QUERY\" TEXT," + // 8: nextQuery
+                "\"HIDDEN\" INTEGER);"); // 9: hidden
     }
 
     /** Drops the underlying database table. */
@@ -113,6 +115,11 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         if (nextQuery != null) {
             stmt.bindString(9, nextQuery);
         }
+ 
+        Boolean hidden = entity.getHidden();
+        if (hidden != null) {
+            stmt.bindLong(10, hidden ? 1L: 0L);
+        }
     }
 
     /** @inheritdoc */
@@ -133,7 +140,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // lastViewedUrl
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // imageQuery
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // previousQuery
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8) // nextQuery
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // nextQuery
+            cursor.isNull(offset + 9) ? null : cursor.getShort(offset + 9) != 0 // hidden
         );
         return entity;
     }
@@ -150,6 +158,7 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         entity.setImageQuery(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setPreviousQuery(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setNextQuery(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setHidden(cursor.isNull(offset + 9) ? null : cursor.getShort(offset + 9) != 0);
      }
     
     /** @inheritdoc */

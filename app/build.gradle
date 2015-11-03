@@ -54,6 +54,7 @@ task generateDao() {
     comic.addStringProperty("imageQuery")
     comic.addStringProperty("previousQuery")
     comic.addStringProperty("nextQuery")
+    comic.addBooleanProperty("hidden")
 
     new DaoGenerator().generateAll(schema, "app/src/main/java")
 }
