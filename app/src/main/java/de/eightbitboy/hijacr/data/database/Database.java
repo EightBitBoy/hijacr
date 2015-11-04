@@ -9,8 +9,9 @@ import de.eightbitboy.hijacr.data.dao.DaoMaster;
 import de.eightbitboy.hijacr.data.dao.DaoSession;
 
 public class Database {
-	//TODO rename as soon as old database code is removed
-	public static String DB_NAME = "comics.db.new";
+	public static String DB_NAME = "comics.dao.db";
+
+	private static Database instance;
 
 	private Context context;
 
@@ -18,14 +19,27 @@ public class Database {
 
 	private DaoMaster master;
 
-	public Database(Context context) {
+	private Database(Context context) {
 		this.context = context;
-		initialize();
+		setUp();
+		insertDefaultData();
 	}
 
-	private void initialize() {
+	public static synchronized Database getInstance(Context context) {
+		if (instance == null) {
+			instance = new Database(context);
+		}
+
+		return instance;
+	}
+
+	private void setUp() {
 		db = new DaoMaster.DevOpenHelper(context, DB_NAME, null).getWritableDatabase();
 		master = new DaoMaster(db);
+	}
+
+	private void insertDefaultData() {
+
 	}
 
 	public Comic getComicById(long id) {
