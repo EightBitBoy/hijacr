@@ -39,7 +39,34 @@ public class Database {
 	}
 
 	private void insertDefaultData() {
+		DaoSession session = master.newSession();
+		ComicDao dao = session.getComicDao();
 
+		Comic comic;
+
+		//Long id
+		//String title
+		// String key
+		// String url
+		// String firstUrl
+		// String lastViewedUrl
+		// String imageQuery
+		// String previousQuery
+		// String nextQuery
+		// Boolean hidden
+		comic = new Comic(
+				4L,
+				"extralife",
+				"ExtraLife",
+				"http://www.myextralife.com/",
+				"http://www.myextralife.com/comic/06172001/",
+				"",
+				".comic",
+				".prev_comic_link",
+				".next_comic_link",
+				false);
+
+		dao.insert(comic);
 	}
 
 	public Comic getComicById(long id) {

@@ -7,8 +7,8 @@ package de.eightbitboy.hijacr.data.dao;
 public class Comic {
 
     private Long id;
-    private String title;
     private String key;
+    private String title;
     private String url;
     private String firstUrl;
     private String lastViewedUrl;
@@ -24,10 +24,10 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String title, String key, String url, String firstUrl, String lastViewedUrl, String imageQuery, String previousQuery, String nextQuery, Boolean hidden) {
+    public Comic(Long id, String key, String title, String url, String firstUrl, String lastViewedUrl, String imageQuery, String previousQuery, String nextQuery, Boolean hidden) {
         this.id = id;
-        this.title = title;
         this.key = key;
+        this.title = title;
         this.url = url;
         this.firstUrl = firstUrl;
         this.lastViewedUrl = lastViewedUrl;
@@ -45,20 +45,20 @@ public class Comic {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getKey() {
         return key;
     }
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getUrl() {

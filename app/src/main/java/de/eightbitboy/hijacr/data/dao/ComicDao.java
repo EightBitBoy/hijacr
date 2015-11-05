@@ -24,8 +24,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Title = new Property(1, String.class, "title", false, "TITLE");
-        public final static Property Key = new Property(2, String.class, "key", false, "KEY");
+        public final static Property Key = new Property(1, String.class, "key", false, "KEY");
+        public final static Property Title = new Property(2, String.class, "title", false, "TITLE");
         public final static Property Url = new Property(3, String.class, "url", false, "URL");
         public final static Property FirstUrl = new Property(4, String.class, "firstUrl", false, "FIRST_URL");
         public final static Property LastViewedUrl = new Property(5, String.class, "lastViewedUrl", false, "LAST_VIEWED_URL");
@@ -49,8 +49,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"COMIC\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"TITLE\" TEXT," + // 1: title
-                "\"KEY\" TEXT," + // 2: key
+                "\"KEY\" TEXT," + // 1: key
+                "\"TITLE\" TEXT," + // 2: title
                 "\"URL\" TEXT," + // 3: url
                 "\"FIRST_URL\" TEXT," + // 4: firstUrl
                 "\"LAST_VIEWED_URL\" TEXT," + // 5: lastViewedUrl
@@ -76,14 +76,14 @@ public class ComicDao extends AbstractDao<Comic, Long> {
             stmt.bindLong(1, id);
         }
  
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(2, title);
-        }
- 
         String key = entity.getKey();
         if (key != null) {
-            stmt.bindString(3, key);
+            stmt.bindString(2, key);
+        }
+ 
+        String title = entity.getTitle();
+        if (title != null) {
+            stmt.bindString(3, title);
         }
  
         String url = entity.getUrl();
@@ -133,8 +133,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
     public Comic readEntity(Cursor cursor, int offset) {
         Comic entity = new Comic( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // title
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // key
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // key
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // title
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // url
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // firstUrl
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // lastViewedUrl
@@ -150,8 +150,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
     @Override
     public void readEntity(Cursor cursor, Comic entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setKey(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setKey(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setTitle(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setUrl(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setFirstUrl(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setLastViewedUrl(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));

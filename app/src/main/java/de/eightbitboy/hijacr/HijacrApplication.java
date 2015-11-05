@@ -9,6 +9,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import de.eightbitboy.hijacr.data.database.Database;
 import io.fabric.sdk.android.Fabric;
 
 public class HijacrApplication extends Application {
@@ -17,6 +18,8 @@ public class HijacrApplication extends Application {
 		super.onCreate();
 
 		Fabric.with(this, new Crashlytics());
+
+		Database.getInstance(this);
 
 		DisplayImageOptions options = new DisplayImageOptions.Builder()
 				.cacheInMemory(true)
