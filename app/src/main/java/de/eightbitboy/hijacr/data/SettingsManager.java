@@ -35,12 +35,12 @@ public class SettingsManager {
 		return preferences.getBoolean(resources.getString(R.string.pref_debug), false);
 	}
 
-	public int getLastComicId() {
-		return preferences.getInt(PREF_LAST_COMIC, 1);
+	public long getLastComicId() {
+		return preferences.getLong(PREF_LAST_COMIC, 1);
 	}
 
-	public void setLastComicId(int value) {
-		edit().putInt(PREF_LAST_COMIC, value).commit();
+	public void setLastComicId(long value) {
+		edit().putLong(PREF_LAST_COMIC, value).commit();
 	}
 
 	private SharedPreferences.Editor edit() {

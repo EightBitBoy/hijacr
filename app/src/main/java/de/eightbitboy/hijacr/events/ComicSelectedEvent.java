@@ -1,19 +1,14 @@
 package de.eightbitboy.hijacr.events;
 
-import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.dao.Comic;
 
 /**
  * For notifying subscribers that a comic has been selected from the comics list.
  */
 public class ComicSelectedEvent {
-	public final ComicData comicData;
+	public final Comic comic;
 
-	public ComicSelectedEvent(ComicData comicData) {
-		this.comicData = comicData;
-	}
-
-	@Override
-	public String toString() {
-		return comicData.toString();
+	public ComicSelectedEvent(Comic comic) {
+		this.comic = comic;
 	}
 }

@@ -20,6 +20,7 @@ import de.eightbitboy.hijacr.data.ComicViewerManager;
 import de.eightbitboy.hijacr.data.ComicRepository;
 import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
@@ -36,7 +37,7 @@ public class ComicViewerFragment extends Fragment {
 	@Bind(R.id.newer_button)
 	Button newerButton;
 
-	private ComicData comicData;
+	private Comic comic;
 	private ComicViewerManager comicViewerManager;
 	private SettingsManager settings;
 	private PhotoViewAttacher attacher;
@@ -72,9 +73,11 @@ public class ComicViewerFragment extends Fragment {
 				ComicRepository.getComicData(settings.getLastComicId()).getTitle());
 		*/
 
+		/*
 		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
 				ComicRepository.getComicData(settings.getLastComicId()));
 		comicViewerManager.loadCurrentComic();
+		*/
 
 		setUpButtonActions();
 	}
@@ -84,19 +87,19 @@ public class ComicViewerFragment extends Fragment {
 		Logger.wtf("event: " + event.toString());
 		if (comicViewerManager == null) {
 			comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-					event.comicData);
+					event.comic);
 		} else {
-			if (comicData != null && !comicData.equals(event.comicData)) {
+			if (comic != null && !comic.equals(event.comic)) {
 				comicViewerManager.clearComic();
 				comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-						event.comicData);
+						event.comic);
 			}
 		}
 
-		Crashlytics.setString("comic", event.comicData.getTitle());
+		Crashlytics.setString("comic", event.comic.getTitle());
 
-		comicData = event.comicData;
-		settings.setLastComicId(comicData.getId());
+		comic = event.comic;
+		settings.setLastComicId(comic.getId());
 		comicViewerManager.loadCurrentComic();
 	}
 

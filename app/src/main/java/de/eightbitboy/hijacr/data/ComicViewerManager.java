@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.data.database.ComicDatabaseHelper;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
@@ -26,7 +27,7 @@ public class ComicViewerManager {
 	private ComicDatabaseHelper database;
 	private ImageView comicView;
 	private ProgressBar progressBar;
-	private ComicData comicData;
+	private Comic comic;
 	private int currentComicCount = 0;
 	private String currentComicUrl;
 	private String previousComicUrl;
@@ -38,15 +39,15 @@ public class ComicViewerManager {
 	 * Creates a new ComicViewerManager intended for starting a new comic.
 	 *
 	 * @param comicView
-	 * @param comicData
+	 * @param comic
 	 */
 	public ComicViewerManager(Context context, ImageView comicView, ProgressBar progressBar,
-			ComicData comicData) {
+			Comic comic) {
 		database = new ComicDatabaseHelper(context);
 
 		this.comicView = comicView;
 		this.progressBar = progressBar;
-		this.comicData = comicData;
+		this.comic = comic;
 
 		progressBar.setProgress(PROGRESS_MAX);
 
@@ -101,24 +102,32 @@ public class ComicViewerManager {
 	public void loadNextComic() {
 		Crashlytics.setString("nextComicUrl", nextComicUrl);
 		currentComicCount++;
+		/*
 		database.setProgressNumber(comicData.getId(), currentComicCount);
+		*/
 		fetchComicUrl(nextComicUrl);
 
 		if (nextComicUrl != null) {
 			currentComicUrl = nextComicUrl;
+			/*
 			database.setProgressUrl(comicData.getId(), currentComicUrl);
+			*/
 		}
 	}
 
 	public void loadPreviousComic() {
 		Crashlytics.setString("previousComicUrl", previousComicUrl);
 		currentComicCount--;
+		/*
 		database.setProgressNumber(comicData.getId(), currentComicCount);
+		*/
 		fetchComicUrl(previousComicUrl);
 
 		if (previousComicUrl != null) {
 			currentComicUrl = previousComicUrl;
+			/*
 			database.setProgressUrl(comicData.getId(), currentComicUrl);
+			*/
 		}
 	}
 
