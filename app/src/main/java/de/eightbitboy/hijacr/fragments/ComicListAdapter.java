@@ -11,12 +11,13 @@ import java.util.List;
 
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.dao.Comic;
 
-public class ComicListAdapter extends ArrayAdapter<ComicData> {
+public class ComicListAdapter extends ArrayAdapter<Comic> {
 	private Context context;
-	private List<ComicData> comics;
+	private List<Comic> comics;
 
-	public ComicListAdapter(Context context, int resource, List<ComicData> comics) {
+	public ComicListAdapter(Context context, int resource, List<Comic> comics) {
 		super(context, -1, comics);
 		this.context = context;
 		this.comics = comics;
@@ -24,7 +25,7 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		ComicData data = comics.get(position);
+		Comic data = comics.get(position);
 
 		ViewHolder viewHolder;
 		if (convertView == null) {
@@ -42,7 +43,8 @@ public class ComicListAdapter extends ArrayAdapter<ComicData> {
 		}
 
 		viewHolder.title.setText(data.getTitle());
-		viewHolder.url.setText(data.getCleanUrl());
+		//TODO
+		//viewHolder.url.setText(data.getCleanUrl());
 
 		return convertView;
 	}

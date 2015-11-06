@@ -67,8 +67,10 @@ public class ComicViewerFragment extends Fragment {
 
 		attacher = new PhotoViewAttacher(comicView);
 
+		/*
 		Crashlytics.setString("comic",
 				ComicRepository.getComicData(settings.getLastComicId()).getTitle());
+		*/
 
 		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
 				ComicRepository.getComicData(settings.getLastComicId()));

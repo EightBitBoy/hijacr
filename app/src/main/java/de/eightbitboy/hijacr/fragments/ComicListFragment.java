@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicRepository;
 import de.eightbitboy.hijacr.data.comic.ComicData;
+import de.eightbitboy.hijacr.data.database.Database;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.greenrobot.event.EventBus;
 
@@ -22,11 +23,13 @@ public class ComicListFragment extends Fragment {
 
 	@Bind(R.id.comic_list_view)
 	ListView comicList;
+	private Database db;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.comic_list, container, false);
 		ButterKnife.bind(this, view);
+		db = Database.getInstance(this.getContext());
 		return view;
 	}
 
@@ -34,13 +37,13 @@ public class ComicListFragment extends Fragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		setUpComicList();
-		setUpComicListClickAction();
+		//setUpComicListClickAction();
 	}
 
 	private void setUpComicList() {
 		comicList.setAdapter(
 				new ComicListAdapter(getActivity().getApplicationContext(), 0,
-						ComicRepository.getComicList()));
+						db.getAllComics()));
 	}
 
 	private void setUpComicListClickAction() {

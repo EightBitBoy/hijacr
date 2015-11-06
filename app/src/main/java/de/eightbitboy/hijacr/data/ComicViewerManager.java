@@ -50,6 +50,7 @@ public class ComicViewerManager {
 
 		progressBar.setProgress(PROGRESS_MAX);
 
+		/*
 		if (this.comicData.isSimple()) {
 			this.currentComicCount = this.comicData.getFirstNumber();
 		} else {
@@ -67,6 +68,7 @@ public class ComicViewerManager {
 		}
 
 		setUpImageListeners();
+		*/
 	}
 
 	private void setUpImageListeners() {
@@ -121,6 +123,7 @@ public class ComicViewerManager {
 	}
 
 	private void fetchComicUrl(String url) {
+		/*
 		if (comicData.isSimple()) {
 			new SimpleComicFetchTask(comicData.getBaseUrl(), currentComicCount,
 					comicData.getImageQuery(),
@@ -129,6 +132,7 @@ public class ComicViewerManager {
 			new ComicFetchTask(url, comicData.getImageQuery(), comicData
 					.getPreviousQuery(), comicData.getNextQuery(), this).execute();
 		}
+		*/
 	}
 
 	public void onGetImageSource(String source, String previousComicUrl, String nextComicUrl) {
