@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.eightbitboy.hijacr.R;
-import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.dao.Comic;
 
 public class ComicListAdapter extends ArrayAdapter<Comic> {
@@ -25,7 +24,7 @@ public class ComicListAdapter extends ArrayAdapter<Comic> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Comic data = comics.get(position);
+		Comic comic = comics.get(position);
 
 		ViewHolder viewHolder;
 		if (convertView == null) {
@@ -42,9 +41,8 @@ public class ComicListAdapter extends ArrayAdapter<Comic> {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
-		viewHolder.title.setText(data.getTitle());
-		//TODO
-		//viewHolder.url.setText(data.getCleanUrl());
+		viewHolder.title.setText(comic.getTitle());
+		viewHolder.url.setText(comic.getSimpleUrl());
 
 		return convertView;
 	}
