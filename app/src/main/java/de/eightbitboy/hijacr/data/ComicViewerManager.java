@@ -10,11 +10,9 @@ import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.orhanobut.logger.Logger;
 
-import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.dao.Comic;
-import de.eightbitboy.hijacr.data.database.ComicDatabaseHelper;
+import de.eightbitboy.hijacr.data.database.Database;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
 
@@ -24,7 +22,7 @@ import de.greenrobot.event.EventBus;
 public class ComicViewerManager {
 	public static final int PROGRESS_MAX = 100;
 
-	private ComicDatabaseHelper database;
+	private Database db;
 	private ImageView comicView;
 	private ProgressBar progressBar;
 	private Comic comic;
@@ -43,8 +41,7 @@ public class ComicViewerManager {
 	 */
 	public ComicViewerManager(Context context, ImageView comicView, ProgressBar progressBar,
 			Comic comic) {
-		database = new ComicDatabaseHelper(context);
-
+		this.db = Database.getInstance(context);
 		this.comicView = comicView;
 		this.progressBar = progressBar;
 		this.comic = comic;
