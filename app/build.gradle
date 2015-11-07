@@ -43,6 +43,7 @@ task releaseNotes() {
 
 task generateDao() {
     Schema schema = new Schema(1, "de.eightbitboy.hijacr.data.dao")
+    schema.enableKeepSectionsByDefault()
 
     Entity comic = schema.addEntity("Comic")
     comic.addIdProperty()
