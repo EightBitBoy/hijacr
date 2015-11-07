@@ -40,13 +40,14 @@ public class Database {
 		master = new DaoMaster(db);
 	}
 
+	/**
+	 * Populate the empty database with comic data.
+	 */
 	private void insertDefaultData() {
-		DaoSession session = master.newSession();
-		ComicDao dao = session.getComicDao();
+		if (getAllComics().isEmpty()) {
+			ComicDao dao = createSessionDao();
+			Comic comic;
 
-		Comic comic;
-
-		if (dao.load(4L) == null) {
 			comic = new Comic(
 					4L,
 					"extralife",
@@ -63,15 +64,14 @@ public class Database {
 	}
 
 	public List<Comic> getAllComics() {
-		DaoSession session = master.newSession();
-		ComicDao dao = session.getComicDao();
-
-		return dao.loadAll();
+		return createSessionDao().loadAll();
 	}
 
 	public Comic getComicById(long id) {
-		DaoSession session = master.newSession();
-		ComicDao dao = session.getComicDao();
-		return dao.load(id);
+		return createSessionDao().load(id);
+	}
+
+	private ComicDao createSessionDao() {
+		return master.newSession().getComicDao();
 	}
 }
