@@ -54,7 +54,7 @@ public class Database {
 					"ExtraLife",
 					"http://www.myextralife.com/",
 					"http://www.myextralife.com/comic/06172001/",
-					"",
+					null,
 					".comic",
 					".prev_comic_link",
 					".next_comic_link",

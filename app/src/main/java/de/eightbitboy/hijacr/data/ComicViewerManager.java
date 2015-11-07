@@ -48,25 +48,13 @@ public class ComicViewerManager {
 
 		progressBar.setProgress(PROGRESS_MAX);
 
-		/*
-		if (this.comicData.isSimple()) {
-			this.currentComicCount = this.comicData.getFirstNumber();
+		if (comic.getLastViewedUrl() != null) {
+			this.currentComicUrl = comic.getLastViewedUrl();
 		} else {
-			this.currentComicUrl = this.comicData.getFirstUrl();
-		}
-
-		int savedComicCount = database.getProgressNumber(this.comicData.getId());
-		if (savedComicCount > -1) {
-			this.currentComicCount = savedComicCount;
-		}
-
-		String savedComicUrl = database.getProgressUrl(this.comicData.getId());
-		if (savedComicUrl != null) {
-			this.currentComicUrl = savedComicUrl;
+			this.currentComicUrl = comic.getFirstUrl();
 		}
 
 		setUpImageListeners();
-		*/
 	}
 
 	private void setUpImageListeners() {
