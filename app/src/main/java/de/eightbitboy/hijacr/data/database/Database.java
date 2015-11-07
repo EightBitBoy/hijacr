@@ -61,6 +61,22 @@ public class Database {
 					false);
 			dao.insert(comic);
 		}
+
+		/*
+		comics.put("explosm", new ComicData(5, "explosm", "Explosm", "http://explosm.net/",
+				"http://explosm.net/comics/15", "#main-comic", ".previous-comic",
+				".next-comic"));
+		comics.put("smbc", new ComicData(2, "smbc", "SMBC", "http://www.smbc-comics.com/",
+				"http://www.smbc-comics.com/index.php?id=", 1, "#comic"));
+		comics.put("vgcats", new ComicData(3, "vgcats", "VgCats", "http://www.vgcats.com/",
+				"http://www.vgcats.com/comics/?strip_id=", 0, "tbody div img[width]"));
+		comics.put("xkcd", new ComicData(1, "xkcd", "XKCD", "http://xkcd.com/",
+				"http://xkcd.com/", 1, "#comic img[src]"));
+		*/
+	}
+
+	private ComicDao createSessionDao() {
+		return master.newSession().getComicDao();
 	}
 
 	public List<Comic> getAllComics() {
@@ -69,9 +85,5 @@ public class Database {
 
 	public Comic getComicById(long id) {
 		return createSessionDao().load(id);
-	}
-
-	private ComicDao createSessionDao() {
-		return master.newSession().getComicDao();
 	}
 }

@@ -26,14 +26,10 @@ public class ComicRepository {
 
 	//TODO a comic might start at position 0 like vgcats!
 	private void initializeComics() {
+		/*
 		comics.put("explosm", new ComicData(5, "explosm", "Explosm", "http://explosm.net/",
 				"http://explosm.net/comics/15", "#main-comic", ".previous-comic",
 				".next-comic"));
-		comics.put("extralife", new ComicData(4, "extralife", "ExtraLife",
-				"http://www.myextralife.com/",
-				"http://www.myextralife.com/comic/06172001/", ".comic", ".prev_comic_link",
-				".next_comic_link"));
-		/*
 		comics.put("smbc", new ComicData(2, "smbc", "SMBC", "http://www.smbc-comics.com/",
 				"http://www.smbc-comics.com/index.php?id=", 1, "#comic"));
 		comics.put("vgcats", new ComicData(3, "vgcats", "VgCats", "http://www.vgcats.com/",
