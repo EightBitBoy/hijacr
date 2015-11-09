@@ -12,7 +12,6 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListe
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import de.eightbitboy.hijacr.data.dao.Comic;
-import de.eightbitboy.hijacr.data.database.Database;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
 

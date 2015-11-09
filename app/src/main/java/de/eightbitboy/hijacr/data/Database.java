@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr.data.database;
+package de.eightbitboy.hijacr.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +8,6 @@ import java.util.List;
 import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.data.dao.ComicDao;
 import de.eightbitboy.hijacr.data.dao.DaoMaster;
-import de.eightbitboy.hijacr.data.dao.DaoSession;
 
 public class Database {
 	public static String DB_NAME = "comics.dao.db";

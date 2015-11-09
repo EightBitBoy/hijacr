@@ -9,7 +9,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-import de.eightbitboy.hijacr.data.database.Database;
+import de.eightbitboy.hijacr.data.Database;
 import io.fabric.sdk.android.Fabric;
 
 public class HijacrApplication extends Application {
