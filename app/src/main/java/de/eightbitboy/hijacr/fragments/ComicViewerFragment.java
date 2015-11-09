@@ -17,9 +17,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicViewerManager;
-import de.eightbitboy.hijacr.data.ComicRepository;
+import de.eightbitboy.hijacr.data.Database;
 import de.eightbitboy.hijacr.data.SettingsManager;
-import de.eightbitboy.hijacr.data.comic.ComicData;
 import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
@@ -68,16 +67,11 @@ public class ComicViewerFragment extends Fragment {
 
 		attacher = new PhotoViewAttacher(comicView);
 
-		/*
-		Crashlytics.setString("comic",
-				ComicRepository.getComicData(settings.getLastComicId()).getTitle());
-		*/
-
-		/*
+		//TODO get comic from settings.getLastComicId()
 		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-				ComicRepository.getComicData(settings.getLastComicId()));
-		comicViewerManager.loadCurrentComic();
-		*/
+				Database.getInstance(this.getContext()).getComicById(4L));
+		//TODO
+		//comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
 	}
