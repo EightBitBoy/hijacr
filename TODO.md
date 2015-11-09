@@ -17,6 +17,7 @@
 
 ## Comic list
 
+- sort comics alphabetically
 - long press menu for opening links to comic websites
 - enable resetting reading progress or setting the progress manually
 - enable adding custom comics and modifying existing ones

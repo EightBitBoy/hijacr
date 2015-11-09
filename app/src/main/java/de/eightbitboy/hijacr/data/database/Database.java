@@ -60,12 +60,21 @@ public class Database {
 					".next_comic_link",
 					false);
 			dao.insert(comic);
+
+			comic = new Comic(
+					5L,
+					"explosm",
+					"Explosm",
+					"http://explosm.net/",
+					"http://explosm.net/comics/15", null,
+					"#main-comic",
+					".previous-comic",
+					".next-comic",
+					false);
+			dao.insert(comic);
 		}
 
 		/*
-		comics.put("explosm", new ComicData(5, "explosm", "Explosm", "http://explosm.net/",
-				"http://explosm.net/comics/15", "#main-comic", ".previous-comic",
-				".next-comic"));
 		comics.put("smbc", new ComicData(2, "smbc", "SMBC", "http://www.smbc-comics.com/",
 				"http://www.smbc-comics.com/index.php?id=", 1, "#comic"));
 		comics.put("vgcats", new ComicData(3, "vgcats", "VgCats", "http://www.vgcats.com/",
