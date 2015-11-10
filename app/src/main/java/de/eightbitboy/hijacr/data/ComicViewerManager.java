@@ -25,7 +25,6 @@ public class ComicViewerManager {
 	private ImageView comicView;
 	private ProgressBar progressBar;
 	private Comic comic;
-	private int currentComicCount = 0;
 	private String currentComicUrl;
 	private String previousComicUrl;
 	private String nextComicUrl;
@@ -34,9 +33,6 @@ public class ComicViewerManager {
 
 	/**
 	 * Creates a new ComicViewerManager intended for starting a new comic.
-	 *
-	 * @param comicView
-	 * @param comic
 	 */
 	public ComicViewerManager(Context context, ImageView comicView, ProgressBar progressBar,
 			Comic comic) {
@@ -47,8 +43,8 @@ public class ComicViewerManager {
 
 		progressBar.setProgress(PROGRESS_MAX);
 
-		if (comic.getLastViewedUrl() != null) {
-			this.currentComicUrl = comic.getLastViewedUrl();
+		if (comic.getRecentUrl() != null) {
+			this.currentComicUrl = comic.getRecentUrl();
 		} else {
 			this.currentComicUrl = comic.getFirstUrl();
 		}
@@ -81,37 +77,28 @@ public class ComicViewerManager {
 	public void loadCurrentComic() {
 		Crashlytics.setString("currentComicUrl", currentComicUrl);
 		fetchComicUrl(currentComicUrl);
+		saveProgress();
 	}
 
 	public void loadNextComic() {
 		Crashlytics.setString("nextComicUrl", nextComicUrl);
-		currentComicCount++;
-		/*
-		database.setProgressNumber(comicData.getId(), currentComicCount);
-		*/
+
 		fetchComicUrl(nextComicUrl);
 
 		if (nextComicUrl != null) {
 			currentComicUrl = nextComicUrl;
-			/*
-			database.setProgressUrl(comicData.getId(), currentComicUrl);
-			*/
+			saveProgress();
 		}
 	}
 
 	public void loadPreviousComic() {
 		Crashlytics.setString("previousComicUrl", previousComicUrl);
-		currentComicCount--;
-		/*
-		database.setProgressNumber(comicData.getId(), currentComicCount);
-		*/
+
 		fetchComicUrl(previousComicUrl);
 
 		if (previousComicUrl != null) {
 			currentComicUrl = previousComicUrl;
-			/*
-			database.setProgressUrl(comicData.getId(), currentComicUrl);
-			*/
+			saveProgress();
 		}
 	}
 
@@ -127,14 +114,8 @@ public class ComicViewerManager {
 				progressListener);
 	}
 
-	/**
-	 * This callback is executed when a SimpleComicFetchTask returns successfully.
-	 * It loads the image from the given url into the comic ImageView.
-	 *
-	 * @param source The image URL.
-	 */
-	public void onGetSimpleImageSource(String source) {
-		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
-				progressListener);
+	private void saveProgress() {
+		comic.setRecentUrl(currentComicUrl);
+		db.updateComic(comic);
 	}
 }

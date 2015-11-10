@@ -54,6 +54,7 @@ public class Database {
 					"http://www.myextralife.com/",
 					"http://www.myextralife.com/comic/06172001/",
 					null,
+					null,
 					".comic",
 					".prev_comic_link",
 					".next_comic_link",
@@ -65,7 +66,9 @@ public class Database {
 					"explosm",
 					"Explosm",
 					"http://explosm.net/",
-					"http://explosm.net/comics/15", null,
+					"http://explosm.net/comics/15",
+					null,
+					null,
 					"#main-comic",
 					".previous-comic",
 					".next-comic",
@@ -93,5 +96,9 @@ public class Database {
 
 	public Comic getComicById(long id) {
 		return createSessionDao().load(id);
+	}
+
+	public void updateComic(Comic comic) {
+		createSessionDao().update(comic);
 	}
 }

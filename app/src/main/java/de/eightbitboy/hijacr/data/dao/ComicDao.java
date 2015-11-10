@@ -28,11 +28,12 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         public final static Property Title = new Property(2, String.class, "title", false, "TITLE");
         public final static Property Url = new Property(3, String.class, "url", false, "URL");
         public final static Property FirstUrl = new Property(4, String.class, "firstUrl", false, "FIRST_URL");
-        public final static Property LastViewedUrl = new Property(5, String.class, "lastViewedUrl", false, "LAST_VIEWED_URL");
-        public final static Property ImageQuery = new Property(6, String.class, "imageQuery", false, "IMAGE_QUERY");
-        public final static Property PreviousQuery = new Property(7, String.class, "previousQuery", false, "PREVIOUS_QUERY");
-        public final static Property NextQuery = new Property(8, String.class, "nextQuery", false, "NEXT_QUERY");
-        public final static Property Hidden = new Property(9, Boolean.class, "hidden", false, "HIDDEN");
+        public final static Property LastUrl = new Property(5, String.class, "lastUrl", false, "LAST_URL");
+        public final static Property RecentUrl = new Property(6, String.class, "recentUrl", false, "RECENT_URL");
+        public final static Property ImageQuery = new Property(7, String.class, "imageQuery", false, "IMAGE_QUERY");
+        public final static Property PreviousQuery = new Property(8, String.class, "previousQuery", false, "PREVIOUS_QUERY");
+        public final static Property NextQuery = new Property(9, String.class, "nextQuery", false, "NEXT_QUERY");
+        public final static Property Hidden = new Property(10, Boolean.class, "hidden", false, "HIDDEN");
     };
 
 
@@ -53,11 +54,12 @@ public class ComicDao extends AbstractDao<Comic, Long> {
                 "\"TITLE\" TEXT," + // 2: title
                 "\"URL\" TEXT," + // 3: url
                 "\"FIRST_URL\" TEXT," + // 4: firstUrl
-                "\"LAST_VIEWED_URL\" TEXT," + // 5: lastViewedUrl
-                "\"IMAGE_QUERY\" TEXT," + // 6: imageQuery
-                "\"PREVIOUS_QUERY\" TEXT," + // 7: previousQuery
-                "\"NEXT_QUERY\" TEXT," + // 8: nextQuery
-                "\"HIDDEN\" INTEGER);"); // 9: hidden
+                "\"LAST_URL\" TEXT," + // 5: lastUrl
+                "\"RECENT_URL\" TEXT," + // 6: recentUrl
+                "\"IMAGE_QUERY\" TEXT," + // 7: imageQuery
+                "\"PREVIOUS_QUERY\" TEXT," + // 8: previousQuery
+                "\"NEXT_QUERY\" TEXT," + // 9: nextQuery
+                "\"HIDDEN\" INTEGER);"); // 10: hidden
     }
 
     /** Drops the underlying database table. */
@@ -96,29 +98,34 @@ public class ComicDao extends AbstractDao<Comic, Long> {
             stmt.bindString(5, firstUrl);
         }
  
-        String lastViewedUrl = entity.getLastViewedUrl();
-        if (lastViewedUrl != null) {
-            stmt.bindString(6, lastViewedUrl);
+        String lastUrl = entity.getLastUrl();
+        if (lastUrl != null) {
+            stmt.bindString(6, lastUrl);
+        }
+ 
+        String recentUrl = entity.getRecentUrl();
+        if (recentUrl != null) {
+            stmt.bindString(7, recentUrl);
         }
  
         String imageQuery = entity.getImageQuery();
         if (imageQuery != null) {
-            stmt.bindString(7, imageQuery);
+            stmt.bindString(8, imageQuery);
         }
  
         String previousQuery = entity.getPreviousQuery();
         if (previousQuery != null) {
-            stmt.bindString(8, previousQuery);
+            stmt.bindString(9, previousQuery);
         }
  
         String nextQuery = entity.getNextQuery();
         if (nextQuery != null) {
-            stmt.bindString(9, nextQuery);
+            stmt.bindString(10, nextQuery);
         }
  
         Boolean hidden = entity.getHidden();
         if (hidden != null) {
-            stmt.bindLong(10, hidden ? 1L: 0L);
+            stmt.bindLong(11, hidden ? 1L: 0L);
         }
     }
 
@@ -137,11 +144,12 @@ public class ComicDao extends AbstractDao<Comic, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // title
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // url
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // firstUrl
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // lastViewedUrl
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // imageQuery
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // previousQuery
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // nextQuery
-            cursor.isNull(offset + 9) ? null : cursor.getShort(offset + 9) != 0 // hidden
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // lastUrl
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // recentUrl
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // imageQuery
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // previousQuery
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // nextQuery
+            cursor.isNull(offset + 10) ? null : cursor.getShort(offset + 10) != 0 // hidden
         );
         return entity;
     }
@@ -154,11 +162,12 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         entity.setTitle(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setUrl(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setFirstUrl(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setLastViewedUrl(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setImageQuery(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setPreviousQuery(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setNextQuery(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setHidden(cursor.isNull(offset + 9) ? null : cursor.getShort(offset + 9) != 0);
+        entity.setLastUrl(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setRecentUrl(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setImageQuery(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setPreviousQuery(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setNextQuery(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setHidden(cursor.isNull(offset + 10) ? null : cursor.getShort(offset + 10) != 0);
      }
     
     /** @inheritdoc */

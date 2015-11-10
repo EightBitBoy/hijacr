@@ -14,7 +14,8 @@ public class Comic {
     private String title;
     private String url;
     private String firstUrl;
-    private String lastViewedUrl;
+    private String lastUrl;
+    private String recentUrl;
     private String imageQuery;
     private String previousQuery;
     private String nextQuery;
@@ -30,13 +31,14 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String key, String title, String url, String firstUrl, String lastViewedUrl, String imageQuery, String previousQuery, String nextQuery, Boolean hidden) {
+    public Comic(Long id, String key, String title, String url, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, Boolean hidden) {
         this.id = id;
         this.key = key;
         this.title = title;
         this.url = url;
         this.firstUrl = firstUrl;
-        this.lastViewedUrl = lastViewedUrl;
+        this.lastUrl = lastUrl;
+        this.recentUrl = recentUrl;
         this.imageQuery = imageQuery;
         this.previousQuery = previousQuery;
         this.nextQuery = nextQuery;
@@ -83,12 +85,20 @@ public class Comic {
         this.firstUrl = firstUrl;
     }
 
-    public String getLastViewedUrl() {
-        return lastViewedUrl;
+    public String getLastUrl() {
+        return lastUrl;
     }
 
-    public void setLastViewedUrl(String lastViewedUrl) {
-        this.lastViewedUrl = lastViewedUrl;
+    public void setLastUrl(String lastUrl) {
+        this.lastUrl = lastUrl;
+    }
+
+    public String getRecentUrl() {
+        return recentUrl;
+    }
+
+    public void setRecentUrl(String recentUrl) {
+        this.recentUrl = recentUrl;
     }
 
     public String getImageQuery() {
