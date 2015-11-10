@@ -1,20 +1,20 @@
 # Changelog
 
-## 0.1.2, ???
+## 0.2.0, 2015-11-10
 
-Feature:
+feature:
 
 - add small loading indicator
-- new reliable database code
+- new database code
 
-Fix:
+fix:
 
 - crash when zooming out of a comic
 - display the wrong comic after restarting the app
 
 ## 0.1.1, 2015-10-07
 
-Fix:
+fix:
 
 - crash when launching the app and switching directly to viewer
 
