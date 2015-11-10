@@ -10,6 +10,7 @@ import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;

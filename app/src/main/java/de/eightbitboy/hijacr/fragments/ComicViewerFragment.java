@@ -36,7 +36,7 @@ public class ComicViewerFragment extends Fragment {
 	@Bind(R.id.newer_button)
 	Button newerButton;
 
-	private Comic comic;
+	private Comic currentComic;
 	private ComicViewerManager comicViewerManager;
 	private SettingsManager settings;
 	private PhotoViewAttacher attacher;
@@ -67,8 +67,11 @@ public class ComicViewerFragment extends Fragment {
 
 		attacher = new PhotoViewAttacher(comicView);
 
+		currentComic = Database.getInstance(this.getContext()).getComicById(settings
+				.getLastComicId());
+
 		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-				Database.getInstance(this.getContext()).getComicById(settings.getLastComicId()));
+				currentComic);
 		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
@@ -81,17 +84,17 @@ public class ComicViewerFragment extends Fragment {
 			comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
 					event.comic);
 		} else {
-			if (comic != null && !comic.equals(event.comic)) {
+			if (currentComic != null && !(currentComic.getId().equals(event.comic.getId()))) {
 				comicViewerManager.clearComic();
 				comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
 						event.comic);
 			}
 		}
 
-		Crashlytics.setString("comic", event.comic.getTitle());
+		Crashlytics.setString("currentComic", event.comic.getTitle());
 
-		comic = event.comic;
-		settings.setLastComicId(comic.getId());
+		currentComic = event.comic;
+		settings.setLastComicId(currentComic.getId());
 		comicViewerManager.loadCurrentComic();
 	}
 

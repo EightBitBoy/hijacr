@@ -48,7 +48,7 @@ public class Database {
 			Comic comic;
 
 			comic = new Comic(
-					4L,
+					1L,//4L //TODO give 1L to XKCD
 					"extralife",
 					"ExtraLife",
 					"http://www.myextralife.com/",
