@@ -2,9 +2,15 @@
 
 ## 0.1.2, ???
 
+Feature:
+
+- add small loading indicator
+- new reliable database code
+
 Fix:
 
 - crash when zooming out of a comic
+- display the wrong comic after restarting the app
 
 ## 0.1.1, 2015-10-07
 
