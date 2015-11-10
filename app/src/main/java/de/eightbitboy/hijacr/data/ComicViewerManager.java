@@ -14,18 +14,18 @@ import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
+import de.eightbitboy.hijacr.fragments.ComicViewerFragment;
 import de.greenrobot.event.EventBus;
 
 /**
  * Handles the comic viewing state and updates the comic view.
  */
 public class ComicViewerManager {
-	public static final int PROGRESS_MAX = 100;
 
 	private Database db;
 	private ImageView comicView;
-	private ProgressBar progressBar;
 	private Comic comic;
+	ComicViewerFragment viewer;
 	private String currentComicUrl;
 	private String previousComicUrl;
 	private String nextComicUrl;
@@ -35,14 +35,12 @@ public class ComicViewerManager {
 	/**
 	 * Creates a new ComicViewerManager intended for starting a new comic.
 	 */
-	public ComicViewerManager(Context context, ImageView comicView, ProgressBar progressBar,
-			Comic comic) {
+	public ComicViewerManager(Context context, ImageView comicView,
+			Comic comic, ComicViewerFragment viewer) {
 		this.db = Database.getInstance(context);
+		this.viewer = viewer;
 		this.comicView = comicView;
-		this.progressBar = progressBar;
 		this.comic = comic;
-
-		progressBar.setProgress(PROGRESS_MAX);
 
 		if (comic.getRecentUrl() != null) {
 			this.currentComicUrl = comic.getRecentUrl();
@@ -58,15 +56,14 @@ public class ComicViewerManager {
 			@Override
 			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 				EventBus.getDefault().post(new ComicViewUpdateEvent());
-				//TODO use something different than setting visibility?
-				progressBar.setVisibility(View.GONE);
+				viewer.hideProgressBar();
 			}
 		};
 
 		progressListener = new ImageLoadingProgressListener() {
 			@Override
 			public void onProgressUpdate(String imageUri, View view, int current, int total) {
-				progressBar.setVisibility(View.VISIBLE);
+				viewer.showProgressBar();
 			}
 		};
 	}

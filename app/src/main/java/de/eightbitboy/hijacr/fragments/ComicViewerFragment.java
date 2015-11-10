@@ -64,14 +64,14 @@ public class ComicViewerFragment extends Fragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
+		
 		attacher = new PhotoViewAttacher(comicView);
 
 		currentComic = Database.getInstance(this.getContext()).getComicById(settings
 				.getLastComicId());
 
-		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-				currentComic);
+		comicViewerManager = new ComicViewerManager(getActivity(), comicView,
+				currentComic, this);
 		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
@@ -81,13 +81,13 @@ public class ComicViewerFragment extends Fragment {
 	public void onEvent(ComicSelectedEvent event) {
 
 		if (comicViewerManager == null) {
-			comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-					event.comic);
+			comicViewerManager = new ComicViewerManager(getActivity(), comicView,
+					event.comic, this);
 		} else {
 			if (currentComic != null && !(currentComic.getId().equals(event.comic.getId()))) {
 				comicViewerManager.clearComic();
-				comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-						event.comic);
+				comicViewerManager = new ComicViewerManager(getActivity(), comicView,
+						event.comic, this);
 			}
 		}
 
@@ -117,5 +117,14 @@ public class ComicViewerFragment extends Fragment {
 				comicViewerManager.loadPreviousComic();
 			}
 		});
+	}
+
+	public void showProgressBar() {
+		//TODO use something different than setting visibility?
+		progressBar.setVisibility(View.VISIBLE);
+	}
+
+	public void hideProgressBar() {
+		progressBar.setVisibility(View.GONE);
 	}
 }
