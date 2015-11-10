@@ -116,16 +116,8 @@ public class ComicViewerManager {
 	}
 
 	private void fetchComicUrl(String url) {
-		/*
-		if (comicData.isSimple()) {
-			new SimpleComicFetchTask(comicData.getBaseUrl(), currentComicCount,
-					comicData.getImageQuery(),
-					this).execute();
-		} else {
-			new ComicFetchTask(url, comicData.getImageQuery(), comicData
-					.getPreviousQuery(), comicData.getNextQuery(), this).execute();
-		}
-		*/
+		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),
+				comic.getNextQuery(), this).execute();
 	}
 
 	public void onGetImageSource(String source, String previousComicUrl, String nextComicUrl) {
