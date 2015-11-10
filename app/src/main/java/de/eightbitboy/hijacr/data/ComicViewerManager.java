@@ -61,15 +61,14 @@ public class ComicViewerManager {
 			@Override
 			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 				EventBus.getDefault().post(new ComicViewUpdateEvent());
+				progressBar.setVisibility(View.INVISIBLE);
 			}
 		};
 
 		progressListener = new ImageLoadingProgressListener() {
 			@Override
 			public void onProgressUpdate(String imageUri, View view, int current, int total) {
-				if (current > 0) {
-					progressBar.setProgress(Math.round(PROGRESS_MAX * ((float) current / total)));
-				}
+				progressBar.setVisibility(View.VISIBLE);
 			}
 		};
 	}
