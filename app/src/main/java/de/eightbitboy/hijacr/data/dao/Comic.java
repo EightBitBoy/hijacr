@@ -27,6 +27,7 @@ public class Comic {
     /** Not-null value. */
     private String nextQuery;
     private boolean hidden;
+    private boolean favourite;
 
     // KEEP FIELDS - put your custom fields here
     // KEEP FIELDS END
@@ -38,7 +39,7 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String key, String title, String url, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, boolean hidden) {
+    public Comic(Long id, String key, String title, String url, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, boolean hidden, boolean favourite) {
         this.id = id;
         this.key = key;
         this.title = title;
@@ -50,6 +51,7 @@ public class Comic {
         this.previousQuery = previousQuery;
         this.nextQuery = nextQuery;
         this.hidden = hidden;
+        this.favourite = favourite;
     }
 
     public Long getId() {
@@ -152,6 +154,14 @@ public class Comic {
 
     public void setHidden(boolean hidden) {
         this.hidden = hidden;
+    }
+
+    public boolean getFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
     }
 
     // KEEP METHODS - put your custom methods here

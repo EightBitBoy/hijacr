@@ -34,6 +34,7 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         public final static Property PreviousQuery = new Property(8, String.class, "previousQuery", false, "PREVIOUS_QUERY");
         public final static Property NextQuery = new Property(9, String.class, "nextQuery", false, "NEXT_QUERY");
         public final static Property Hidden = new Property(10, boolean.class, "hidden", false, "HIDDEN");
+        public final static Property Favourite = new Property(11, boolean.class, "favourite", false, "FAVOURITE");
     };
 
 
@@ -59,7 +60,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
                 "\"IMAGE_QUERY\" TEXT NOT NULL ," + // 7: imageQuery
                 "\"PREVIOUS_QUERY\" TEXT NOT NULL ," + // 8: previousQuery
                 "\"NEXT_QUERY\" TEXT NOT NULL ," + // 9: nextQuery
-                "\"HIDDEN\" INTEGER NOT NULL );"); // 10: hidden
+                "\"HIDDEN\" INTEGER NOT NULL ," + // 10: hidden
+                "\"FAVOURITE\" INTEGER NOT NULL );"); // 11: favourite
     }
 
     /** Drops the underlying database table. */
@@ -95,6 +97,7 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         stmt.bindString(9, entity.getPreviousQuery());
         stmt.bindString(10, entity.getNextQuery());
         stmt.bindLong(11, entity.getHidden() ? 1L: 0L);
+        stmt.bindLong(12, entity.getFavourite() ? 1L: 0L);
     }
 
     /** @inheritdoc */
@@ -117,7 +120,8 @@ public class ComicDao extends AbstractDao<Comic, Long> {
             cursor.getString(offset + 7), // imageQuery
             cursor.getString(offset + 8), // previousQuery
             cursor.getString(offset + 9), // nextQuery
-            cursor.getShort(offset + 10) != 0 // hidden
+            cursor.getShort(offset + 10) != 0, // hidden
+            cursor.getShort(offset + 11) != 0 // favourite
         );
         return entity;
     }
@@ -136,6 +140,7 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         entity.setPreviousQuery(cursor.getString(offset + 8));
         entity.setNextQuery(cursor.getString(offset + 9));
         entity.setHidden(cursor.getShort(offset + 10) != 0);
+        entity.setFavourite(cursor.getShort(offset + 11) != 0);
      }
     
     /** @inheritdoc */

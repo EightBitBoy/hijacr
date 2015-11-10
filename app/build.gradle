@@ -57,6 +57,7 @@ task generateDao() {
     comic.addStringProperty("previousQuery").notNull()
     comic.addStringProperty("nextQuery").notNull()
     comic.addBooleanProperty("hidden").notNull()
+    comic.addBooleanProperty("favourite").notNull()
 
     new DaoGenerator().generateAll(schema, "app/src/main/java")
 }

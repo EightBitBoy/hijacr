@@ -58,6 +58,7 @@ public class Database {
 					"#comic img[src]",
 					".comicNav a[rel=prev]",
 					".comicNav a[rel=next]",
+					false,
 					false);
 			dao.insert(comic);
 
@@ -72,6 +73,7 @@ public class Database {
 					"#comic",
 					".prev",
 					".next",
+					false,
 					false);
 			dao.insert(comic);
 
@@ -86,6 +88,7 @@ public class Database {
 					"tbody div img[width]",
 					"a:has(img[src=back.gif])",
 					"a:has(img[src=next.gif])",
+					false,
 					false);
 			dao.insert(comic);
 
@@ -100,6 +103,7 @@ public class Database {
 					".comic",
 					".prev_comic_link",
 					".next_comic_link",
+					false,
 					false);
 			dao.insert(comic);
 
@@ -114,6 +118,7 @@ public class Database {
 					"#main-comic",
 					".previous-comic",
 					".next-comic",
+					false,
 					false);
 			dao.insert(comic);
 		}
