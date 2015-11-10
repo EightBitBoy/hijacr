@@ -23,7 +23,6 @@ import de.greenrobot.event.EventBus;
 public class ComicViewerManager {
 
 	private Database db;
-	private ImageView comicView;
 	private Comic comic;
 	ComicViewerFragment viewer;
 	private String currentComicUrl;
@@ -35,11 +34,9 @@ public class ComicViewerManager {
 	/**
 	 * Creates a new ComicViewerManager intended for starting a new comic.
 	 */
-	public ComicViewerManager(Context context, ImageView comicView,
-			Comic comic, ComicViewerFragment viewer) {
+	public ComicViewerManager(Context context, Comic comic, ComicViewerFragment viewer) {
 		this.db = Database.getInstance(context);
 		this.viewer = viewer;
-		this.comicView = comicView;
 		this.comic = comic;
 
 		if (comic.getRecentUrl() != null) {
@@ -69,7 +66,7 @@ public class ComicViewerManager {
 	}
 
 	public void clearComic() {
-		comicView.setImageBitmap(null);
+		viewer.getImageView().setImageBitmap(null);
 	}
 
 	public void loadCurrentComic() {
@@ -108,7 +105,7 @@ public class ComicViewerManager {
 	public void onGetImageSource(String source, String previousComicUrl, String nextComicUrl) {
 		this.previousComicUrl = previousComicUrl;
 		this.nextComicUrl = nextComicUrl;
-		ImageLoader.getInstance().displayImage(source, comicView, null, loadListener,
+		ImageLoader.getInstance().displayImage(source, viewer.getImageView(), null, loadListener,
 				progressListener);
 	}
 

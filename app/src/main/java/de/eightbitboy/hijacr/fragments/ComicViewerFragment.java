@@ -64,14 +64,13 @@ public class ComicViewerFragment extends Fragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		
+
 		attacher = new PhotoViewAttacher(comicView);
 
 		currentComic = Database.getInstance(this.getContext()).getComicById(settings
 				.getLastComicId());
 
-		comicViewerManager = new ComicViewerManager(getActivity(), comicView,
-				currentComic, this);
+		comicViewerManager = new ComicViewerManager(getActivity(), currentComic, this);
 		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
@@ -81,13 +80,11 @@ public class ComicViewerFragment extends Fragment {
 	public void onEvent(ComicSelectedEvent event) {
 
 		if (comicViewerManager == null) {
-			comicViewerManager = new ComicViewerManager(getActivity(), comicView,
-					event.comic, this);
+			comicViewerManager = new ComicViewerManager(getActivity(), event.comic, this);
 		} else {
 			if (currentComic != null && !(currentComic.getId().equals(event.comic.getId()))) {
 				comicViewerManager.clearComic();
-				comicViewerManager = new ComicViewerManager(getActivity(), comicView,
-						event.comic, this);
+				comicViewerManager = new ComicViewerManager(getActivity(), event.comic, this);
 			}
 		}
 
@@ -126,5 +123,9 @@ public class ComicViewerFragment extends Fragment {
 
 	public void hideProgressBar() {
 		progressBar.setVisibility(View.GONE);
+	}
+
+	public ImageView getImageView() {
+		return comicView;
 	}
 }
