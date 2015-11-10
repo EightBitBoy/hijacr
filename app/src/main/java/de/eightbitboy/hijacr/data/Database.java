@@ -76,6 +76,20 @@ public class Database {
 			dao.insert(comic);
 
 			comic = new Comic(
+					3L,
+					"vgcats",
+					"VgCats",
+					"http://www.vgcats.com/",
+					"http://www.vgcats.com/comics/?strip_id=0",
+					null,
+					null,
+					"tbody div img[width]",
+					"a:has(img[src=back.gif])",
+					"a:has(img[src=next.gif])",
+					false);
+			dao.insert(comic);
+
+			comic = new Comic(
 					4L,
 					"extralife",
 					"ExtraLife",
@@ -103,12 +117,6 @@ public class Database {
 					false);
 			dao.insert(comic);
 		}
-
-		/*
-
-		comics.put("vgcats", new ComicData(3, "vgcats", "VgCats", "http://www.vgcats.com/",
-				"http://www.vgcats.com/comics/?strip_id=", 0, "tbody div img[width]"));
-		*/
 	}
 
 	private ComicDao createSessionDao() {
