@@ -46,6 +46,7 @@ public class ComicViewerManager {
 		}
 
 		setUpImageListeners();
+		setBackButtonState();
 	}
 
 	private void setUpImageListeners() {
@@ -73,6 +74,7 @@ public class ComicViewerManager {
 		Crashlytics.setString("currentComicUrl", currentComicUrl);
 		fetchComicUrl(currentComicUrl);
 		saveProgress();
+		setBackButtonState();
 	}
 
 	public void loadNextComic() {
@@ -83,6 +85,7 @@ public class ComicViewerManager {
 		if (nextComicUrl != null) {
 			currentComicUrl = nextComicUrl;
 			saveProgress();
+			setBackButtonState();
 		}
 	}
 
@@ -94,6 +97,7 @@ public class ComicViewerManager {
 		if (previousComicUrl != null) {
 			currentComicUrl = previousComicUrl;
 			saveProgress();
+			setBackButtonState();
 		}
 	}
 
@@ -112,5 +116,13 @@ public class ComicViewerManager {
 	private void saveProgress() {
 		comic.setRecentUrl(currentComicUrl);
 		db.updateComic(comic);
+	}
+
+	private void setBackButtonState() {
+		if (currentComicUrl.equals(comic.getFirstUrl())) {
+			viewer.disableBackButton();
+		} else {
+			viewer.enbaleBackButton();
+		}
 	}
 }

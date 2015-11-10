@@ -116,6 +116,10 @@ public class ComicViewerFragment extends Fragment {
 		});
 	}
 
+	public ImageView getImageView() {
+		return comicView;
+	}
+
 	public void showProgressBar() {
 		//TODO use something different than setting visibility?
 		progressBar.setVisibility(View.VISIBLE);
@@ -125,7 +129,11 @@ public class ComicViewerFragment extends Fragment {
 		progressBar.setVisibility(View.GONE);
 	}
 
-	public ImageView getImageView() {
-		return comicView;
+	public void enbaleBackButton() {
+		olderButton.setEnabled(true);
+	}
+
+	public void disableBackButton() {
+		olderButton.setEnabled(false);
 	}
 }
