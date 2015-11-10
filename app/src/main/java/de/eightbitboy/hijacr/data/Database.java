@@ -48,7 +48,21 @@ public class Database {
 			Comic comic;
 
 			comic = new Comic(
-					1L,//4L //TODO give 1L to XKCD
+					1L,
+					"xkcd",
+					"XKCD",
+					"http://xkcd.com/",
+					"https://xkcd.com/1/",
+					null,
+					null,
+					"#comic img[src]",
+					".comicNav a[rel=prev]",
+					".comicNav a[rel=next]",
+					false);
+			dao.insert(comic);
+
+			comic = new Comic(
+					4L,
 					"extralife",
 					"ExtraLife",
 					"http://www.myextralife.com/",
