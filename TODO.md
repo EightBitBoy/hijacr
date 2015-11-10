@@ -24,6 +24,7 @@
 
 ## Comic view
 
+- disable buttons if first or last comic is shown
 - use bottom sheet for displaying extra actions
 - add a loading indicator
 - show error message if image cannot be loaded
