@@ -62,6 +62,20 @@ public class Database {
 			dao.insert(comic);
 
 			comic = new Comic(
+					2L,
+					"smbc",
+					"SMBC",
+					"http://www.smbc-comics.com/",
+					"http://www.smbc-comics.com/index.php?id=1",
+					null,
+					null,
+					"#comic",
+					".prev",
+					".next",
+					false);
+			dao.insert(comic);
+
+			comic = new Comic(
 					4L,
 					"extralife",
 					"ExtraLife",
@@ -91,12 +105,9 @@ public class Database {
 		}
 
 		/*
-		comics.put("smbc", new ComicData(2, "smbc", "SMBC", "http://www.smbc-comics.com/",
-				"http://www.smbc-comics.com/index.php?id=", 1, "#comic"));
+
 		comics.put("vgcats", new ComicData(3, "vgcats", "VgCats", "http://www.vgcats.com/",
 				"http://www.vgcats.com/comics/?strip_id=", 0, "tbody div img[width]"));
-		comics.put("xkcd", new ComicData(1, "xkcd", "XKCD", "http://xkcd.com/",
-				"http://xkcd.com/", 1, "#comic img[src]"));
 		*/
 	}
 
