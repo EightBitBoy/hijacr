@@ -61,7 +61,8 @@ public class ComicViewerManager {
 			@Override
 			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 				EventBus.getDefault().post(new ComicViewUpdateEvent());
-				progressBar.setVisibility(View.INVISIBLE);
+				//TODO use something different than setting visibility?
+				progressBar.setVisibility(View.GONE);
 			}
 		};
 
