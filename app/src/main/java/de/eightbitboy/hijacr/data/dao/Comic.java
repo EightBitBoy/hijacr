@@ -10,16 +10,23 @@ package de.eightbitboy.hijacr.data.dao;
 public class Comic {
 
     private Long id;
+    /** Not-null value. */
     private String key;
+    /** Not-null value. */
     private String title;
+    /** Not-null value. */
     private String url;
+    /** Not-null value. */
     private String firstUrl;
     private String lastUrl;
     private String recentUrl;
+    /** Not-null value. */
     private String imageQuery;
+    /** Not-null value. */
     private String previousQuery;
+    /** Not-null value. */
     private String nextQuery;
-    private Boolean hidden;
+    private boolean hidden;
 
     // KEEP FIELDS - put your custom fields here
     // KEEP FIELDS END
@@ -31,7 +38,7 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String key, String title, String url, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, Boolean hidden) {
+    public Comic(Long id, String key, String title, String url, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, boolean hidden) {
         this.id = id;
         this.key = key;
         this.title = title;
@@ -53,34 +60,42 @@ public class Comic {
         this.id = id;
     }
 
+    /** Not-null value. */
     public String getKey() {
         return key;
     }
 
+    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setKey(String key) {
         this.key = key;
     }
 
+    /** Not-null value. */
     public String getTitle() {
         return title;
     }
 
+    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /** Not-null value. */
     public String getUrl() {
         return url;
     }
 
+    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /** Not-null value. */
     public String getFirstUrl() {
         return firstUrl;
     }
 
+    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setFirstUrl(String firstUrl) {
         this.firstUrl = firstUrl;
     }
@@ -101,35 +116,41 @@ public class Comic {
         this.recentUrl = recentUrl;
     }
 
+    /** Not-null value. */
     public String getImageQuery() {
         return imageQuery;
     }
 
+    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setImageQuery(String imageQuery) {
         this.imageQuery = imageQuery;
     }
 
+    /** Not-null value. */
     public String getPreviousQuery() {
         return previousQuery;
     }
 
+    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setPreviousQuery(String previousQuery) {
         this.previousQuery = previousQuery;
     }
 
+    /** Not-null value. */
     public String getNextQuery() {
         return nextQuery;
     }
 
+    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setNextQuery(String nextQuery) {
         this.nextQuery = nextQuery;
     }
 
-    public Boolean getHidden() {
+    public boolean getHidden() {
         return hidden;
     }
 
-    public void setHidden(Boolean hidden) {
+    public void setHidden(boolean hidden) {
         this.hidden = hidden;
     }
 
