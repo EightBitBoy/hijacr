@@ -70,15 +70,14 @@ public class ComicViewerFragment extends Fragment {
 		//TODO get comic from settings.getLastComicId()
 		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
 				Database.getInstance(this.getContext()).getComicById(4L));
-		//TODO
-		//comicViewerManager.loadCurrentComic();
+		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
 	}
 
 	@SuppressWarnings("unused")
 	public void onEvent(ComicSelectedEvent event) {
-		Logger.wtf("event: " + event.toString());
+
 		if (comicViewerManager == null) {
 			comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
 					event.comic);
