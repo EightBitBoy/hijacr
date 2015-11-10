@@ -67,9 +67,8 @@ public class ComicViewerFragment extends Fragment {
 
 		attacher = new PhotoViewAttacher(comicView);
 
-		//TODO get comic from settings.getLastComicId()
 		comicViewerManager = new ComicViewerManager(getActivity(), comicView, progressBar,
-				Database.getInstance(this.getContext()).getComicById(4L));
+				Database.getInstance(this.getContext()).getComicById(settings.getLastComicId()));
 		comicViewerManager.loadCurrentComic();
 
 		setUpButtonActions();
