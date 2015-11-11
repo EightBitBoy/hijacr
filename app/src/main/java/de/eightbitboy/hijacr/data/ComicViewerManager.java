@@ -27,6 +27,7 @@ public class ComicViewerManager {
 	ComicViewerFragment viewer;
 	private String currentComicUrl;
 	private String previousComicUrl;
+	private String randomComicUrl;
 	private String nextComicUrl;
 	private SimpleImageLoadingListener loadListener;
 	private ImageLoadingProgressListener progressListener;
@@ -77,6 +78,22 @@ public class ComicViewerManager {
 		setBackButtonState();
 	}
 
+	public void loadPreviousComic() {
+		Crashlytics.setString("previousComicUrl", previousComicUrl);
+
+		fetchComicUrl(previousComicUrl);
+
+		if (previousComicUrl != null) {
+			currentComicUrl = previousComicUrl;
+			saveProgress();
+			setBackButtonState();
+		}
+	}
+
+	public void loadRandomComic() {
+		Crashlytics.setString("randomComicUrl", randomComicUrl);
+	}
+
 	public void loadNextComic() {
 		Crashlytics.setString("nextComicUrl", nextComicUrl);
 
@@ -89,17 +106,6 @@ public class ComicViewerManager {
 		}
 	}
 
-	public void loadPreviousComic() {
-		Crashlytics.setString("previousComicUrl", previousComicUrl);
-
-		fetchComicUrl(previousComicUrl);
-
-		if (previousComicUrl != null) {
-			currentComicUrl = previousComicUrl;
-			saveProgress();
-			setBackButtonState();
-		}
-	}
 
 	private void fetchComicUrl(String url) {
 		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),

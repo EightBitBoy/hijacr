@@ -33,6 +33,8 @@ public class ComicViewerFragment extends Fragment {
 	ProgressBar progressBar;
 	@Bind(R.id.older_button)
 	Button olderButton;
+	@Bind(R.id.random_button)
+	Button randomButton;
 	@Bind(R.id.newer_button)
 	Button newerButton;
 
@@ -101,17 +103,24 @@ public class ComicViewerFragment extends Fragment {
 	}
 
 	private void setUpButtonActions() {
-		newerButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				comicViewerManager.loadNextComic();
-			}
-		});
-
 		olderButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				comicViewerManager.loadPreviousComic();
+			}
+		});
+
+		randomButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				comicViewerManager.loadRandomComic();
+			}
+		});
+
+		newerButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				comicViewerManager.loadNextComic();
 			}
 		});
 	}
