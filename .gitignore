@@ -17,3 +17,4 @@
 /app/fabric.properties
 /app/app-release.apk
 /app/app.iml
+*.log
