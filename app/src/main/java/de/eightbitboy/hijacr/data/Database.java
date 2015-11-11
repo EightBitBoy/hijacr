@@ -54,12 +54,14 @@ public class Database {
 					"xkcd",
 					"XKCD",
 					"http://xkcd.com/",
+					null, //TODO
 					"https://xkcd.com/1/",
 					null,
 					null,
 					"#comic img[src]",
 					".comicNav a[rel=prev]",
 					".comicNav a[rel=next]",
+					null, //TODO
 					false,
 					false);
 			dao.insert(comic);
@@ -69,12 +71,14 @@ public class Database {
 					"smbc",
 					"SMBC",
 					"http://www.smbc-comics.com/",
+					null, //TODO
 					"http://www.smbc-comics.com/index.php?id=1",
 					null,
 					null,
 					"#comic",
 					".prev",
 					".next",
+					null, //TODO
 					false,
 					false);
 			dao.insert(comic);
@@ -84,12 +88,14 @@ public class Database {
 					"vgcats",
 					"VgCats",
 					"http://www.vgcats.com/",
+					null, //TODO
 					"http://www.vgcats.com/comics/?strip_id=0",
 					null,
 					null,
 					"tbody div img[width]",
 					"a:has(img[src=back.gif])",
 					"a:has(img[src=next.gif])",
+					null, //TODO
 					false,
 					false);
 			dao.insert(comic);
@@ -99,12 +105,14 @@ public class Database {
 					"extralife",
 					"ExtraLife",
 					"http://www.myextralife.com/",
+					null, //TODO
 					"http://www.myextralife.com/comic/06172001/",
 					null,
 					null,
 					".comic",
 					".prev_comic_link",
 					".next_comic_link",
+					null, //TODO
 					false,
 					false);
 			dao.insert(comic);
@@ -114,28 +122,31 @@ public class Database {
 					"explosm",
 					"Explosm",
 					"http://explosm.net/",
+					null, //TODO
 					"http://explosm.net/comics/15",
 					null,
 					null,
 					"#main-comic",
 					".previous-comic",
 					".next-comic",
+					null, //TODO
 					false,
 					false);
 			dao.insert(comic);
 
-			//TODO make sure this comic is available without reinstalling the app
 			comic = new Comic(
 					6L,
 					"dilbert",
 					"Dilbert",
 					"http://dilbert.com/",
+					null, //TODO
 					"http://dilbert.com/strip/1989-04-16",
 					null,
 					null,
 					".img-comic",
 					".nav-left a",
 					".nav-right a",
+					null, //TODO
 					false,
 					false);
 			dao.insert(comic);
