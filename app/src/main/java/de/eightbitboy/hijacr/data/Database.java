@@ -3,6 +3,8 @@ package de.eightbitboy.hijacr.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import de.eightbitboy.hijacr.data.dao.Comic;
@@ -130,6 +132,19 @@ public class Database {
 
 	public List<Comic> getAllComics() {
 		return createSessionDao().loadAll();
+	}
+
+	public List<Comic> getAllComicsSortedAlphabetically() {
+		List<Comic> comics = createSessionDao().loadAll();
+
+		Collections.sort(comics, new Comparator<Comic>() {
+			@Override
+			public int compare(Comic lhs, Comic rhs) {
+				return lhs.getTitle().compareToIgnoreCase(rhs.getTitle());
+			}
+		});
+
+		return comics;
 	}
 
 	public Comic getComicById(long id) {

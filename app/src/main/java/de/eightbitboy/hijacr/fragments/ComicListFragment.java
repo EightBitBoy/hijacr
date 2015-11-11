@@ -40,7 +40,7 @@ public class ComicListFragment extends Fragment {
 	private void setUpComicList() {
 		comicList.setAdapter(
 				new ComicListAdapter(getActivity().getApplicationContext(), 0,
-						db.getAllComics()));
+						db.getAllComicsSortedAlphabetically()));
 	}
 
 	private void setUpComicListClickAction() {
