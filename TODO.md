@@ -2,13 +2,16 @@
 
 ## General
 
-- check out object-relational mapping, SugarORM, greenDAO, ActiveAndroid, ORMlite...
-- the comic database needs some work
 - implement material design guidelines
 - consider device orientation
 - export reading progress
 - import reading progress
 - consistent actionbar colors across activities
+
+## Database
+
+- introduce a table for saving reading progress to prevent losing progress after changing the
+database schema
 
 ## About screen
 
@@ -17,16 +20,13 @@
 
 ## Comic list
 
-- sort comics alphabetically
 - long press menu for opening links to comic websites
 - enable resetting reading progress or setting the progress manually
 - enable adding custom comics and modifying existing ones
 
 ## Comic view
 
-- disable buttons if first or last comic is shown
 - use bottom sheet for displaying extra actions
-- add a loading indicator
 - show error message if image cannot be loaded
 - make buttons more "material"
 - show alternative text if available, like XKCD
