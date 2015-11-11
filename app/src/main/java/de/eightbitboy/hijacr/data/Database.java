@@ -123,6 +123,22 @@ public class Database {
 					false,
 					false);
 			dao.insert(comic);
+
+			//TODO make sure this comic is available without reinstalling the app
+			comic = new Comic(
+					6L,
+					"dilbert",
+					"Dilbert",
+					"http://dilbert.com/",
+					"http://dilbert.com/strip/1989-04-16",
+					null,
+					null,
+					".img-comic",
+					".nav-left a",
+					".nav-right a",
+					false,
+					false);
+			dao.insert(comic);
 		}
 	}
 
