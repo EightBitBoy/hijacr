@@ -37,6 +37,13 @@
 			android:text="Older"/>
 
 		<Button
+			android:id="@+id/random_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:text="Random"/>
+
+		<Button
 			android:id="@+id/newer_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
