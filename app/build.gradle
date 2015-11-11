@@ -42,7 +42,7 @@ task releaseNotes() {
 }
 
 task generateDao() {
-    Schema schema = new Schema(1, "de.eightbitboy.hijacr.data.dao")
+    Schema schema = new Schema(2, "de.eightbitboy.hijacr.data.dao")
     schema.enableKeepSectionsByDefault()
 
     Entity comic = schema.addEntity("Comic")
@@ -50,12 +50,14 @@ task generateDao() {
     comic.addStringProperty("key").notNull()
     comic.addStringProperty("title").notNull()
     comic.addStringProperty("url").notNull()
+    comic.addStringProperty("randomUrl")
     comic.addStringProperty("firstUrl").notNull()
     comic.addStringProperty("lastUrl")
     comic.addStringProperty("recentUrl")
     comic.addStringProperty("imageQuery").notNull()
     comic.addStringProperty("previousQuery").notNull()
     comic.addStringProperty("nextQuery").notNull()
+    comic.addStringProperty("randomQuery")
     comic.addBooleanProperty("hidden").notNull()
     comic.addBooleanProperty("favourite").notNull()
 

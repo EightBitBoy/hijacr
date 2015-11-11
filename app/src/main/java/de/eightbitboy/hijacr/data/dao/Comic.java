@@ -16,6 +16,7 @@ public class Comic {
     private String title;
     /** Not-null value. */
     private String url;
+    private String randomUrl;
     /** Not-null value. */
     private String firstUrl;
     private String lastUrl;
@@ -26,6 +27,7 @@ public class Comic {
     private String previousQuery;
     /** Not-null value. */
     private String nextQuery;
+    private String randomQuery;
     private boolean hidden;
     private boolean favourite;
 
@@ -39,17 +41,19 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String key, String title, String url, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, boolean hidden, boolean favourite) {
+    public Comic(Long id, String key, String title, String url, String randomUrl, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, String randomQuery, boolean hidden, boolean favourite) {
         this.id = id;
         this.key = key;
         this.title = title;
         this.url = url;
+        this.randomUrl = randomUrl;
         this.firstUrl = firstUrl;
         this.lastUrl = lastUrl;
         this.recentUrl = recentUrl;
         this.imageQuery = imageQuery;
         this.previousQuery = previousQuery;
         this.nextQuery = nextQuery;
+        this.randomQuery = randomQuery;
         this.hidden = hidden;
         this.favourite = favourite;
     }
@@ -90,6 +94,14 @@ public class Comic {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getRandomUrl() {
+        return randomUrl;
+    }
+
+    public void setRandomUrl(String randomUrl) {
+        this.randomUrl = randomUrl;
     }
 
     /** Not-null value. */
@@ -146,6 +158,14 @@ public class Comic {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setNextQuery(String nextQuery) {
         this.nextQuery = nextQuery;
+    }
+
+    public String getRandomQuery() {
+        return randomQuery;
+    }
+
+    public void setRandomQuery(String randomQuery) {
+        this.randomQuery = randomQuery;
     }
 
     public boolean getHidden() {

@@ -27,14 +27,16 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         public final static Property Key = new Property(1, String.class, "key", false, "KEY");
         public final static Property Title = new Property(2, String.class, "title", false, "TITLE");
         public final static Property Url = new Property(3, String.class, "url", false, "URL");
-        public final static Property FirstUrl = new Property(4, String.class, "firstUrl", false, "FIRST_URL");
-        public final static Property LastUrl = new Property(5, String.class, "lastUrl", false, "LAST_URL");
-        public final static Property RecentUrl = new Property(6, String.class, "recentUrl", false, "RECENT_URL");
-        public final static Property ImageQuery = new Property(7, String.class, "imageQuery", false, "IMAGE_QUERY");
-        public final static Property PreviousQuery = new Property(8, String.class, "previousQuery", false, "PREVIOUS_QUERY");
-        public final static Property NextQuery = new Property(9, String.class, "nextQuery", false, "NEXT_QUERY");
-        public final static Property Hidden = new Property(10, boolean.class, "hidden", false, "HIDDEN");
-        public final static Property Favourite = new Property(11, boolean.class, "favourite", false, "FAVOURITE");
+        public final static Property RandomUrl = new Property(4, String.class, "randomUrl", false, "RANDOM_URL");
+        public final static Property FirstUrl = new Property(5, String.class, "firstUrl", false, "FIRST_URL");
+        public final static Property LastUrl = new Property(6, String.class, "lastUrl", false, "LAST_URL");
+        public final static Property RecentUrl = new Property(7, String.class, "recentUrl", false, "RECENT_URL");
+        public final static Property ImageQuery = new Property(8, String.class, "imageQuery", false, "IMAGE_QUERY");
+        public final static Property PreviousQuery = new Property(9, String.class, "previousQuery", false, "PREVIOUS_QUERY");
+        public final static Property NextQuery = new Property(10, String.class, "nextQuery", false, "NEXT_QUERY");
+        public final static Property RandomQuery = new Property(11, String.class, "randomQuery", false, "RANDOM_QUERY");
+        public final static Property Hidden = new Property(12, boolean.class, "hidden", false, "HIDDEN");
+        public final static Property Favourite = new Property(13, boolean.class, "favourite", false, "FAVOURITE");
     };
 
 
@@ -54,14 +56,16 @@ public class ComicDao extends AbstractDao<Comic, Long> {
                 "\"KEY\" TEXT NOT NULL ," + // 1: key
                 "\"TITLE\" TEXT NOT NULL ," + // 2: title
                 "\"URL\" TEXT NOT NULL ," + // 3: url
-                "\"FIRST_URL\" TEXT NOT NULL ," + // 4: firstUrl
-                "\"LAST_URL\" TEXT," + // 5: lastUrl
-                "\"RECENT_URL\" TEXT," + // 6: recentUrl
-                "\"IMAGE_QUERY\" TEXT NOT NULL ," + // 7: imageQuery
-                "\"PREVIOUS_QUERY\" TEXT NOT NULL ," + // 8: previousQuery
-                "\"NEXT_QUERY\" TEXT NOT NULL ," + // 9: nextQuery
-                "\"HIDDEN\" INTEGER NOT NULL ," + // 10: hidden
-                "\"FAVOURITE\" INTEGER NOT NULL );"); // 11: favourite
+                "\"RANDOM_URL\" TEXT," + // 4: randomUrl
+                "\"FIRST_URL\" TEXT NOT NULL ," + // 5: firstUrl
+                "\"LAST_URL\" TEXT," + // 6: lastUrl
+                "\"RECENT_URL\" TEXT," + // 7: recentUrl
+                "\"IMAGE_QUERY\" TEXT NOT NULL ," + // 8: imageQuery
+                "\"PREVIOUS_QUERY\" TEXT NOT NULL ," + // 9: previousQuery
+                "\"NEXT_QUERY\" TEXT NOT NULL ," + // 10: nextQuery
+                "\"RANDOM_QUERY\" TEXT," + // 11: randomQuery
+                "\"HIDDEN\" INTEGER NOT NULL ," + // 12: hidden
+                "\"FAVOURITE\" INTEGER NOT NULL );"); // 13: favourite
     }
 
     /** Drops the underlying database table. */
@@ -82,22 +86,32 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         stmt.bindString(2, entity.getKey());
         stmt.bindString(3, entity.getTitle());
         stmt.bindString(4, entity.getUrl());
-        stmt.bindString(5, entity.getFirstUrl());
+ 
+        String randomUrl = entity.getRandomUrl();
+        if (randomUrl != null) {
+            stmt.bindString(5, randomUrl);
+        }
+        stmt.bindString(6, entity.getFirstUrl());
  
         String lastUrl = entity.getLastUrl();
         if (lastUrl != null) {
-            stmt.bindString(6, lastUrl);
+            stmt.bindString(7, lastUrl);
         }
  
         String recentUrl = entity.getRecentUrl();
         if (recentUrl != null) {
-            stmt.bindString(7, recentUrl);
+            stmt.bindString(8, recentUrl);
         }
-        stmt.bindString(8, entity.getImageQuery());
-        stmt.bindString(9, entity.getPreviousQuery());
-        stmt.bindString(10, entity.getNextQuery());
-        stmt.bindLong(11, entity.getHidden() ? 1L: 0L);
-        stmt.bindLong(12, entity.getFavourite() ? 1L: 0L);
+        stmt.bindString(9, entity.getImageQuery());
+        stmt.bindString(10, entity.getPreviousQuery());
+        stmt.bindString(11, entity.getNextQuery());
+ 
+        String randomQuery = entity.getRandomQuery();
+        if (randomQuery != null) {
+            stmt.bindString(12, randomQuery);
+        }
+        stmt.bindLong(13, entity.getHidden() ? 1L: 0L);
+        stmt.bindLong(14, entity.getFavourite() ? 1L: 0L);
     }
 
     /** @inheritdoc */
@@ -114,14 +128,16 @@ public class ComicDao extends AbstractDao<Comic, Long> {
             cursor.getString(offset + 1), // key
             cursor.getString(offset + 2), // title
             cursor.getString(offset + 3), // url
-            cursor.getString(offset + 4), // firstUrl
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // lastUrl
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // recentUrl
-            cursor.getString(offset + 7), // imageQuery
-            cursor.getString(offset + 8), // previousQuery
-            cursor.getString(offset + 9), // nextQuery
-            cursor.getShort(offset + 10) != 0, // hidden
-            cursor.getShort(offset + 11) != 0 // favourite
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // randomUrl
+            cursor.getString(offset + 5), // firstUrl
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // lastUrl
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // recentUrl
+            cursor.getString(offset + 8), // imageQuery
+            cursor.getString(offset + 9), // previousQuery
+            cursor.getString(offset + 10), // nextQuery
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // randomQuery
+            cursor.getShort(offset + 12) != 0, // hidden
+            cursor.getShort(offset + 13) != 0 // favourite
         );
         return entity;
     }
@@ -133,14 +149,16 @@ public class ComicDao extends AbstractDao<Comic, Long> {
         entity.setKey(cursor.getString(offset + 1));
         entity.setTitle(cursor.getString(offset + 2));
         entity.setUrl(cursor.getString(offset + 3));
-        entity.setFirstUrl(cursor.getString(offset + 4));
-        entity.setLastUrl(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setRecentUrl(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setImageQuery(cursor.getString(offset + 7));
-        entity.setPreviousQuery(cursor.getString(offset + 8));
-        entity.setNextQuery(cursor.getString(offset + 9));
-        entity.setHidden(cursor.getShort(offset + 10) != 0);
-        entity.setFavourite(cursor.getShort(offset + 11) != 0);
+        entity.setRandomUrl(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setFirstUrl(cursor.getString(offset + 5));
+        entity.setLastUrl(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setRecentUrl(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setImageQuery(cursor.getString(offset + 8));
+        entity.setPreviousQuery(cursor.getString(offset + 9));
+        entity.setNextQuery(cursor.getString(offset + 10));
+        entity.setRandomQuery(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setHidden(cursor.getShort(offset + 12) != 0);
+        entity.setFavourite(cursor.getShort(offset + 13) != 0);
      }
     
     /** @inheritdoc */
