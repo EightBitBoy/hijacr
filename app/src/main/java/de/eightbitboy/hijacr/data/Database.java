@@ -105,14 +105,14 @@ public class Database {
 					"extralife",
 					"ExtraLife",
 					"http://www.myextralife.com/",
-					null, //TODO
+					null,
 					"http://www.myextralife.com/comic/06172001/",
 					null,
 					null,
 					".comic",
 					".prev_comic_link",
-					".next_comic_link",
-					null, //TODO
+					".next_comic_link:containsOwn(previous)",
+					".prev_comic_link:containsOwn(random)",
 					false,
 					false);
 			dao.insert(comic);
