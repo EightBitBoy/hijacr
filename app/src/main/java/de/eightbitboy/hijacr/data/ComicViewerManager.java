@@ -93,13 +93,8 @@ public class ComicViewerManager {
 	public void loadRandomComic() {
 		Crashlytics.setString("randomComicUrl", randomComicUrl);
 
-		if (comic.getRandomUrl() == null) {
-			//TODO use randomComicUrl?
-			fetchComicUrl(comic.getFirstUrl());
-		} else {
-			fetchComicUrl(comic.getRandomUrl());
-		}
-
+		fetchRandomComicUrl();
+		
 		saveProgress(randomComicUrl);
 		setBackButtonState();
 	}
@@ -118,7 +113,11 @@ public class ComicViewerManager {
 
 	private void fetchComicUrl(String url) {
 		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),
-				comic.getNextQuery(), comic.getRandomQuery(), this).execute();
+				comic.getNextQuery(), this).execute();
+	}
+
+	private void fetchRandomComicUrl() {
+
 	}
 
 	/**
