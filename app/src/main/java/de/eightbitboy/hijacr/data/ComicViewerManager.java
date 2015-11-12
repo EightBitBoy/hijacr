@@ -92,6 +92,8 @@ public class ComicViewerManager {
 
 	public void loadRandomComic() {
 		Crashlytics.setString("randomComicUrl", randomComicUrl);
+
+		//fetchComicUrl(comic.getRandomUrl());
 	}
 
 	public void loadNextComic() {
@@ -106,10 +108,9 @@ public class ComicViewerManager {
 		}
 	}
 
-
 	private void fetchComicUrl(String url) {
 		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),
-				comic.getNextQuery(), this).execute();
+				comic.getNextQuery(), comic.getRandomQuery(), this).execute();
 	}
 
 	public void onGetImageSource(String source, String previousComicUrl, String nextComicUrl) {

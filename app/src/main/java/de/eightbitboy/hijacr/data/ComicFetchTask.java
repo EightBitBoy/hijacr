@@ -16,17 +16,19 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 	private String imageQuery;
 	private String previousQuery;
 	private String nextQuery;
+	private String randomQuery;
 	private ComicViewerManager manager;
 
 	private String previousUrl;
 	private String nextUrl;
 
 	public ComicFetchTask(String targetUrl, String imageQuery, String previousQuery,
-			String nextQuery, ComicViewerManager manager) {
+			String nextQuery, String randomQuery, ComicViewerManager manager) {
 		this.targetUrl = targetUrl;
 		this.imageQuery = imageQuery;
 		this.previousQuery = previousQuery;
 		this.nextQuery = nextQuery;
+		this.randomQuery = randomQuery;
 		this.manager = manager;
 	}
 
