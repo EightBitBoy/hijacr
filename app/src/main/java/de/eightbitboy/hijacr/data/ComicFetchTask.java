@@ -35,6 +35,12 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 	@Override
 	protected String doInBackground(Void... voids) {
 		try {
+			if (randomQuery != null) {
+				Document page = Jsoup.connect(targetUrl).get();
+				Elements target = page.select(randomQuery);
+				targetUrl = target.attr("abs:href");
+			}
+
 			Crashlytics.setString("targetUrl", targetUrl);
 			Document page = Jsoup.connect(targetUrl).get();
 

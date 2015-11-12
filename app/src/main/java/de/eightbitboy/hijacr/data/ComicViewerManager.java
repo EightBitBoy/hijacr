@@ -93,7 +93,13 @@ public class ComicViewerManager {
 	public void loadRandomComic() {
 		Crashlytics.setString("randomComicUrl", randomComicUrl);
 
-		fetchComicUrl(comic.getRandomUrl());
+		if (comic.getRandomUrl() == null) {
+			//TODO use randomComicUrl?
+			fetchComicUrl(comic.getFirstUrl());
+		} else {
+			fetchComicUrl(comic.getRandomUrl());
+		}
+
 		saveProgress(randomComicUrl);
 		setBackButtonState();
 	}
