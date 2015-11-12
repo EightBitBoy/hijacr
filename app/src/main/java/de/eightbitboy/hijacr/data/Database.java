@@ -54,14 +54,14 @@ public class Database {
 					"xkcd",
 					"XKCD",
 					"http://xkcd.com/",
-					null, //TODO
+					"http://c.xkcd.com/random/comic/",
 					"https://xkcd.com/1/",
 					null,
 					null,
 					"#comic img[src]",
 					".comicNav a[rel=prev]",
 					".comicNav a[rel=next]",
-					null, //TODO
+					null,
 					false,
 					false);
 			dao.insert(comic);
@@ -71,14 +71,14 @@ public class Database {
 					"smbc",
 					"SMBC",
 					"http://www.smbc-comics.com/",
-					null, //TODO
+					null,
 					"http://www.smbc-comics.com/index.php?id=1",
 					null,
 					null,
 					"#comic",
 					".prev",
 					".next",
-					null, //TODO
+					".random",
 					false,
 					false);
 			dao.insert(comic);
@@ -88,14 +88,14 @@ public class Database {
 					"vgcats",
 					"VgCats",
 					"http://www.vgcats.com/",
-					null, //TODO
+					null,
 					"http://www.vgcats.com/comics/?strip_id=0",
 					null,
 					null,
 					"tbody div img[width]",
 					"a:has(img[src=back.gif])",
 					"a:has(img[src=next.gif])",
-					null, //TODO
+					null,
 					false,
 					false);
 			dao.insert(comic);
