@@ -122,14 +122,14 @@ public class Database {
 					"explosm",
 					"Explosm",
 					"http://explosm.net/",
-					null, //TODO
+					"http://explosm.net/comics/random/",
 					"http://explosm.net/comics/15",
 					null,
 					null,
 					"#main-comic",
 					".previous-comic",
 					".next-comic",
-					null, //TODO
+					null,
 					false,
 					false);
 			dao.insert(comic);
@@ -139,14 +139,14 @@ public class Database {
 					"dilbert",
 					"Dilbert",
 					"http://dilbert.com/",
-					null, //TODO
+					null,
 					"http://dilbert.com/strip/1989-04-16",
 					null,
 					null,
 					".img-comic",
 					".nav-left a",
 					".nav-right a",
-					null, //TODO
+					null,
 					false,
 					false);
 			dao.insert(comic);
