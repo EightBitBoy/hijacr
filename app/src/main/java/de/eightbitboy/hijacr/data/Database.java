@@ -110,8 +110,8 @@ public class Database {
 					null,
 					null,
 					".comic",
-					".prev_comic_link",
-					".next_comic_link:containsOwn(previous)",
+					".prev_comic_link:containsOwn(previous)",
+					".next_comic_link",
 					".prev_comic_link:containsOwn(random)",
 					false,
 					false);
