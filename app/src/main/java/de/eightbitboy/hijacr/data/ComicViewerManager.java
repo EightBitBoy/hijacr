@@ -93,7 +93,9 @@ public class ComicViewerManager {
 	public void loadRandomComic() {
 		Crashlytics.setString("randomComicUrl", randomComicUrl);
 
-		//fetchComicUrl(comic.getRandomUrl());
+		fetchComicUrl(comic.getRandomUrl());
+		saveProgress(randomComicUrl);
+		setBackButtonState();
 	}
 
 	public void loadNextComic() {
@@ -113,15 +115,31 @@ public class ComicViewerManager {
 				comic.getNextQuery(), comic.getRandomQuery(), this).execute();
 	}
 
-	public void onGetImageSource(String source, String previousComicUrl, String nextComicUrl) {
+	/**
+	 * Called by a finished {@link ComicFetchTask}.
+	 *
+	 * @param imageUrl         The URL to the requested image.
+	 * @param requestedUrl     The URL used by the ComicFetchTask. It is the URL for the current
+	 *                         comic.
+	 * @param previousComicUrl The URL to the previous comic page.
+	 * @param nextComicUrl     The URL to the next comic page.
+	 */
+	public void onGetImageSource(String imageUrl, String requestedUrl, String previousComicUrl,
+			String nextComicUrl) {
 		this.previousComicUrl = previousComicUrl;
 		this.nextComicUrl = nextComicUrl;
-		ImageLoader.getInstance().displayImage(source, viewer.getImageView(), null, loadListener,
+		this.randomComicUrl = requestedUrl;
+		ImageLoader.getInstance().displayImage(imageUrl, viewer.getImageView(), null, loadListener,
 				progressListener);
 	}
 
 	private void saveProgress() {
 		comic.setRecentUrl(currentComicUrl);
+		db.updateComic(comic);
+	}
+
+	private void saveProgress(String url) {
+		comic.setRecentUrl(url);
 		db.updateComic(comic);
 	}
 

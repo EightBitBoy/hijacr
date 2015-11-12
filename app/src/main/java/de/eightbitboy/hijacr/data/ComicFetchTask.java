@@ -54,6 +54,7 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 
 	@Override
 	protected void onPostExecute(String s) {
-		manager.onGetImageSource(s, previousUrl, nextUrl);
+		manager.onGetImageSource(s, targetUrl, previousUrl,
+				nextUrl);
 	}
 }
