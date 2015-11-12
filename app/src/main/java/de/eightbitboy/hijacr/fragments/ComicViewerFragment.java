@@ -72,6 +72,8 @@ public class ComicViewerFragment extends Fragment {
 		currentComic = Database.getInstance(this.getContext()).getComicById(settings
 				.getLastComicId());
 
+		setRandomButtonState();
+
 		comicViewerManager = new ComicViewerManager(getActivity(), currentComic, this);
 		comicViewerManager.loadCurrentComic();
 
@@ -144,5 +146,13 @@ public class ComicViewerFragment extends Fragment {
 
 	public void disableBackButton() {
 		olderButton.setEnabled(false);
+	}
+
+	private void setRandomButtonState() {
+		if (currentComic.getRandomUrl() == null && currentComic.getRandomQuery() == null) {
+			randomButton.setEnabled(false);
+		} else {
+			randomButton.setEnabled(true);
+		}
 	}
 }
