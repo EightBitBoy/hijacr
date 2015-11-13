@@ -21,6 +21,7 @@ public class Comic {
     private String firstUrl;
     private String lastUrl;
     private String recentUrl;
+    private String recentImageUrl;
     /** Not-null value. */
     private String imageQuery;
     /** Not-null value. */
@@ -41,7 +42,7 @@ public class Comic {
         this.id = id;
     }
 
-    public Comic(Long id, String key, String title, String url, String randomUrl, String firstUrl, String lastUrl, String recentUrl, String imageQuery, String previousQuery, String nextQuery, String randomQuery, boolean hidden, boolean favourite) {
+    public Comic(Long id, String key, String title, String url, String randomUrl, String firstUrl, String lastUrl, String recentUrl, String recentImageUrl, String imageQuery, String previousQuery, String nextQuery, String randomQuery, boolean hidden, boolean favourite) {
         this.id = id;
         this.key = key;
         this.title = title;
@@ -50,6 +51,7 @@ public class Comic {
         this.firstUrl = firstUrl;
         this.lastUrl = lastUrl;
         this.recentUrl = recentUrl;
+        this.recentImageUrl = recentImageUrl;
         this.imageQuery = imageQuery;
         this.previousQuery = previousQuery;
         this.nextQuery = nextQuery;
@@ -128,6 +130,14 @@ public class Comic {
 
     public void setRecentUrl(String recentUrl) {
         this.recentUrl = recentUrl;
+    }
+
+    public String getRecentImageUrl() {
+        return recentImageUrl;
+    }
+
+    public void setRecentImageUrl(String recentImageUrl) {
+        this.recentImageUrl = recentImageUrl;
     }
 
     /** Not-null value. */

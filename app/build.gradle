@@ -54,6 +54,7 @@ task generateDao() {
     comic.addStringProperty("firstUrl").notNull()
     comic.addStringProperty("lastUrl")
     comic.addStringProperty("recentUrl")
+    comic.addStringProperty("recentImageUrl")
     comic.addStringProperty("imageQuery").notNull()
     comic.addStringProperty("previousQuery").notNull()
     comic.addStringProperty("nextQuery").notNull()

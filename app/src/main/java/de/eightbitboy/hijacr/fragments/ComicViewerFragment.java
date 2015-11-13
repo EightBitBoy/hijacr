@@ -153,7 +153,6 @@ public class ComicViewerFragment extends Fragment {
 
 	private void setRandomButtonState() {
 		if (currentComic.getRandomUrl() == null && currentComic.getRandomQuery() == null) {
-			Logger.wtf(currentComic.getRandomUrl() + " " + currentComic.getRandomQuery());
 			randomButton.setEnabled(false);
 		} else {
 			randomButton.setEnabled(true);
