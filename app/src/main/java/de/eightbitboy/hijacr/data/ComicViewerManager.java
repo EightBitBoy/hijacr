@@ -47,6 +47,10 @@ public class ComicViewerManager {
 			this.currentComicUrl = comic.getFirstUrl();
 		}
 
+		if (comic.getRecentImageUrl() != null) {
+			this.currentImageUrl = comic.getRecentImageUrl();
+		}
+
 		setUpImageListeners();
 		setBackButtonState();
 	}
@@ -75,6 +79,9 @@ public class ComicViewerManager {
 	public void loadCurrentComic() {
 		Crashlytics.setString("currentComicUrl", currentComicUrl);
 		fetchComicUrl(currentComicUrl);
+
+		//TODO fetch currentImageUrl if not null
+
 		saveProgress();
 		setBackButtonState();
 	}
@@ -163,6 +170,9 @@ public class ComicViewerManager {
 	}
 
 	private void verifyUrls() {
+	}
 
+	private boolean isUrlValid(String url) {
+		return (url != null && !url.isEmpty());
 	}
 }
