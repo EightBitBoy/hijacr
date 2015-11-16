@@ -170,9 +170,19 @@ public class ComicViewerManager {
 	}
 
 	private void verifyUrls() {
+		boolean isValid = true;
+
+		isValid = isValid && isUrlValid(this.currentImageUrl);
+		isValid = isValid && isUrlValid(this.nextComicUrl);
+		isValid = isValid && isUrlValid(this.previousComicUrl);
 	}
 
 	private boolean isUrlValid(String url) {
-		return (url != null && !url.isEmpty());
+		if (url != null && !url.isEmpty()) {
+			return true;
+		}
+
+		Logger.e("Invalid url: " + url);
+		return false;
 	}
 }
