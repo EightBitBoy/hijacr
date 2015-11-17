@@ -158,4 +158,8 @@ public class ComicViewerFragment extends Fragment {
 			randomButton.setEnabled(true);
 		}
 	}
+
+	public void showErrorMessage(String message) {
+
+	}
 }

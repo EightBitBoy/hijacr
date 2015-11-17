@@ -120,6 +120,11 @@ public class ComicViewerManager {
 	}
 
 	private void fetchComicUrl(String url) {
+		if (!isUrlValid(url)) {
+			viewer.showErrorMessage("Error while trying to access an invalid URL.");
+			return;
+		}
+
 		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),
 				comic.getNextQuery(), this).execute();
 	}
