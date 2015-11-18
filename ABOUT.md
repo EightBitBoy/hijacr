@@ -41,7 +41,7 @@ To ensure software quality Hijacr uses the tool [Crashlytics](https://get.fabric
 A crash report contains the following information:
 
 - a timestamp when the user launched the application
-- a timestamp when the crash occured
+- a timestamp when the crash occurred
 - the device model
 - the operating system version
 - root status
