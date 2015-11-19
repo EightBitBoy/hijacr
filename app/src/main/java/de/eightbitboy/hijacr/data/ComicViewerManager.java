@@ -78,20 +78,24 @@ public class ComicViewerManager {
 
 	public void loadCurrentComic() {
 		Crashlytics.setString("currentComicUrl", currentComicUrl);
-		fetchComicUrl(currentComicUrl);
 
-		//TODO fetch currentImageUrl if not null
+		boolean success;
+		success = fetchComicUrl(currentComicUrl);
+		if (success) {
+			//TODO fetch currentImageUrl if not null
 
-		saveProgress();
-		setBackButtonState();
+			saveProgress();
+			setBackButtonState();
+		}
 	}
 
 	public void loadPreviousComic() {
 		Crashlytics.setString("previousComicUrl", previousComicUrl);
 
-		fetchComicUrl(previousComicUrl);
+		boolean success;
+		success = fetchComicUrl(previousComicUrl);
 
-		if (previousComicUrl != null) {
+		if (success && previousComicUrl != null) {
 			currentComicUrl = previousComicUrl;
 			saveProgress();
 			setBackButtonState();
@@ -110,23 +114,27 @@ public class ComicViewerManager {
 	public void loadNextComic() {
 		Crashlytics.setString("nextComicUrl", nextComicUrl);
 
-		fetchComicUrl(nextComicUrl);
+		boolean success;
+		success = fetchComicUrl(nextComicUrl);
 
-		if (nextComicUrl != null) {
+		if (success && nextComicUrl != null) {
 			currentComicUrl = nextComicUrl;
 			saveProgress();
 			setBackButtonState();
 		}
 	}
 
-	private void fetchComicUrl(String url) {
+	private boolean fetchComicUrl(String url) {
 		if (!isUrlValid(url)) {
-			viewer.showErrorMessage("Error while trying to access an invalid URL.");
-			return;
+			viewer.showErrorMessage("Error while trying to access an invalid URL. The developer " +
+					"is aware of this problem and working on it.");
+			return false;
 		}
 
 		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),
 				comic.getNextQuery(), this).execute();
+
+		return true;
 	}
 
 	private void fetchRandomComicUrl() {
