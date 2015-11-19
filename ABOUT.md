@@ -50,6 +50,9 @@ A crash report contains the following information:
 - the device orientation at the time of crash
 - the device's battery status
 
+For analyzing errors the application may log some information like the comic being currently
+displayed or the URLs to comic images.
+
 ## Content
 
 The developer of this application is not responsible for the comics' contents. The contents are the
