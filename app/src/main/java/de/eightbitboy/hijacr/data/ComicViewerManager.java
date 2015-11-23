@@ -188,9 +188,8 @@ public class ComicViewerManager {
 
 		isValid = isValid && isUrlValid("currentImageUrl", this.currentImageUrl);
 		isValid = isValid && isUrlValid("nextComicUrl", this.nextComicUrl);
-
-		//TODO is this does not seem correct
-		if (this.previousComicUrl != null && !this.previousComicUrl.equals(comic.getFirstUrl())) {
+		
+		if (!this.currentComicUrl.equals(comic.getFirstUrl())) {
 			isValid = isValid && isUrlValid("previousComicUrl", this.previousComicUrl);
 		}
 
