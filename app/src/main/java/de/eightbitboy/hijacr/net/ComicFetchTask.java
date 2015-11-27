@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr.data;
+package de.eightbitboy.hijacr.net;
 
 import android.os.AsyncTask;
 
@@ -9,6 +9,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+
+import de.eightbitboy.hijacr.data.ComicViewerManager;
 
 public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 
@@ -21,6 +23,7 @@ public class ComicFetchTask extends AsyncTask<Void, Void, String> {
 	private String previousUrl;
 	private String nextUrl;
 
+	//TODO replace reference to ComicViewerManager by some interface
 	public ComicFetchTask(String targetUrl, String imageQuery, String previousQuery,
 			String nextQuery, ComicViewerManager manager) {
 		this.targetUrl = targetUrl;

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -16,6 +14,7 @@ import com.orhanobut.logger.Logger;
 import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.eightbitboy.hijacr.fragments.ComicViewerFragment;
+import de.eightbitboy.hijacr.net.ComicFetchTask;
 import de.greenrobot.event.EventBus;
 
 /**
