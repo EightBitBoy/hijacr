@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr.data;
+package de.eightbitboy.hijacr.net;
 
 public class RandomComicFetchTask {
 }
