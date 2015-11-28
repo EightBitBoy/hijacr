@@ -1,4 +1,4 @@
-package de.eightbitboy.hijacr.data;
+package de.eightbitboy.hijacr.data.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

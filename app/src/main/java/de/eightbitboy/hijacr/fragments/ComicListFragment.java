@@ -12,7 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.dao.Comic;
-import de.eightbitboy.hijacr.data.Database;
+import de.eightbitboy.hijacr.data.db.Database;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.greenrobot.event.EventBus;
 

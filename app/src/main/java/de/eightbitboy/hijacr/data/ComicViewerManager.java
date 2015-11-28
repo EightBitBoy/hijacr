@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.dao.Comic;
+import de.eightbitboy.hijacr.data.db.Database;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.eightbitboy.hijacr.fragments.ComicViewerFragment;
 import de.eightbitboy.hijacr.net.ComicFetchTask;

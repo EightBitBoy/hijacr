@@ -11,13 +11,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.crashlytics.android.Crashlytics;
-import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicViewerManager;
-import de.eightbitboy.hijacr.data.Database;
+import de.eightbitboy.hijacr.data.db.Database;
 import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
