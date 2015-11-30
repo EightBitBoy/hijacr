@@ -1,7 +1,5 @@
 package de.eightbitboy.hijacr.net;
 
-import android.os.AsyncTask;
-
 import com.crashlytics.android.Crashlytics;
 
 import org.jsoup.Jsoup;
@@ -12,7 +10,7 @@ import java.io.IOException;
 
 import de.eightbitboy.hijacr.data.ComicViewerManager;
 
-public class ComicFetchTask extends AsyncTask<Void, Void, String> {
+public class ComicFetchTask extends AbstractFetchTask {
 
 	private String targetUrl;
 	private String imageQuery;
