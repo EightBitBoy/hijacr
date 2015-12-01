@@ -15,13 +15,14 @@ import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.data.db.Database;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.eightbitboy.hijacr.fragments.ComicViewerFragment;
+import de.eightbitboy.hijacr.net.AbstractFetchTask;
 import de.eightbitboy.hijacr.net.ComicFetchTask;
 import de.greenrobot.event.EventBus;
 
 /**
  * Handles the comic viewing state and updates the comic view.
  */
-public class ComicViewerManager {
+public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 
 	private Database db;
 	private Comic comic;
@@ -142,19 +143,11 @@ public class ComicViewerManager {
 
 	}
 
-	/**
-	 * Called by a finished {@link ComicFetchTask}.
-	 *
-	 * @param imageUrl         The URL to the requested image.
-	 * @param requestedUrl     The URL used by the ComicFetchTask. It is the URL for the current
-	 *                         comic.
-	 * @param previousComicUrl The URL to the previous comic page.
-	 * @param nextComicUrl     The URL to the next comic page.
-	 */
-	public void onGetImageSource(String imageUrl, String requestedUrl, String previousComicUrl,
-			String nextComicUrl) {
-		this.previousComicUrl = previousComicUrl;
-		this.nextComicUrl = nextComicUrl;
+	@Override
+	public void onFetchTaskFinished(String imageUrl, String requestedUrl, String previousUrl,
+			String nextUrl) {
+		this.previousComicUrl = previousUrl;
+		this.nextComicUrl = nextUrl;
 		this.randomComicUrl = requestedUrl;
 		this.currentImageUrl = imageUrl;
 
@@ -188,7 +181,7 @@ public class ComicViewerManager {
 
 		isValid = isValid && isUrlValid("currentImageUrl", this.currentImageUrl);
 		isValid = isValid && isUrlValid("nextComicUrl", this.nextComicUrl);
-		
+
 		if (!this.currentComicUrl.equals(comic.getFirstUrl())) {
 			isValid = isValid && isUrlValid("previousComicUrl", this.previousComicUrl);
 		}
