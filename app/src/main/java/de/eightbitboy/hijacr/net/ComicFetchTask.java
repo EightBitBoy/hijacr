@@ -17,7 +17,6 @@ public class ComicFetchTask extends AbstractFetchTask {
 	private String nextQuery;
 	private String previousUrl;
 	private String nextUrl;
-	private FetchTaskListener listener;
 
 
 	public ComicFetchTask(String targetUrl, String imageQuery, String previousQuery,
