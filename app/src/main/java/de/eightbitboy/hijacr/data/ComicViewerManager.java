@@ -17,6 +17,7 @@ import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.eightbitboy.hijacr.fragments.ComicViewerFragment;
 import de.eightbitboy.hijacr.net.AbstractFetchTask;
 import de.eightbitboy.hijacr.net.ComicFetchTask;
+import de.eightbitboy.hijacr.net.RandomComicFetchTask;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -104,15 +105,6 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 		}
 	}
 
-	public void loadRandomComic() {
-		Crashlytics.setString("randomComicUrl", randomComicUrl);
-
-		fetchRandomComicUrl();
-
-		saveProgress(randomComicUrl);
-		setBackButtonState();
-	}
-
 	public void loadNextComic() {
 		Crashlytics.setString("nextComicUrl", nextComicUrl);
 
@@ -122,6 +114,19 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 		if (success && nextComicUrl != null) {
 			currentComicUrl = nextComicUrl;
 			saveProgress();
+			setBackButtonState();
+		}
+	}
+
+	public void loadRandomComic() {
+		Crashlytics.setString("randomComicUrl", randomComicUrl);
+
+		boolean success;
+		success = fetchRandomComicUrl(randomComicUrl);
+
+		if (success && randomComicUrl != null) {
+			currentComicUrl = randomComicUrl;
+			saveProgress(randomComicUrl);
 			setBackButtonState();
 		}
 	}
@@ -139,8 +144,11 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 		return true;
 	}
 
-	private void fetchRandomComicUrl() {
+	private boolean fetchRandomComicUrl(String url) {
 
+		new RandomComicFetchTask(url, comic.getRandomQuery()).execute();
+
+		return true;
 	}
 
 	@Override
