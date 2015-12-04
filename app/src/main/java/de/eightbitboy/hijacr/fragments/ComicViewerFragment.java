@@ -16,9 +16,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
 import de.eightbitboy.hijacr.data.ComicViewerManager;
-import de.eightbitboy.hijacr.data.db.Database;
 import de.eightbitboy.hijacr.data.SettingsManager;
 import de.eightbitboy.hijacr.data.dao.Comic;
+import de.eightbitboy.hijacr.data.db.Database;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.greenrobot.event.EventBus;
@@ -153,8 +153,10 @@ public class ComicViewerFragment extends Fragment {
 	private void setRandomButtonState() {
 		if (currentComic.getRandomUrl() == null && currentComic.getRandomQuery() == null) {
 			randomButton.setEnabled(false);
+			randomButton.setVisibility(View.INVISIBLE);
 		} else {
 			randomButton.setEnabled(true);
+			randomButton.setVisibility(View.VISIBLE);
 		}
 	}
 
