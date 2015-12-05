@@ -3,21 +3,35 @@ package de.eightbitboy.hijacr;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.orhanobut.logger.Logger;
 
 import de.eightbitboy.hijacr.data.db.Database;
 import io.fabric.sdk.android.Fabric;
 
 public class HijacrApplication extends Application {
+
+	public static final String DEBUG_NO_CL = "debugNoCl";
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
 
-		Fabric.with(this, new Crashlytics());
+		if (BuildConfig.DEBUG) {
+			Logger.w("Running app with build type #debug#!");
+		}
+
+		Crashlytics crashlyticsKit = new Crashlytics.Builder().core(
+				new CrashlyticsCore.Builder().disabled(
+						BuildConfig.DEBUG).build())
+				.build();
+
+		Fabric.with(this, crashlyticsKit);
 
 		Database.getInstance(this);
 
