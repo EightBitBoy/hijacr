@@ -93,7 +93,7 @@ android {
         debug {
         }
         debugNoCl {
-            debuggable true
+            initWith(buildTypes.debug)
             ext.enableCrashlytics = false
         }
     }

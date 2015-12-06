@@ -22,13 +22,13 @@ public class HijacrApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		if (BuildConfig.DEBUG) {
-			Logger.w("Running app with build type #debug#!");
+		if (BuildConfig.BUILD_TYPE.equals(DEBUG_NO_CL)) {
+			Logger.w("Running app with build type #debugNoCl#!");
 		}
 
 		Crashlytics crashlyticsKit = new Crashlytics.Builder().core(
 				new CrashlyticsCore.Builder().disabled(
-						BuildConfig.DEBUG).build())
+						BuildConfig.BUILD_TYPE.equals(DEBUG_NO_CL)).build())
 				.build();
 
 		Fabric.with(this, crashlyticsKit);
