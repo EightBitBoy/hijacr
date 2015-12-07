@@ -26,9 +26,7 @@ import de.greenrobot.daogenerator.Entity
 import de.greenrobot.daogenerator.Schema
 import org.pegdown.PegDownProcessor
 
-/*
-generate HTML-files from Markdown-files for including them in the app
- */
+//generate HTML-files from Markdown-files for including them in the app
 task releaseNotes() {
     def processor = new PegDownProcessor()
 
@@ -104,16 +102,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    /*
-            android libraries
-             */
+
+    //android libraries
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
-    compile 'com.android.support:support-annotations:23.1.0'
-    //TODO use this
-    /*
-            third-party libraries
-             */
+    compile 'com.android.support:support-annotations:23.1.0' //TODO use this
+
+    //third-party libraries
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'de.greenrobot:greendao:2.0.0'
@@ -126,9 +121,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }
-    /*
-            testing
-             */
+
+    //testing
     testCompile 'org.robolectric:robolectric:3.0'
     androidTestCompile 'com.android.support:support-annotations:23.1.0'
     androidTestCompile 'com.android.support.test:runner:0.4.1'
