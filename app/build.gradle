@@ -87,11 +87,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
         }
         debug {
+            buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
         }
         debugNoCl {
             initWith(buildTypes.debug)
+            buildConfigField "boolean", "ENABLE_CRASHLYTICS", "false"
             ext.enableCrashlytics = false
         }
     }

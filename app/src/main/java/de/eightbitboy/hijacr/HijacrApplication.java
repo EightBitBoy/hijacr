@@ -16,19 +16,16 @@ import io.fabric.sdk.android.Fabric;
 
 public class HijacrApplication extends Application {
 
-	public static final String DEBUG_NO_CL = "debugNoCl";
-
 	@Override
 	public void onCreate() {
 		super.onCreate();
 
-		if (BuildConfig.BUILD_TYPE.equals(DEBUG_NO_CL)) {
+		if (!BuildConfig.ENABLE_CRASHLYTICS) {
 			Logger.w("Running app with build type #debugNoCl#!");
 		}
 
 		Crashlytics crashlyticsKit = new Crashlytics.Builder().core(
-				new CrashlyticsCore.Builder().disabled(
-						BuildConfig.BUILD_TYPE.equals(DEBUG_NO_CL)).build())
+				new CrashlyticsCore.Builder().disabled(BuildConfig.ENABLE_CRASHLYTICS).build())
 				.build();
 
 		Fabric.with(this, crashlyticsKit);
