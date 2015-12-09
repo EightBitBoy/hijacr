@@ -20,12 +20,14 @@ public class HijacrApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		if (!BuildConfig.ENABLE_CRASHLYTICS) {
-			Logger.w("Running app with build type #debugNoCl#!");
+		if (BuildConfig.ENABLE_CRASHLYTICS) {
+			Logger.w("Crashlytics is enabled!");
+		} else {
+			Logger.w("Crashlytics is disabled!");
 		}
 
 		Crashlytics crashlyticsKit = new Crashlytics.Builder().core(
-				new CrashlyticsCore.Builder().disabled(BuildConfig.ENABLE_CRASHLYTICS).build())
+				new CrashlyticsCore.Builder().disabled(!BuildConfig.ENABLE_CRASHLYTICS).build())
 				.build();
 
 		Fabric.with(this, crashlyticsKit);
