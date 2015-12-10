@@ -21,6 +21,7 @@ import de.eightbitboy.hijacr.data.dao.Comic;
 import de.eightbitboy.hijacr.data.db.Database;
 import de.eightbitboy.hijacr.events.ComicSelectedEvent;
 import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
+import de.eightbitboy.hijacr.fragments.dialog.ErrorDialog;
 import de.greenrobot.event.EventBus;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -161,6 +162,5 @@ public class ComicViewerFragment extends Fragment {
 	}
 
 	public void showErrorMessage(String message) {
-
 	}
 }
