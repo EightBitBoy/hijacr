@@ -1,26 +1,38 @@
 package de.eightbitboy.hijacr.net;
 
-public class RandomComicFetchTask extends AbstractFetchTask {
+import com.crashlytics.android.Crashlytics;
 
-	private FetchTaskListener listener;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
+public class RandomComicFetchTask extends AbstractFetchTask {
 
 	private String targetUrl;
 	private String imageQuery;
 	private String randomQuery;
 
-	public RandomComicFetchTask(String targetUrl, String imageQuery, String randomQuery) {
+	public RandomComicFetchTask(String targetUrl, String imageQuery, String randomQuery,
+			FetchTaskListener listener) {
 		this.targetUrl = targetUrl;
 		this.imageQuery = imageQuery;
 		this.randomQuery = randomQuery;
+		this.listener = listener;
 	}
 
 	@Override
 	protected String doInBackground(Void... voids) {
-		if (targetUrl != null) {
+		try {
+			if (randomQuery == null) {
+			}
 
-		} else {
-			
+			Document page = Jsoup.connect(targetUrl).get();
+		} catch (IOException e) {
+			Crashlytics.logException(e);
+			e.printStackTrace();
 		}
+
 
 		return null;
 	}

@@ -44,6 +44,7 @@ public class ComicFetchTask extends AbstractFetchTask {
 			Elements image = page.select(imageQuery);
 			return image.attr("abs:src");
 		} catch (IOException e) {
+			Crashlytics.logException(e);
 			e.printStackTrace();
 		}
 		return null;

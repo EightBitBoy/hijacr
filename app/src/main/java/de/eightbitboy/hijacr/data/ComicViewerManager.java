@@ -55,6 +55,12 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 			this.currentImageUrl = comic.getRecentImageUrl();
 		}
 
+		if (comic.getRandomUrl() != null) {
+			this.randomComicUrl = comic.getRandomUrl();
+		} else {
+			this.randomComicUrl = comic.getFirstUrl();
+		}
+
 		setUpImageListeners();
 		setBackButtonState();
 	}
@@ -151,7 +157,8 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 
 		Statistics.logFetch(comic);
 
-		new RandomComicFetchTask(url, comic.getImageQuery(), comic.getRandomQuery()).execute();
+		new RandomComicFetchTask(url, comic.getImageQuery(), comic.getRandomQuery(),
+				this).execute();
 
 		return true;
 	}
