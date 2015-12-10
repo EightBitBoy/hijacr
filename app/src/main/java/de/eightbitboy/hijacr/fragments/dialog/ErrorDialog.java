@@ -29,8 +29,6 @@ public class ErrorDialog extends DialogFragment {
 		return dialog;
 	}
 
-	//TODO see http://developer.android.com/guide/topics/ui/dialogs.html
-
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
