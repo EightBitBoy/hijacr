@@ -38,7 +38,6 @@ public class ComicFetchTask extends AbstractFetchTask {
 			previousUrl = previous.attr("abs:href");
 
 			Elements next = page.select(nextQuery);
-
 			nextUrl = next.attr("abs:href");
 
 			Elements image = page.select(imageQuery);
