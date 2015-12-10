@@ -54,7 +54,8 @@ public class ComicListFragment extends Fragment {
 
 				Answers.getInstance().logContentView(new ContentViewEvent()
 						.putContentType("Comic")
-						.putContentName(comic.getKey()));
+						.putContentName(comic.getTitle())
+						.putContentId(comic.getKey()));
 
 				EventBus.getDefault().post(new ComicSelectedEvent(comic));
 			}
