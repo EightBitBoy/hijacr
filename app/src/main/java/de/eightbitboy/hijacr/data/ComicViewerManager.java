@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
@@ -138,6 +140,8 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 			return false;
 		}
 
+		logAnswer();
+
 		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),
 				comic.getNextQuery(), this).execute();
 
@@ -145,6 +149,8 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 	}
 
 	private boolean fetchRandomComicUrl(String url) {
+
+		logAnswer();
 
 		new RandomComicFetchTask(url, comic.getRandomQuery()).execute();
 
@@ -206,5 +212,10 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 		Crashlytics.log(Log.ERROR, "HIJACR",
 				"Comic: " + comic.getKey() + " Invalid url # " + urlName + " #" + url);
 		return false;
+	}
+
+	private void logAnswer() {
+		Answers.getInstance().logCustom(new CustomEvent("ComicLoad")
+				.putCustomAttribute("Comic", comic.getKey()));
 	}
 }
