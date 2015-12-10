@@ -12,7 +12,7 @@ import android.widget.TextView;
 import de.eightbitboy.hijacr.R;
 
 public class ErrorDialog extends DialogFragment {
-	
+
 	public static ErrorDialog newInstance(String message) {
 		ErrorDialog dialog = new ErrorDialog();
 
@@ -22,6 +22,8 @@ public class ErrorDialog extends DialogFragment {
 
 		return dialog;
 	}
+
+	//TODO see http://developer.android.com/guide/topics/ui/dialogs.html
 
 	@Nullable
 	@Override
