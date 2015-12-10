@@ -19,6 +19,8 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 public class FetchAllComicsTest {
+
+	//TODO this test needs some work
 	@Test
 	public void fetchAllComics() {
 		Database db = Database.getInstance(RuntimeEnvironment.application);
