@@ -107,9 +107,9 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     //android libraries
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.android.support:design:23.1.0'
-    compile 'com.android.support:support-annotations:23.1.0' //TODO use this
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:support-annotations:23.1.1' //TODO use this
 
     //third-party libraries
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -127,7 +127,7 @@ dependencies {
 
     //testing
     testCompile 'org.robolectric:robolectric:3.0'
-    androidTestCompile 'com.android.support:support-annotations:23.1.0'
+    androidTestCompile 'com.android.support:support-annotations:23.1.1'
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
 }
