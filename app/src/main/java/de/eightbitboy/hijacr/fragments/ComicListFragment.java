@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.ContentViewEvent;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.eightbitboy.hijacr.R;
@@ -47,8 +50,13 @@ public class ComicListFragment extends Fragment {
 		comicList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-				EventBus.getDefault().post(new ComicSelectedEvent((Comic) comicList
-						.getItemAtPosition(i)));
+				Comic comic = (Comic) comicList.getItemAtPosition(i);
+
+				Answers.getInstance().logContentView(new ContentViewEvent()
+						.putContentType("Comic")
+						.putContentName(comic.getKey()));
+
+				EventBus.getDefault().post(new ComicSelectedEvent(comic));
 			}
 		});
 	}
