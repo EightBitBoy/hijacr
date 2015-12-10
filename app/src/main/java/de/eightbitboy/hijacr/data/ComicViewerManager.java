@@ -151,7 +151,7 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 
 		Statistics.logFetch(comic);
 
-		new RandomComicFetchTask(url, comic.getRandomQuery()).execute();
+		new RandomComicFetchTask(url, comic.getImageQuery(), comic.getRandomQuery()).execute();
 
 		return true;
 	}
