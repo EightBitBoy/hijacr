@@ -12,12 +12,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import de.eightbitboy.hijacr.R;
+import de.eightbitboy.hijacr.Statistics;
 
 public class AboutActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		Statistics.logView("About");
 
 		setContentView(R.layout.activity_about);
 
