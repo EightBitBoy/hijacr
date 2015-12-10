@@ -15,12 +15,6 @@ import static org.junit.Assert.assertThat;
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 public class ComicFetchTaskTest {
-	@Test
-	public void doSomething() {
-		String foo = "x";
-		String bar = "x";
-		assertThat(foo, equalTo(bar));
-	}
 
 	@Test
 	public void testFetch() {
@@ -28,13 +22,13 @@ public class ComicFetchTaskTest {
 			@Override
 			public void onFetchTaskFinished(String imageUrl, String requestedUrl, String previousUrl, String nextUrl) {
 				assertThat(imageUrl,
-						equalTo("http://imgs.xkcd.com/comics/tree_cropped_(1).jpg"));
+						equalTo("https://imgs.xkcd.com/comics/tree_cropped_(1).jpg"));
 				assertThat(requestedUrl,
-						equalTo("http://xkcd.com/2/"));
+						equalTo("https://xkcd.com/2/"));
 				assertThat(previousUrl,
-						equalTo("http://xkcd.com/1/"));
+						equalTo("https://xkcd.com/1/"));
 				assertThat(nextUrl,
-						equalTo("http://xkcd.com/3/"));
+						equalTo("https://xkcd.com/3/"));
 			}
 		};
 
