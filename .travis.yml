@@ -5,7 +5,7 @@ env:
 
 android:
   components:
-  - build-tools-23.0.2
+  - build-tools-23.0.1
   - android-23
   - addon-google_apis-google-23
   - sys-img-armeabi-v7a-android-23
