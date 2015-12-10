@@ -9,7 +9,7 @@ feature:
 
 fix:
 
-- crash on startup
+- crash on startup, show error message of something happens
 
 ## 0.2.0, 2015-11-10
 
