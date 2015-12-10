@@ -1,9 +1,13 @@
 package de.eightbitboy.hijacr.fragments.dialog;
 
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +17,13 @@ import de.eightbitboy.hijacr.R;
 
 public class ErrorDialog extends DialogFragment {
 
+	private static final String MESSAGE_KEY = "message";
+
 	public static ErrorDialog newInstance(String message) {
 		ErrorDialog dialog = new ErrorDialog();
 
 		Bundle args = new Bundle();
-		args.putString("message", message);
+		args.putString(MESSAGE_KEY, message);
 		dialog.setArguments(args);
 
 		return dialog;
@@ -25,15 +31,19 @@ public class ErrorDialog extends DialogFragment {
 
 	//TODO see http://developer.android.com/guide/topics/ui/dialogs.html
 
-	@Nullable
+	@NonNull
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		//return super.onCreateView(inflater, container, savedInstanceState);
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-		View view = inflater.inflate(R.layout.error_dialog, container);
-		TextView textView = (TextView) view.findViewById(R.id.error_message);
-		textView.setText(getArguments().getString("message"));
+		builder.setTitle("Error")
+				.setMessage(getArguments().getString(MESSAGE_KEY))
+				.setNeutralButton("ok", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dismiss();
+					}
+				});
 
-		return view;
+		return builder.create();
 	}
 }
