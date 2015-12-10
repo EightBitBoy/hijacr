@@ -75,8 +75,8 @@ android {
         applicationId "de.eightbitboy.hijacr"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 4
-        versionName "0.2.0"
+        versionCode 5
+        versionName "0.3.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
