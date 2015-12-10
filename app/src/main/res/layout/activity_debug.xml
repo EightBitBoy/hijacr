@@ -7,4 +7,10 @@
               android:padding="10dp"
               tools:context="de.eightbitboy.hijacr.activities.DebugActivity">
 
+	<Button
+		android:id="@+id/do_something_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Do something!"/>
+
 </LinearLayout>
