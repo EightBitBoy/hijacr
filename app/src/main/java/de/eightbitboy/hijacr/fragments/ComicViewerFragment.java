@@ -2,6 +2,7 @@ package de.eightbitboy.hijacr.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -162,5 +163,7 @@ public class ComicViewerFragment extends Fragment {
 	}
 
 	public void showErrorMessage(String message) {
+		DialogFragment dialog = ErrorDialog.newInstance(message);
+		dialog.show(getFragmentManager().beginTransaction(), "dialog");
 	}
 }
