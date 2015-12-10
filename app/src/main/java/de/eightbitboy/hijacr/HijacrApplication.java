@@ -3,6 +3,7 @@ package de.eightbitboy.hijacr;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -30,7 +31,7 @@ public class HijacrApplication extends Application {
 				new CrashlyticsCore.Builder().disabled(!BuildConfig.ENABLE_CRASHLYTICS).build())
 				.build();
 
-		Fabric.with(this, crashlyticsKit);
+		Fabric.with(this, crashlyticsKit, new Answers());
 
 		Database.getInstance(this);
 
