@@ -15,16 +15,20 @@ public class ComicFetchTask extends AbstractFetchTask {
 	private String imageQuery;
 	private String previousQuery;
 	private String nextQuery;
+	private String randomQuery;
+
 	private String previousUrl;
 	private String nextUrl;
+	private String randomUrl;
 
 
 	public ComicFetchTask(String targetUrl, String imageQuery, String previousQuery,
-			String nextQuery, FetchTaskListener listener) {
+			String nextQuery, String randomQuery, FetchTaskListener listener) {
 		this.targetUrl = targetUrl;
 		this.imageQuery = imageQuery;
 		this.previousQuery = previousQuery;
 		this.nextQuery = nextQuery;
+		this.randomQuery = randomQuery;
 		this.listener = listener;
 	}
 
@@ -33,6 +37,12 @@ public class ComicFetchTask extends AbstractFetchTask {
 		try {
 			Crashlytics.setString("targetUrl", targetUrl);
 			Document page = Jsoup.connect(targetUrl).get();
+
+			if (randomQuery != null) {
+				Elements random = page.select(randomQuery);
+				randomUrl = random.attr("abs:href");
+				targetUrl = randomUrl;
+			}
 
 			Elements previous = page.select(previousQuery);
 			previousUrl = previous.attr("abs:href");

@@ -18,7 +18,6 @@ import de.eightbitboy.hijacr.events.ComicViewUpdateEvent;
 import de.eightbitboy.hijacr.fragments.ComicViewerFragment;
 import de.eightbitboy.hijacr.net.AbstractFetchTask;
 import de.eightbitboy.hijacr.net.ComicFetchTask;
-import de.eightbitboy.hijacr.net.RandomComicFetchTask;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -129,7 +128,12 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 		Crashlytics.setString("randomComicUrl", randomComicUrl);
 
 		boolean success;
-		success = fetchRandomComicUrl(randomComicUrl);
+
+		if (comic.getRandomUrl() != null) {
+			success = fetchComicUrl(comic.getRandomUrl());
+		} else {
+			success = fetchComicUrl(randomComicUrl);
+		}
 
 		if (success && randomComicUrl != null) {
 			currentComicUrl = randomComicUrl;
@@ -148,17 +152,7 @@ public class ComicViewerManager implements AbstractFetchTask.FetchTaskListener {
 		Statistics.logFetch(comic);
 
 		new ComicFetchTask(url, comic.getImageQuery(), comic.getPreviousQuery(),
-				comic.getNextQuery(), this).execute();
-
-		return true;
-	}
-
-	private boolean fetchRandomComicUrl(String url) {
-
-		Statistics.logFetch(comic);
-
-		new RandomComicFetchTask(url, comic.getImageQuery(), comic.getRandomQuery(),
-				this).execute();
+				comic.getNextQuery(), comic.getRandomQuery(), this).execute();
 
 		return true;
 	}
