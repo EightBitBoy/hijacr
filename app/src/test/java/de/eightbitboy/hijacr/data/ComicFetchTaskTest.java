@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.hamcrest.core.IsEqual.equalTo;
-
 import de.eightbitboy.hijacr.BuildConfig;
+
+import static org.hamcrest.core.IsEqual.equalTo;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
@@ -18,5 +18,10 @@ public class ComicFetchTaskTest {
 		String foo = "x";
 		String bar = "x";
 		Assert.assertThat(foo, equalTo(bar));
+	}
+
+	@Test
+	public void testFetch() {
+
 	}
 }
