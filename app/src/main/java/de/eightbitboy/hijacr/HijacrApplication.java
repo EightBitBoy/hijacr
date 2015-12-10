@@ -27,6 +27,7 @@ public class HijacrApplication extends Application {
 			Logger.w("Crashlytics is disabled!");
 		}
 
+		@SuppressWarnings("PointlessBooleanExpression")
 		Crashlytics crashlyticsKit = new Crashlytics.Builder().core(
 				new CrashlyticsCore.Builder().disabled(!BuildConfig.ENABLE_CRASHLYTICS).build())
 				.build();
