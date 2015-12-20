@@ -2,6 +2,7 @@ package de.eightbitboy.hijacr.data;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -125,7 +126,7 @@ public class ComicViewerManager {
 	}
 
 	private boolean fetchComicUrl(String url) {
-		if (!isUrlValid(url)) {
+		if (!isUrlValid("in method fetchComicUrl", url)) {
 			viewer.showErrorMessage("Error while trying to access an invalid URL. The developer " +
 					"is aware of this problem and working on it.");
 			return false;
@@ -185,17 +186,18 @@ public class ComicViewerManager {
 	private void verifyUrls() {
 		boolean isValid = true;
 
-		isValid = isValid && isUrlValid(this.currentImageUrl);
-		isValid = isValid && isUrlValid(this.nextComicUrl);
-		isValid = isValid && isUrlValid(this.previousComicUrl);
+		isValid = isValid && isUrlValid("currentImageUrl", this.currentImageUrl);
+		isValid = isValid && isUrlValid("nextComicUrl", this.nextComicUrl);
+		isValid = isValid && isUrlValid("previousComicUrl", this.previousComicUrl);
 	}
 
-	private boolean isUrlValid(String url) {
+	private boolean isUrlValid(String urlName, String url) {
 		if (url != null && !url.isEmpty()) {
 			return true;
 		}
 
-		Logger.e("Invalid url: " + url);
+		Logger.e("Invalid url # " + urlName + " #" + url);
+		Crashlytics.log(Log.ERROR, "HIJACR", "Invalid url # " + urlName + " #" + url);
 		return false;
 	}
 }
