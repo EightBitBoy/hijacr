@@ -202,8 +202,9 @@ public class ComicViewerManager {
 			return true;
 		}
 
-		Logger.e("Invalid url # " + urlName + " #" + url);
-		Crashlytics.log(Log.ERROR, "HIJACR", "Invalid url # " + urlName + " #" + url);
+		Logger.e("Comic: " + comic.getKey() + " Invalid url # " + urlName + " #" + url);
+		Crashlytics.log(Log.ERROR, "HIJACR",
+				"Comic: " + comic.getKey() + " Invalid url # " + urlName + " #" + url);
 		return false;
 	}
 }
